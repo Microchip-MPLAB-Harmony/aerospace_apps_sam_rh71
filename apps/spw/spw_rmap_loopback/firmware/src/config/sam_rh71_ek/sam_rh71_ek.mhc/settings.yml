@@ -1,0 +1,13 @@
+configName: sam_rh71_ek
+folderName: ''
+format_version: v1.0
+frameworkPath: ../../../..
+processor: ATSAMRH71F20C
+projectName: ''
+settings:
+  PackageFilter: aerospace;aerospace_apps_sam_rh707;aerospace_apps_sam_rh71;audio;bootloader;bootloader_apps_ethernet;bootloader_apps_uart;bsp;core;crypto;csp;csp_apps_sam_e70_s70_v70_v71;csp_apps_sam_rh71;gfx;gfx_apps;motor_control;net;net_apps_sam_e70_v71;net_apps_sam_rh71;quick_docs
+  FORCE_OPTIMIZATION: 'false'
+  GENERATE_BACKUP: 'true'
+  CMSISPath: .\dev_packs\arm\CMSIS\5.8.0
+  MERGE_STRATEGY: USER_ALL
+  DFPPath: .\dev_packs\Microchip\SAMRH71_DFP\2.3.124\samrh71c\atdf\ATSAMRH71F20C.atdf

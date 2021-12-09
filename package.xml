@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<Package name="replaceme">
+<Package name="aerospace_apps_sam_rh71">
     <Dependencies>
+        <Dependency name="aerospace" version="v3.4.0"/>
+        <Dependency name="csp" version="v3.10.0"/>
+        <Dependency name="dev_packs" version="v3.10.0"/>
     </Dependencies>
 </Package>

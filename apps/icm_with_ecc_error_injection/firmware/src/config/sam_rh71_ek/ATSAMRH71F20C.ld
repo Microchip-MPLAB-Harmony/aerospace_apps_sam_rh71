@@ -263,14 +263,14 @@ SECTIONS
     _ram_end_ = ORIGIN(ram) + LENGTH(ram) -1 ;
     
     .itcm_data : {
-      KEEP(*(.itcm_data))
+      KEEP(*(.itcm_data*))
     } > itcm_data
 
     .ext_sdram (NOLOAD):
     {
     . = ALIGN(4);
     _s_ext_sdram = .;
-    *(.ext_sdram)
+    *(.ext_sdram*)
     . = ALIGN(4);
     _e_ext_sdram = .;
     } > ext_sdram
@@ -279,7 +279,7 @@ SECTIONS
     {
     . = ALIGN(4);
     _s_ram_data = .;
-    *(.ram_data)
+    *(.ram_data*)
     . = ALIGN(4);
     _e_ram_data = .;
     } > ram_data

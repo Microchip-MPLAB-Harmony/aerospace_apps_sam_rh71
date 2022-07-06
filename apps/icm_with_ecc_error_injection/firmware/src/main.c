@@ -116,8 +116,8 @@ uint32_t __attribute__((tcm)) buffer_dtcm[APP_BUFFER_LENGTH] = {0};
 /* Buffer of data placed in internal FlexRAM memory were ECC error will be injected */
 uint32_t __attribute__((section (".ram_data"))) buffer_internal_sram[APP_BUFFER_LENGTH] = {0};
 
-/* Buffer of data placed in external SDRAM memory were ECC error will be injected */
-uint32_t __attribute__((section (".ext_sdram"))) buffer_external_sram[APP_BUFFER_LENGTH];
+/* Buffer of data placed in external RAM memory were ECC error will be injected */
+uint32_t __attribute__((section (".ext_sdram"))) buffer_external_ram[APP_BUFFER_LENGTH];
 
 /* Hash Buffer were ICM will store the computed hash for each region */
 uint32_t __attribute__((aligned (128))) bufferHash[APP_ICM_NUM_REGION][APP_ICM_HASH_SIZE_WORD] = {0};
@@ -312,14 +312,14 @@ static void APP_generate_ecc_error(app_error_type_t error_type)
                 &(buffer_internal_sram[0]),
                 error_type);
             break;
-        case APP_MEMORY_REGION_EXTERNAL_SDRAM:
+        case APP_MEMORY_REGION_EXTERNAL_RAM:
             APP_ECC_INJECT_EXT_SDRAM_initialize_error(
-                &(g_eccErrorInjectTable[APP_MEMORY_REGION_EXTERNAL_SDRAM]),
-                &(buffer_external_sram[0]),
-                g_eccErrorBufferPosition[APP_MEMORY_REGION_EXTERNAL_SDRAM]);
+                &(g_eccErrorInjectTable[APP_MEMORY_REGION_EXTERNAL_RAM]),
+                &(buffer_external_ram[0]),
+                g_eccErrorBufferPosition[APP_MEMORY_REGION_EXTERNAL_RAM]);
             APP_ECC_INJECT_EXT_SDRAM_generate_error(
-                &(g_eccErrorInjectTable[APP_MEMORY_REGION_EXTERNAL_SDRAM]),
-                &(buffer_external_sram[0]),
+                &(g_eccErrorInjectTable[APP_MEMORY_REGION_EXTERNAL_RAM]),
+                &(buffer_external_ram[0]),
                 error_type);
             break;
         default:
@@ -368,9 +368,9 @@ int main ( void )
     memset(buffer_internal_sram, (int)('a'), sizeof(buffer_internal_sram));
     if ( DATA_CACHE_IS_ENABLED() )
         DCACHE_CLEAN_INVALIDATE_BY_ADDR((uint32_t *)buffer_internal_sram, (int32_t)(sizeof(buffer_internal_sram)));
-    memset(buffer_external_sram, (int)('a'), sizeof(buffer_external_sram));
+    memset(buffer_external_ram, (int)('a'), sizeof(buffer_external_ram));
     if ( DATA_CACHE_IS_ENABLED() )
-        DCACHE_CLEAN_INVALIDATE_BY_ADDR((uint32_t *)buffer_external_sram, (int32_t)(sizeof(buffer_external_sram)));
+        DCACHE_CLEAN_INVALIDATE_BY_ADDR((uint32_t *)buffer_external_ram, (int32_t)(sizeof(buffer_external_ram)));
 
     /* Set ICM memory address for generated hash */
     ICM_SetHashStartAddress((uint32_t)&bufferHash);
@@ -394,9 +394,6 @@ int main ( void )
     /* Disable ICM */
     ICM_Disable();
 
-    regionHashCompleted = 0;
-    regionDigestMismatch = 0;
-
     /* Disable ICM Write back feature */
     ICM_WriteBackDisable(true);
 
@@ -412,7 +409,7 @@ int main ( void )
     ICM_Enable();
 
     printf("ICM monitoring started for region (0-3)...\n\r");
-    printf("Press [Push Button 0] to change ecc error injection memory target(ITCM, DTCM, FlexRAM, external SDRAM)\n\r");
+    printf("Press [Push Button 0] to change ecc error injection memory target(ITCM, DTCM, FlexRAM, external RAM memory)\n\r");
     printf("Press [Push Button 1] to inject fixable ecc error\n\r");
     printf("Press [Push Button 2] to inject unfixable ecc error\n\r");
     printf("Current ECC error injection is selected for memory : %s\n\r",
@@ -457,9 +454,9 @@ int main ( void )
             }
             if ( mismatch & APP_ICM_ID_REGION3 )
             {
-                memset(buffer_external_sram, (int)('a'), sizeof(buffer_external_sram));
+                memset(buffer_external_ram, (int)('a'), sizeof(buffer_external_ram));
                 if ( DATA_CACHE_IS_ENABLED() )
-                    DCACHE_CLEAN_BY_ADDR((uint32_t *)buffer_external_sram, (int32_t)(sizeof(buffer_external_sram)));
+                    DCACHE_CLEAN_BY_ADDR((uint32_t *)buffer_external_ram, (int32_t)(sizeof(buffer_external_ram)));
                 regionDigestMismatch &= ~(APP_ICM_ID_REGION3);
                 ICM_InterruptEnable(ICM_INT_MSK_DIGEST_MISMATCH_R3_MASK);
             }
@@ -479,7 +476,7 @@ int main ( void )
             {
                 /* Change current memory region */
                 g_selectedMemoryRegion++;
-                if ( g_selectedMemoryRegion > APP_MEMORY_REGION_EXTERNAL_SDRAM )
+                if ( g_selectedMemoryRegion > APP_MEMORY_REGION_EXTERNAL_RAM )
                 {
                     g_selectedMemoryRegion = APP_MEMORY_REGION_ITCM;
                 }

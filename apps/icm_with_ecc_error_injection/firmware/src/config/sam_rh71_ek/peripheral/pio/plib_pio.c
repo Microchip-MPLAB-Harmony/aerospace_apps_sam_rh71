@@ -45,10 +45,12 @@
 #include "interrupts.h"
 
 /* Array to store callback objects of each configured interrupt */
-PIO_PIN_CALLBACK_OBJ portPinCbObj[3];
+static PIO_PIN_CALLBACK_OBJ portPinCbObj[3];
 
 /* Array to store number of interrupts in each PORT Channel + previous interrupt count */
-uint8_t portNumCb[7 + 1] = { 0, 0, 0, 3, 3, 3, 3, 3, };
+static uint8_t portNumCb[7 + 1] = { 0, 0, 0, 3, 3, 3, 3, 3, };
+
+
 
 /******************************************************************************
   Function:
@@ -67,145 +69,145 @@ void PIO_Initialize ( void )
  /* Port C Peripheral function GPIO configuration */
 	PIOC_REGS->PIO_MSKR = 0xe0000000LU;
 	PIOC_REGS->PIO_CFGR = 0x0U;
-	
+
  /* Port C Pin 29 configuration */
 	PIOC_REGS->PIO_MSKR = 0x20000000U;
-	PIOC_REGS->PIO_CFGR = (PIOC_REGS->PIO_CFGR & (PIO_CFGR_FUNC_Msk)) | 0x3003200U;
-	
+	PIOC_REGS->PIO_CFGR = (PIOC_REGS->PIO_CFGR & (PIO_CFGR_FUNC_Msk)) | 0x3000200U;
+
  /* Port C Pin 30 configuration */
 	PIOC_REGS->PIO_MSKR = 0x40000000U;
-	PIOC_REGS->PIO_CFGR = (PIOC_REGS->PIO_CFGR & (PIO_CFGR_FUNC_Msk)) | 0x3003200U;
-	
+	PIOC_REGS->PIO_CFGR = (PIOC_REGS->PIO_CFGR & (PIO_CFGR_FUNC_Msk)) | 0x3000200U;
+
  /* Port C Pin 31 configuration */
 	PIOC_REGS->PIO_MSKR = 0x80000000LU;
-	PIOC_REGS->PIO_CFGR = (PIOC_REGS->PIO_CFGR & (PIO_CFGR_FUNC_Msk)) | 0x3003200U;
-	
+	PIOC_REGS->PIO_CFGR = (PIOC_REGS->PIO_CFGR & (PIO_CFGR_FUNC_Msk)) | 0x3000200U;
+
  /* Port C Latch configuration */
 	PIOC_REGS->PIO_CODR = 0xe0000000LU;
 
-    /* Clear the ISR register */ 
+    /* Clear the ISR register */
 	(uint32_t)PIOC_REGS->PIO_ISR;
  /* Port D Peripheral function A configuration */
 	PIOD_REGS->PIO_MSKR = 0xffffffffLU;
 	PIOD_REGS->PIO_CFGR = 0x1U;
-	
+
  /* Port D Latch configuration */
 	PIOD_REGS->PIO_CODR = 0x0LU;
 
  /* Port E Peripheral function A configuration */
 	PIOE_REGS->PIO_MSKR = 0xffU;
 	PIOE_REGS->PIO_CFGR = 0x1U;
-	
+
 
  /* Port F Peripheral function A configuration */
 	PIOF_REGS->PIO_MSKR = 0x600087ffU;
 	PIOF_REGS->PIO_CFGR = 0x1U;
-	
+
  /* Port F Pin 2 configuration */
 	PIOF_REGS->PIO_MSKR = 0x4U;
 	PIOF_REGS->PIO_CFGR = (PIOF_REGS->PIO_CFGR & (PIO_CFGR_FUNC_Msk)) | 0x20000U;
-	
+
 
  /* Port G Peripheral function A configuration */
 	PIOG_REGS->PIO_MSKR = 0xffffffU;
 	PIOG_REGS->PIO_CFGR = 0x1U;
-	
+
  /* Port G Pin 0 configuration */
 	PIOG_REGS->PIO_MSKR = 0x1U;
 	PIOG_REGS->PIO_CFGR = (PIOG_REGS->PIO_CFGR & (PIO_CFGR_FUNC_Msk)) | 0x10000U;
-	
+
  /* Port G Pin 1 configuration */
 	PIOG_REGS->PIO_MSKR = 0x2U;
 	PIOG_REGS->PIO_CFGR = (PIOG_REGS->PIO_CFGR & (PIO_CFGR_FUNC_Msk)) | 0x10000U;
-	
+
  /* Port G Pin 2 configuration */
 	PIOG_REGS->PIO_MSKR = 0x4U;
 	PIOG_REGS->PIO_CFGR = (PIOG_REGS->PIO_CFGR & (PIO_CFGR_FUNC_Msk)) | 0x10000U;
-	
+
  /* Port G Pin 3 configuration */
 	PIOG_REGS->PIO_MSKR = 0x8U;
 	PIOG_REGS->PIO_CFGR = (PIOG_REGS->PIO_CFGR & (PIO_CFGR_FUNC_Msk)) | 0x10000U;
-	
+
  /* Port G Pin 4 configuration */
 	PIOG_REGS->PIO_MSKR = 0x10U;
 	PIOG_REGS->PIO_CFGR = (PIOG_REGS->PIO_CFGR & (PIO_CFGR_FUNC_Msk)) | 0x10000U;
-	
+
  /* Port G Pin 5 configuration */
 	PIOG_REGS->PIO_MSKR = 0x20U;
 	PIOG_REGS->PIO_CFGR = (PIOG_REGS->PIO_CFGR & (PIO_CFGR_FUNC_Msk)) | 0x10000U;
-	
+
  /* Port G Pin 6 configuration */
 	PIOG_REGS->PIO_MSKR = 0x40U;
 	PIOG_REGS->PIO_CFGR = (PIOG_REGS->PIO_CFGR & (PIO_CFGR_FUNC_Msk)) | 0x10000U;
-	
+
  /* Port G Pin 7 configuration */
 	PIOG_REGS->PIO_MSKR = 0x80U;
 	PIOG_REGS->PIO_CFGR = (PIOG_REGS->PIO_CFGR & (PIO_CFGR_FUNC_Msk)) | 0x10000U;
-	
+
  /* Port G Pin 8 configuration */
 	PIOG_REGS->PIO_MSKR = 0x100U;
 	PIOG_REGS->PIO_CFGR = (PIOG_REGS->PIO_CFGR & (PIO_CFGR_FUNC_Msk)) | 0x10000U;
-	
+
  /* Port G Pin 9 configuration */
 	PIOG_REGS->PIO_MSKR = 0x200U;
 	PIOG_REGS->PIO_CFGR = (PIOG_REGS->PIO_CFGR & (PIO_CFGR_FUNC_Msk)) | 0x10000U;
-	
+
  /* Port G Pin 10 configuration */
 	PIOG_REGS->PIO_MSKR = 0x400U;
 	PIOG_REGS->PIO_CFGR = (PIOG_REGS->PIO_CFGR & (PIO_CFGR_FUNC_Msk)) | 0x10000U;
-	
+
  /* Port G Pin 11 configuration */
 	PIOG_REGS->PIO_MSKR = 0x800U;
 	PIOG_REGS->PIO_CFGR = (PIOG_REGS->PIO_CFGR & (PIO_CFGR_FUNC_Msk)) | 0x10000U;
-	
+
  /* Port G Pin 12 configuration */
 	PIOG_REGS->PIO_MSKR = 0x1000U;
 	PIOG_REGS->PIO_CFGR = (PIOG_REGS->PIO_CFGR & (PIO_CFGR_FUNC_Msk)) | 0x10000U;
-	
+
  /* Port G Pin 13 configuration */
 	PIOG_REGS->PIO_MSKR = 0x2000U;
 	PIOG_REGS->PIO_CFGR = (PIOG_REGS->PIO_CFGR & (PIO_CFGR_FUNC_Msk)) | 0x10000U;
-	
+
  /* Port G Pin 14 configuration */
 	PIOG_REGS->PIO_MSKR = 0x4000U;
 	PIOG_REGS->PIO_CFGR = (PIOG_REGS->PIO_CFGR & (PIO_CFGR_FUNC_Msk)) | 0x10000U;
-	
+
  /* Port G Pin 15 configuration */
 	PIOG_REGS->PIO_MSKR = 0x8000U;
 	PIOG_REGS->PIO_CFGR = (PIOG_REGS->PIO_CFGR & (PIO_CFGR_FUNC_Msk)) | 0x10000U;
-	
+
  /* Port G Pin 16 configuration */
 	PIOG_REGS->PIO_MSKR = 0x10000U;
 	PIOG_REGS->PIO_CFGR = (PIOG_REGS->PIO_CFGR & (PIO_CFGR_FUNC_Msk)) | 0x10000U;
-	
+
  /* Port G Pin 17 configuration */
 	PIOG_REGS->PIO_MSKR = 0x20000U;
 	PIOG_REGS->PIO_CFGR = (PIOG_REGS->PIO_CFGR & (PIO_CFGR_FUNC_Msk)) | 0x10000U;
-	
+
  /* Port G Pin 18 configuration */
 	PIOG_REGS->PIO_MSKR = 0x40000U;
 	PIOG_REGS->PIO_CFGR = (PIOG_REGS->PIO_CFGR & (PIO_CFGR_FUNC_Msk)) | 0x10000U;
-	
+
  /* Port G Pin 19 configuration */
 	PIOG_REGS->PIO_MSKR = 0x80000U;
 	PIOG_REGS->PIO_CFGR = (PIOG_REGS->PIO_CFGR & (PIO_CFGR_FUNC_Msk)) | 0x10000U;
-	
+
  /* Port G Pin 20 configuration */
 	PIOG_REGS->PIO_MSKR = 0x100000U;
 	PIOG_REGS->PIO_CFGR = (PIOG_REGS->PIO_CFGR & (PIO_CFGR_FUNC_Msk)) | 0x10000U;
-	
+
  /* Port G Pin 21 configuration */
 	PIOG_REGS->PIO_MSKR = 0x200000U;
 	PIOG_REGS->PIO_CFGR = (PIOG_REGS->PIO_CFGR & (PIO_CFGR_FUNC_Msk)) | 0x10000U;
-	
+
  /* Port G Pin 22 configuration */
 	PIOG_REGS->PIO_MSKR = 0x400000U;
 	PIOG_REGS->PIO_CFGR = (PIOG_REGS->PIO_CFGR & (PIO_CFGR_FUNC_Msk)) | 0x10000U;
-	
+
  /* Port G Pin 23 configuration */
 	PIOG_REGS->PIO_MSKR = 0x800000U;
 	PIOG_REGS->PIO_CFGR = (PIOG_REGS->PIO_CFGR & (PIO_CFGR_FUNC_Msk)) | 0x10000U;
-	
+
 
     uint32_t i;
     /* Initialize Interrupt Pin data structures */
@@ -215,7 +217,7 @@ void PIO_Initialize ( void )
     
     portPinCbObj[0 + 2].pin = PIO_PIN_PC31;
     
-    for(i=0; i<3; i++)
+    for(i=0U; i<3U; i++)
     {
         portPinCbObj[i].callback = NULL;
     }
@@ -255,6 +257,7 @@ uint32_t PIO_PortRead(PIO_PORT port)
     return PIO_REGS->PIO_GROUP[port].PIO_PDSR;
 }
 
+
 // *****************************************************************************
 /* Function:
     void PIO_PortWrite (PIO_PORT port, uint32_t mask, uint32_t value);
@@ -271,6 +274,7 @@ void PIO_PortWrite(PIO_PORT port, uint32_t mask, uint32_t value)
     PIO_REGS->PIO_GROUP[port].PIO_ODSR = value;
 }
 
+
 // *****************************************************************************
 /* Function:
     uint32_t PIO_PortLatchRead ( PIO_PORT port )
@@ -285,6 +289,7 @@ uint32_t PIO_PortLatchRead(PIO_PORT port)
 {
     return PIO_REGS->PIO_GROUP[port].PIO_ODSR;
 }
+
 
 // *****************************************************************************
 /* Function:
@@ -346,7 +351,7 @@ void PIO_PortToggle(PIO_PORT port, uint32_t mask)
 void PIO_PortInputEnable(PIO_PORT port, uint32_t mask)
 {
     PIO_REGS->PIO_GROUP[port].PIO_MSKR = mask;
-    PIO_REGS->PIO_GROUP[port].PIO_CFGR &= ~PIO_CFGR_DIR_Msk;	
+    PIO_REGS->PIO_GROUP[port].PIO_CFGR &= ~PIO_CFGR_DIR_Msk;
 }
 
 // *****************************************************************************
@@ -423,9 +428,9 @@ bool PIO_PinInterruptCallbackRegister(
     uint8_t i;
     uint8_t portIndex;
 
-    portIndex = pin >> 5;
+    portIndex = pin >> 5U;
 
-    for(i = portNumCb[portIndex]; i < portNumCb[portIndex +1]; i++)
+    for(i = portNumCb[portIndex]; i < portNumCb[portIndex +1U]; i++)
     {
         if (portPinCbObj[i].pin == pin)
         {
@@ -459,19 +464,19 @@ bool PIO_PinInterruptCallbackRegister(
 */
 void PIOC_InterruptHandler(void)
 {
-    uint32_t status = 0;
+    uint32_t status = 0U;
     uint8_t j;
 
     status  = PIOC_REGS->PIO_ISR;
     status &= PIOC_REGS->PIO_IMR;
-	
-	for( j = 0; j < 3; j++ )
+
+	for( j = 0U; j < 3U; j++ )
 	{
-		if((status & ( 1 << (portPinCbObj[j].pin & 0x1F) ) ) && (portPinCbObj[j].callback != NULL))
+		if(((status & (1UL << (portPinCbObj[j].pin & 0x1FU))) != 0U) && (portPinCbObj[j].callback != NULL))
 		{
 			portPinCbObj[j].callback ( portPinCbObj[j].pin, portPinCbObj[j].context );
 		}
-	}   
+	}
 }
 
 /*******************************************************************************

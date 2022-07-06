@@ -55,7 +55,7 @@
 volatile app_ecc_error_count_t g_areaEccErrCountTable[APP_MEMORY_REGION_NUM] = {0};
 
 /* Region name strings for output print */
-const char* g_memoryRegionString[] = { "ITCM", "DTCM", "int SRAM", "ext SDRAM" };
+const char* g_memoryRegionString[] = { "ITCM", "DTCM", "int SRAM", "ext RAM memory" };
 
 // *****************************************************************************
 // *****************************************************************************

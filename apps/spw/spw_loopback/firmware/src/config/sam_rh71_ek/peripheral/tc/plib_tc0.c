@@ -62,7 +62,7 @@
 
 
 /* Callback object for channel 0 */
-TC_TIMER_CALLBACK_OBJECT TC0_CH0_CallbackObj;
+static TC_TIMER_CALLBACK_OBJECT TC0_CH0_CallbackObj;
 
 /* Initialize channel in timer mode */
 void TC0_CH0_TimerInitialize (void)
@@ -107,13 +107,13 @@ void TC0_CH0_TimerPeriodSet (uint32_t period)
 /* Read timer period */
 uint32_t TC0_CH0_TimerPeriodGet (void)
 {
-    return TC0_REGS->TC_CHANNEL[0].TC_RC;
+    return (uint32_t)TC0_REGS->TC_CHANNEL[0].TC_RC;
 }
 
 /* Read timer counter value */
 uint32_t TC0_CH0_TimerCounterGet (void)
 {
-    return TC0_REGS->TC_CHANNEL[0].TC_CV;
+    return (uint32_t)TC0_REGS->TC_CHANNEL[0].TC_CV;
 }
 
 /* Register callback for period interrupt */
@@ -145,7 +145,7 @@ void TC0_CH0_InterruptHandler(void)
 
 
 /* Callback object for channel 1 */
-TC_TIMER_CALLBACK_OBJECT TC0_CH1_CallbackObj;
+static TC_TIMER_CALLBACK_OBJECT TC0_CH1_CallbackObj;
 
 /* Initialize channel in timer mode */
 void TC0_CH1_TimerInitialize (void)
@@ -190,13 +190,13 @@ void TC0_CH1_TimerPeriodSet (uint32_t period)
 /* Read timer period */
 uint32_t TC0_CH1_TimerPeriodGet (void)
 {
-    return TC0_REGS->TC_CHANNEL[1].TC_RC;
+    return (uint32_t)TC0_REGS->TC_CHANNEL[1].TC_RC;
 }
 
 /* Read timer counter value */
 uint32_t TC0_CH1_TimerCounterGet (void)
 {
-    return TC0_REGS->TC_CHANNEL[1].TC_CV;
+    return (uint32_t)TC0_REGS->TC_CHANNEL[1].TC_CV;
 }
 
 /* Register callback for period interrupt */
@@ -228,7 +228,7 @@ void TC0_CH1_InterruptHandler(void)
 
 
 /* Callback object for channel 2 */
-TC_TIMER_CALLBACK_OBJECT TC0_CH2_CallbackObj;
+static TC_TIMER_CALLBACK_OBJECT TC0_CH2_CallbackObj;
 
 /* Initialize channel in timer mode */
 void TC0_CH2_TimerInitialize (void)
@@ -273,13 +273,13 @@ void TC0_CH2_TimerPeriodSet (uint32_t period)
 /* Read timer period */
 uint32_t TC0_CH2_TimerPeriodGet (void)
 {
-    return TC0_REGS->TC_CHANNEL[2].TC_RC;
+    return (uint32_t)TC0_REGS->TC_CHANNEL[2].TC_RC;
 }
 
 /* Read timer counter value */
 uint32_t TC0_CH2_TimerCounterGet (void)
 {
-    return TC0_REGS->TC_CHANNEL[2].TC_CV;
+    return (uint32_t)TC0_REGS->TC_CHANNEL[2].TC_CV;
 }
 
 /* Register callback for period interrupt */

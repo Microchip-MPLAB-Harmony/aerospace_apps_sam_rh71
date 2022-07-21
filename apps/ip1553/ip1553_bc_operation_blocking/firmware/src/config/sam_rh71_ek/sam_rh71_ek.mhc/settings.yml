@@ -5,9 +5,9 @@ frameworkPath: ../../../..
 processor: ATSAMRH71F20C
 projectName: ''
 settings:
-  PackageFilter: aerospace;aerospace_apps_sam_rh707;aerospace_apps_sam_rh71;audio;bootloader;bootloader_apps_ethernet;bootloader_apps_uart;bsp;core;crypto;csp;csp_apps_sam_e70_s70_v70_v71;csp_apps_sam_rh71;gfx;gfx_apps;motor_control;net;net_apps_sam_e70_v71;net_apps_sam_rh71;quick_docs
+  PackageFilter: aerospace;aerospace_apps_sam_rh707;aerospace_apps_sam_rh71;audio;bootloader;bootloader_apps_can;bootloader_apps_ethernet;bootloader_apps_i2c;bootloader_apps_sdcard;bootloader_apps_serial_memory;bootloader_apps_uart;bootloader_apps_usb;bsp;core;crypto;csp;csp_apps_sam_d5x_e5x;csp_apps_sam_e70_s70_v70_v71;csp_apps_sam_rh707;csp_apps_sam_rh71;Devices;dev_packs;gfx;gfx_apps;harmony-services;motor_control;net;net_apps_sam_e70_v71;net_apps_sam_rh71;programmer_utilities;quick_docs
   FORCE_OPTIMIZATION: 'false'
   GENERATE_BACKUP: 'true'
   CMSISPath: .\dev_packs\arm\CMSIS\5.8.0
   MERGE_STRATEGY: USER_ALL
-  DFPPath: .\dev_packs\Microchip\SAMRH71_DFP\2.3.124\samrh71c\atdf\ATSAMRH71F20C.atdf
+  DFPPath: .\dev_packs\Microchip\SAMRH71_DFP\2.5.142\samrh71c\atdf\ATSAMRH71F20C.atdf

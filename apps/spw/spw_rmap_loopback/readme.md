@@ -1,18 +1,18 @@
 # SpaceWire RMAP Loopback Example
 
-This example shows how configure the SpaceWire peripheral to configure the RMAP module, send an RMAP command with the packet transceiver and receive the RMAP reply with the packet receiver.
+This example shows how to configure the SpaceWire peripheral to configure the RMAP module, send an RMAP command with the packet transceiver and receive the RMAP reply with the packet receiver.
 
 **Building The Application**
 
 The parent folder for all the MPLABX IDE projects for this application is given below:
 
-**Application Path**: aerospace\\apps\\spw\\spw\_rmap\_loopback\\firmware
+**Application Path**: aerospace\apps\spw\spw_rmap_loopback\firmware
 
 To build the application, refer to the table below and open the appropriate project file in MPLABX IDE.
 
-|Project Name|Description|
-|------------|-----------|
-|sam\_rh71\_ek.X|SAM RH71 Evaluation Kit board|
+| Project Name  | Description   |
+| ------------- |:-------------:|
+| sam_rh71_ek.X | SAM RH71 Evaluation Kit board  |
 
 **MPLAB Harmony Configurations**
 
@@ -20,50 +20,34 @@ Refer to the MHC project graph for the components used and the respective config
 
 **Hardware Setup**
 
-1.  Project sam\_rh71\_ek.X
-
-    -   Hardware Used
-
-        -   SAM RH71 Evaluation Kit
-
-        -   SpaceWire cable
-
-    -   Hardware Setup
-
-        -   Connect the debugger probe to J33
-
-        -   Connect the USB port on the board to the computer using a mini USB cable.
-
-        -   Connect the two SpaceWire link on the board to each other using a SpaceWire cable.
-
+1. Project sam_rh71_ek.X
+    * Hardware Used
+        * SAM RH71 Evaluation Kit
+        * SpaceWire cable
+    * Hardware Setup
+        * Connect the debugger probe to J33
+        * Connect the USB port on the board to the computer using a mini USB cable.
+        * Connect the two SpaceWire link on the board to each other using a SpaceWire cable.
 
 **Running The Application**
 
-1.  Open the Terminal application \(Ex.:Tera term\) on the computer.
-
-2.  Connect to the Virtual COM port and configure the serial settings as follows:
-
-    -   Baud : 115200
-
-    -   Data : 8 Bits
-
-    -   Parity : None
-
-    -   Stop : 1 Bit
-
-    -   Flow Control : None
-
-3.  Build and Program the application using the MPLABX IDE.
-
-4.  See the following message in the console.
+1. Open the Terminal application (Ex.:Tera term) on the computer.
+2. Connect to the Virtual COM port and configure the serial settings as follows:
+    * Baud : 115200
+    * Data : 8 Bits
+    * Parity : None
+    * Stop : 1 Bit
+    * Flow Control : None
+3. Build and Program the application using the MPLABX IDE.
+4. See the following message in the console.
 
     ```console
     -----------------------------------------------------------
-    
+
       SPW RMAP loopback example
-    
+
     -----------------------------------------------------------
-    
+
     Wait for both SWP link switch to run state
         SPW Link in Run state
     Initialize packet receiver to receive 1 packet(s) of 8 bytes
@@ -82,7 +66,3 @@ Refer to the MHC project graph for the components used and the respective config
             30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 3A, 3B, 3C, 3D, 3E, 3F,
       RMAP read command reply with status OK
     ```
-
-
-**Parent topic:**[Harmony 3 TCP/IP Application for SAM RH71 Family](GUID-0FE369B7-375D-42F0-8D67-D9C7A969446F.md)
-

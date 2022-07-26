@@ -1,0 +1,18 @@
+package:
+  format-version: "1.0.0"
+  name: "aerospace_apps_sam_rh71"
+  version: "v3.0.0"
+  type: "application"
+  status: "production"
+  required: true
+
+  dependencies:
+    - name: "csp"
+      type: "package"
+      version: "v3.13.1"
+    - name: "aerospace"
+      type: "package"
+      version: "v3.4.0"
+    - name: "dev_packs"
+      type: "package"
+      version: "3.13.0"

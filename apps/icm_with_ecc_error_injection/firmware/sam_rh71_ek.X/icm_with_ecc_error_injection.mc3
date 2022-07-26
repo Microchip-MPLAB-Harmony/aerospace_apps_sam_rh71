@@ -6829,7 +6829,7 @@
       </entry>
       <entry>
          <file>..\src\config\sam_rh71_ek\peripheral\pio\plib_pio.c</file>
-         <hash>d687a9c79703722d12a04e5da6046721022b7fecd271427cd9994c18d44b569d</hash>
+         <hash>745b6c304f6cdab3313483847dc6c7c35f1c0e5c05ee2ad2764ac6fbdb75970e</hash>
       </entry>
       <entry>
          <file>..\src\config\sam_rh71_ek\pin_configurations.csv</file>
@@ -7197,7 +7197,7 @@
       </entry>
       <entry>
          <file>..\src\config\sam_rh71_ek\initialization.c</file>
-         <hash>54cb079a6a54d9474e85c2816af70bbe06bb3c60e608ca5adb4d40d418badb7e</hash>
+         <hash>a4f2466f3c7ba741934d9a7a37897015e4c7ab25c34d4e393e31749548ed369b</hash>
       </entry>
       <entry>
          <file>..\src\packs\ATSAMRH71F20C_DFP\component\rtt.h</file>

@@ -137,7 +137,6 @@ void SYS_Initialize ( void* data )
 
 
 
-
     SPW_Initialize();
 
     MATRIX_Initialize();

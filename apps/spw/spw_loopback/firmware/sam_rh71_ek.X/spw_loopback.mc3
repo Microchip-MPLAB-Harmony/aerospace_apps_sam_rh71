@@ -5336,7 +5336,7 @@
       </entry>
       <entry>
          <file>..\src\config\sam_rh71_ek\peripheral\pio\plib_pio.c</file>
-         <hash>21655f74fdca5c1a8ef760f99081291fe88fd7059fb5c8990bc471abf2bae19f</hash>
+         <hash>beabe46948ca86fbc6eccb4cb5e32d79f740e1df172f3fda337889274b0b490d</hash>
       </entry>
       <entry>
          <file>..\src\config\sam_rh71_ek\pin_configurations.csv</file>
@@ -5708,7 +5708,7 @@
       </entry>
       <entry>
          <file>..\src\config\sam_rh71_ek\initialization.c</file>
-         <hash>ef1a9681d37b1d27602ea7c28fa1776df6c4e70b64d6e936ddc2498af7626240</hash>
+         <hash>bc37487535d091ec1bbe6ef74ff5edfca1b95824e1f751adf8da4461e6e1cd1f</hash>
       </entry>
       <entry>
          <file>..\src\config\sam_rh71_ek\peripheral\spw\plib_spw_pktrx.h</file>

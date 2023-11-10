@@ -85,7 +85,7 @@ const char* g_memoryRegionString[] = { "ITCM", "DTCM", "int SRAM", "ext RAM memo
 */
 void APP_ECC_ERROR_print_interrupt_count(void)
 {
-    for (uint8_t area = 0; area < 4; area++)
+    for (uint8_t area = 0U; area < 4U; area++)
     {
         uint32_t tmp = g_areaEccErrCountTable[area].current_fix;
         if ( tmp != g_areaEccErrCountTable[area].last_fix )

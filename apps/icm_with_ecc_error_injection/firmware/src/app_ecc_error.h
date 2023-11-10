@@ -37,7 +37,7 @@
 * ANY WAY RELATED TO THIS SOFTWARE WILL NOT EXCEED THE AMOUNT OF FEES, IF ANY,
 * THAT YOU HAVE PAID DIRECTLY TO MICROCHIP FOR THIS SOFTWARE.
 *******************************************************************************/
-//DOM-IGNORE-END/*
+//DOM-IGNORE-END
 
 #ifndef APP_ECC_ERROR_H
 #define	APP_ECC_ERROR_H
@@ -149,7 +149,17 @@ typedef struct
 
 // *****************************************************************************
 // *****************************************************************************
-// Section: Application Initialization and State Machine Functions
+// Extern
+// *****************************************************************************
+// *****************************************************************************
+
+extern volatile app_ecc_error_count_t g_areaEccErrCountTable[APP_MEMORY_REGION_NUM];
+
+extern const char* g_memoryRegionString[];
+
+// *****************************************************************************
+// *****************************************************************************
+// Functions
 // *****************************************************************************
 // *****************************************************************************
 

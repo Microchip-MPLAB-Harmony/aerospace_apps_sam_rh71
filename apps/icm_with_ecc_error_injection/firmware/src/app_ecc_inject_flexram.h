@@ -37,7 +37,7 @@
 * ANY WAY RELATED TO THIS SOFTWARE WILL NOT EXCEED THE AMOUNT OF FEES, IF ANY,
 * THAT YOU HAVE PAID DIRECTLY TO MICROCHIP FOR THIS SOFTWARE.
 *******************************************************************************/
-//DOM-IGNORE-END/* 
+//DOM-IGNORE-END 
 
 #ifndef APP_ECC_INJECT_FLEXRAM_H
 #define	APP_ECC_INJECT_FLEXRAM_H
@@ -78,7 +78,7 @@ void APP_ECC_INJECT_FLEXRAM_initialize_error(
     app_ecc_error_inject_t* pEccErrorInject, uint32_t* pBuffer,
     uint32_t buffer_index);
 
-void APP_ECC_INJECT_FLEXRAM_generate_error(app_ecc_error_inject_t* pEccErrorInject,
+void APP_ECC_INJECT_FLEXRAM_generate_error(const app_ecc_error_inject_t* pEccErrorInject,
     uint32_t* pBuffer, app_error_type_t error_type);
 
 // DOM-IGNORE-BEGIN

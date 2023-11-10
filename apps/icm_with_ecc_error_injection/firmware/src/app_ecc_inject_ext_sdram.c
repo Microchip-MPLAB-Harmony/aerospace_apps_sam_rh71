@@ -45,13 +45,7 @@
 // *****************************************************************************
 #include "definitions.h"                // SYS function prototypes
 #include "app_ecc_error.h"
-
-// *****************************************************************************
-// *****************************************************************************
-// Section: Extern
-// *****************************************************************************
-// *****************************************************************************
-extern volatile app_ecc_error_count_t g_areaEccErrCountTable[APP_MEMORY_REGION_NUM];
+#include "app_ecc_inject_ext_sdram.h"
 
 // *****************************************************************************
 // *****************************************************************************
@@ -66,7 +60,7 @@ extern volatile app_ecc_error_count_t g_areaEccErrCountTable[APP_MEMORY_REGION_N
 // *****************************************************************************
 
 /* Function:
-    void APP_ECC_INJECT_EXT_SDRAM_FixCallback(uintptr_t context)
+   static void APP_ECC_INJECT_EXT_SDRAM_FixCallback(uintptr_t context)
 
    Summary:
     Interrupt callback for fixable error.
@@ -90,7 +84,7 @@ extern volatile app_ecc_error_count_t g_areaEccErrCountTable[APP_MEMORY_REGION_N
      - When UNAL bit is activated in HSDRAMC, two interrupts are issued.
        -> Workaround: Treat both interrupt. Software counter is incremented twice.
 */
-void APP_ECC_INJECT_EXT_SDRAM_FixCallback(uintptr_t context)
+static void APP_ECC_INJECT_EXT_SDRAM_FixCallback(uintptr_t context)
 {
     /* Read the fault address and data corrected on the fly at fault address before clearing the interrupt*/
     uint32_t* fault_pointer = HEMC_HeccGetFailAddress();
@@ -111,12 +105,12 @@ void APP_ECC_INJECT_EXT_SDRAM_FixCallback(uintptr_t context)
 
     if ( (status & HEMC_HECC_STATUS_MEM_FIX) == HEMC_HECC_STATUS_MEM_FIX )
     {
-        if ( DATA_CACHE_IS_ENABLED() )
+        if ( DATA_CACHE_IS_ENABLED() != 0U )
         {
             isDataCacheWasEnabled = true;
             DCACHE_DISABLE();
         }
-        if ( INSTRUCTION_CACHE_IS_ENABLED() )
+        if ( INSTRUCTION_CACHE_IS_ENABLED() != 0U )
         {
             isInstCacheWasEnabled = true;
             ICACHE_DISABLE();
@@ -134,9 +128,13 @@ void APP_ECC_INJECT_EXT_SDRAM_FixCallback(uintptr_t context)
         }
 
         if ( isDataCacheWasEnabled )
+        {
             DCACHE_ENABLE();
+        }
         if ( isInstCacheWasEnabled )
+        {
             ICACHE_ENABLE();
+        }
 
         g_areaEccErrCountTable[APP_MEMORY_REGION_EXTERNAL_RAM].current_fix++;
     }
@@ -169,7 +167,7 @@ void APP_ECC_INJECT_EXT_SDRAM_FixCallback(uintptr_t context)
      - When UNAL bit is activated in HSDRAMC, two interrupts are issued.
        -> Workaround: Treat both interrupt. Software counter is incremented twice.
 */
-void APP_ECC_INJECT_EXT_SDRAM_NoFixCallback(uintptr_t context)
+static void APP_ECC_INJECT_EXT_SDRAM_NoFixCallback(uintptr_t context)
 {
     /* Read the fault address before clearing the interrupt*/
     uint32_t* fault_pointer = HEMC_HeccGetFailAddress();
@@ -179,33 +177,37 @@ void APP_ECC_INJECT_EXT_SDRAM_NoFixCallback(uintptr_t context)
 
     if ( (value & HEMC_HECC_STATUS_MEM_NOFIX) == HEMC_HECC_STATUS_MEM_NOFIX )
     {
-        if ( DATA_CACHE_IS_ENABLED() )
+        if ( DATA_CACHE_IS_ENABLED() != 0U )
         {
             isDataCacheWasEnabled = true;
             DCACHE_DISABLE();
         }
-        if ( INSTRUCTION_CACHE_IS_ENABLED() )
+        if ( INSTRUCTION_CACHE_IS_ENABLED() != 0U )
         {
             isInstCacheWasEnabled = true;
             ICACHE_DISABLE();
         }
 
-        (*fault_pointer) = 0xDEADDEAD;
+        (*fault_pointer) = 0xDEADDEADUL;
         __DSB();
         __ISB();
 
         /* HECC controller issue with ICM : write back also the previous address */
         if ( (uint32_t)fault_pointer > 0x64000000UL )
         {
-            *(fault_pointer - 1) = 0xDEADDEAD;
+            *(fault_pointer - 1) = 0xDEADDEADUL;
             __DSB();
             __ISB();
         }
 
         if ( isDataCacheWasEnabled )
+        {
             DCACHE_ENABLE();
+        }
         if ( isInstCacheWasEnabled )
+        {
             ICACHE_ENABLE();
+        }
 
         g_areaEccErrCountTable[APP_MEMORY_REGION_EXTERNAL_RAM].current_nofix++;
     }
@@ -272,14 +274,16 @@ void APP_ECC_INJECT_EXT_SDRAM_initialize_error(
     __DSB();
     __ISB();
 
-    if ( DATA_CACHE_IS_ENABLED() )
+    if ( DATA_CACHE_IS_ENABLED() != 0U )
+    {
         DCACHE_INVALIDATE_BY_ADDR(&(pBuffer[pEccErrorInject->buffer_index]), (int32_t)(sizeof(uint32_t)));
+    }
 
     pEccErrorInject->data = pBuffer[pEccErrorInject->buffer_index];
     __DSB();
     __ISB();
 
-    pEccErrorInject->ecc_tcb1 = (uint8_t)(HEMC_TestModeGetCbValue(HEMC_HEMC_CH_HSDRAMC) & 0xFF);
+    pEccErrorInject->ecc_tcb1 = (uint8_t)(HEMC_TestModeGetCbValue(HEMC_HEMC_CH_HSDRAMC) & 0xFFUL);
     __DSB();
     __ISB();
 
@@ -288,7 +292,7 @@ void APP_ECC_INJECT_EXT_SDRAM_initialize_error(
 
 // *****************************************************************************
 /* Function:
-    void APP_ECC_INJECT_EXT_SDRAM_generate_error(app_ecc_error_inject_t* pEccErrorInject,
+    void APP_ECC_INJECT_EXT_SDRAM_generate_error(const app_ecc_error_inject_t* pEccErrorInject,
             uint32_t* pBuffer, app_error_type_t error_type)
 
    Summary:
@@ -317,14 +321,18 @@ void APP_ECC_INJECT_EXT_SDRAM_generate_error(const app_ecc_error_inject_t* pEccE
 
     if ( error_type == APP_ERROR_TYPE_FIXABLE )
     {
-        tcb1 ^= 0x04;
+        tcb1 ^= 0x04U;
     }
     else if ( error_type == APP_ERROR_TYPE_UNFIXABLE )
     {
-        tcb1 ^= 0x05;
+        tcb1 ^= 0x05U;
+    }
+    else
+    {
+        /* Error Type not handled */
     }
 
-    if ( DATA_CACHE_IS_ENABLED() )
+    if ( DATA_CACHE_IS_ENABLED() != 0U )
     {
         isDataCacheWasEnabled = true;
         DCACHE_DISABLE();

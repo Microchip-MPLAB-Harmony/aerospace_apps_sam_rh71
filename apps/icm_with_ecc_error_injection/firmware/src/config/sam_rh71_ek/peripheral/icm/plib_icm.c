@@ -50,6 +50,7 @@
 
 #include <stddef.h>
 #include "device.h"
+#include "interrupts.h"
 #include "plib_icm.h"
 
 // *****************************************************************************
@@ -59,6 +60,8 @@
 // *****************************************************************************
 
 static ICM_OBJ icmObj;
+
+/* MISRA C-2012 Rule 7.2 is deviated in the below code block. Deviation record ID - H3_MISRAC_2012_R_7_2_DR_1*/
 
 /* ICM memory region descriptor object */
 static const icm_descriptor_registers_t __attribute__((aligned (64))) icmListDescriptor[] =
@@ -129,6 +132,8 @@ static const icm_descriptor_registers_t __attribute__((aligned (64))) icmListDes
     },
 };
 
+/* MISRAC 2012 deviation block end */
+
 // *****************************************************************************
 // *****************************************************************************
 // ICM PLib Interface Routines
@@ -190,7 +195,9 @@ void ICM_SetEndOfMonitoringDisable(bool disable)
 {
     uint32_t cfgReg = ( ICM_REGS->ICM_CFG & ~ICM_CFG_EOMDIS_Msk );
     if (disable == true)
+    {
         cfgReg |= ICM_CFG_EOMDIS(1);
+    }
     ICM_REGS->ICM_CFG = cfgReg;
 }
 
@@ -220,7 +227,9 @@ void ICM_WriteBackDisable(bool disable)
 {
     uint32_t cfgReg = ( ICM_REGS->ICM_CFG & ~ICM_CFG_WBDIS_Msk );
     if (disable == true)
+    {
         cfgReg |= ICM_CFG_WBDIS(1);
+    }
     ICM_REGS->ICM_CFG = cfgReg;
 }
 
@@ -484,7 +493,7 @@ ICM_INT_MSK ICM_InterruptMasked(void)
 */
 void ICM_InterruptEnable(ICM_INT_MSK interruptMask)
 {
-    ICM_REGS->ICM_IER = interruptMask;
+    ICM_REGS->ICM_IER = (uint32_t)(interruptMask);
 }
 
 // *****************************************************************************
@@ -505,7 +514,7 @@ void ICM_InterruptEnable(ICM_INT_MSK interruptMask)
 */
 void ICM_InterruptDisable(ICM_INT_MSK interruptMask)
 {
-    ICM_REGS->ICM_IDR = interruptMask;
+    ICM_REGS->ICM_IDR = (uint32_t)(interruptMask);
 }
 
 // *****************************************************************************
@@ -563,12 +572,6 @@ ICM_STATUS ICM_StatusGet(void)
   Returns:
     None.
 
-  Example:
-    <code>
-        // Refer to the description of the ICM_CALLBACK data type for
-        // example usage.
-    </code>
-
   Remarks:
     None.
 */
@@ -608,7 +611,7 @@ void ICM_CallbackRegister(ICM_CALLBACK callback, uintptr_t contextHandle)
     instance interrupt is enabled. If peripheral instance's interrupt is not
     enabled user need to call it from the main while loop of the application.
 */
-void ICM_InterruptHandler(void)
+void __attribute__((used)) ICM_InterruptHandler(void)
 {
 
     if (icmObj.callback != NULL)

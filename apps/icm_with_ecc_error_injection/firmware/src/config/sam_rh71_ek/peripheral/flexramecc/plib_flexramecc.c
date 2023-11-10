@@ -50,7 +50,9 @@
 
 #include <stddef.h>
 #include "device.h"
+#include "interrupts.h"
 #include "plib_flexramecc.h"
+
 
 // *****************************************************************************
 // *****************************************************************************
@@ -182,12 +184,6 @@ void FLEXRAMECC_ResetCounters(void)
   Returns:
     None.
 
-  Example:
-    <code>
-        // Refer to the description of the FLEXRAMECC_CALLBACK data type for
-        // example usage.
-    </code>
-
   Remarks:
     None.
 */
@@ -233,12 +229,6 @@ void FLEXRAMECC_FixCallbackRegister(FLEXRAMECC_CALLBACK callback, uintptr_t cont
   Returns:
     None.
 
-  Example:
-    <code>
-        // Refer to the description of the FLEXRAMECC_CALLBACK data type for
-        // example usage.
-    </code>
-
   Remarks:
     None.
 */
@@ -279,7 +269,7 @@ void FLEXRAMECC_NoFixCallbackRegister(FLEXRAMECC_CALLBACK callback, uintptr_t co
     instance interrupt is enabled. If peripheral instance's interrupt is not
     enabled user need to call it from the main while loop of the application.
 */
-void FLEXRAMECC_INTFIX_InterruptHandler(void)
+void __attribute__((used)) FLEXRAMECC_INTFIX_InterruptHandler(void)
 {
 
     if (flexrameccObj.fix_callback != NULL)
@@ -313,7 +303,7 @@ void FLEXRAMECC_INTFIX_InterruptHandler(void)
     instance interrupt is enabled. If peripheral instance's interrupt is not
     enabled user need to call it from the main while loop of the application.
 */
-void FLEXRAMECC_INTNOFIX_InterruptHandler(void)
+void __attribute__((used)) FLEXRAMECC_INTNOFIX_InterruptHandler(void)
 {
 
     if (flexrameccObj.nofix_callback != NULL)

@@ -45,13 +45,7 @@
 // *****************************************************************************
 #include "definitions.h"                // SYS function prototypes
 #include "app_ecc_error.h"
-
-// *****************************************************************************
-// *****************************************************************************
-// Section: Extern
-// *****************************************************************************
-// *****************************************************************************
-extern volatile app_ecc_error_count_t g_areaEccErrCountTable[APP_MEMORY_REGION_NUM];
+#include "app_ecc_inject_tcm.h"
 
 // *****************************************************************************
 // *****************************************************************************
@@ -90,14 +84,14 @@ static void APP_ECC_INJECT_TCM_FixCallback(uintptr_t context)
     uint64_t* fault_pointer = TCMECC_GetFailAddressITCM();
     uint64_t fault_data = *fault_pointer;
 
-    if ( ( (uint32_t)fault_pointer_word >= 0x20000000 ) && ( (uint32_t)fault_pointer_word <= 0x2003FFFF ) )
+    if ( ( (uint32_t)fault_pointer_word >= 0x20000000UL ) && ( (uint32_t)fault_pointer_word <= 0x2003FFFFUL ) )
     {
         fault_data_word = *fault_pointer_word;
     }
 
     TCMECC_STATUS status_reg = TCMECC_StatusGet();
 
-    if ( status_reg & TCMECC_STATUS_MEM_FIX_I )
+    if ( ( status_reg & TCMECC_STATUS_MEM_FIX_I ) != 0U )
     {
         (*fault_pointer) = fault_data;
         __ISB();
@@ -105,9 +99,9 @@ static void APP_ECC_INJECT_TCM_FixCallback(uintptr_t context)
         g_areaEccErrCountTable[APP_MEMORY_REGION_ITCM].current_fix++;
     }
 
-    if ( status_reg & TCMECC_STATUS_MEM_FIX_D )
+    if ( ( status_reg & TCMECC_STATUS_MEM_FIX_D ) != 0U )
     {
-        if ( ( (uint32_t)fault_pointer_word >= 0x20000000) && ( (uint32_t)fault_pointer_word <= 0x2003FFFF) )
+        if ( ( (uint32_t)fault_pointer_word >= 0x20000000UL) && ( (uint32_t)fault_pointer_word <= 0x2003FFFFUL) )
         {
             (*fault_pointer_word) = fault_data_word;
             __ISB();
@@ -143,19 +137,19 @@ static void APP_ECC_INJECT_TCM_NoFixCallback(uintptr_t context)
     uint64_t* fault_pointer = TCMECC_GetFailAddressITCM();
     TCMECC_STATUS status_reg = TCMECC_StatusGet();
 
-    if ( status_reg & TCMECC_STATUS_MEM_NOFIX_I )
+    if ( ( status_reg & TCMECC_STATUS_MEM_NOFIX_I ) != 0U )
     {
-        (*fault_pointer) = 0xDEADDEADDEADDEAD;
+        (*fault_pointer) = 0xDEADDEADDEADDEADULL;
         __ISB();
         __DSB();
         g_areaEccErrCountTable[APP_MEMORY_REGION_ITCM].current_nofix++;
     }
 
-    if (status_reg & TCMECC_STATUS_MEM_NOFIX_D)
+    if ( (status_reg & TCMECC_STATUS_MEM_NOFIX_D) != 0U )
     {
-        if ( ( (uint32_t)fault_pointer_word >= 0x20000000) && ( (uint32_t)fault_pointer_word <= 0x2003FFFF) )
+        if ( ( (uint32_t)fault_pointer_word >= 0x20000000UL) && ( (uint32_t)fault_pointer_word <= 0x2003FFFFUL) )
         {
-            (*fault_pointer_word) = 0xDEADDEAD;
+            (*fault_pointer_word) = 0xDEADDEADUL;
             __ISB();
             __DSB();
              g_areaEccErrCountTable[APP_MEMORY_REGION_DTCM].current_nofix++;
@@ -239,12 +233,12 @@ void APP_ECC_INJECT_TCM_initialize_error(
     {
         TCMECC_TestModeGetCbValue(&(pEccErrorInject->ecc_tcb1), &(pEccErrorInject->ecc_tcb2));
     }
-    while ( (pEccErrorInject->ecc_tcb1 == 0) && (pEccErrorInject->ecc_tcb2 == 0) );
+    while ( (pEccErrorInject->ecc_tcb1 == 0U) && (pEccErrorInject->ecc_tcb2 == 0U) );
 }
 
 // *****************************************************************************
 /* Function:
-    void APP_ECC_INJECT_TCM_generate_error(app_ecc_error_inject_t* pEccErrorInject,
+    void APP_ECC_INJECT_TCM_generate_error(const app_ecc_error_inject_t* pEccErrorInject,
             uint32_t* pBuffer, app_error_type_t error_type)
 
    Summary:
@@ -273,11 +267,15 @@ void APP_ECC_INJECT_TCM_generate_error(const app_ecc_error_inject_t* pEccErrorIn
 
     if ( error_type == APP_ERROR_TYPE_FIXABLE )
     {
-        tcb1 ^= 0x04;
+        tcb1 ^= 0x04U;
     }
     else if ( error_type == APP_ERROR_TYPE_UNFIXABLE )
     {
-        tcb1 ^= 0x05;
+        tcb1 ^= 0x05U;
+    }
+    else
+    {
+        /* Error Type not handled */
     }
 
     __disable_irq();

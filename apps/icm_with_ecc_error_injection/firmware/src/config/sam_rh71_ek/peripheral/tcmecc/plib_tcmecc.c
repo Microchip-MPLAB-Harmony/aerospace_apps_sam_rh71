@@ -50,6 +50,7 @@
 
 #include <stddef.h>
 #include "device.h"
+#include "interrupts.h"
 #include "plib_tcmecc.h"
 
 // *****************************************************************************
@@ -129,7 +130,7 @@ TCMECC_STATUS TCMECC_StatusGet(void)
 */
 uint64_t* TCMECC_GetFailAddressITCM(void)
 {
-    return (uint64_t*)((TCMECC_REGS->TCMECC_FAILAR)  & (ITCM_ADDR + ITCM_SIZE - 1));
+    return (uint64_t*)((TCMECC_REGS->TCMECC_FAILAR)  & (ITCM_ADDR + ITCM_SIZE - 1U));
 }
 
 // *****************************************************************************
@@ -150,7 +151,7 @@ uint64_t* TCMECC_GetFailAddressITCM(void)
 */
 uint32_t* TCMECC_GetFailAddressDTCM(void)
 {
-    return (uint32_t*)((TCMECC_REGS->TCMECC_FAILARD) & (DTCM_ADDR + DTCM_SIZE - 1));
+    return (uint32_t*)((TCMECC_REGS->TCMECC_FAILARD) & (DTCM_ADDR + DTCM_SIZE - 1U));
 }
 
 // *****************************************************************************
@@ -204,12 +205,6 @@ void TCMECC_ResetCounters(void)
   Returns:
     None.
 
-  Example:
-    <code>
-        // Refer to the description of the TCMECC_CALLBACK data type for
-        // example usage.
-    </code>
-
   Remarks:
     None.
 */
@@ -255,12 +250,6 @@ void TCMECC_FixCallbackRegister(TCMECC_CALLBACK callback, uintptr_t contextHandl
   Returns:
     None.
 
-  Example:
-    <code>
-        // Refer to the description of the TCMECC_CALLBACK data type for
-        // example usage.
-    </code>
-
   Remarks:
     None.
 */
@@ -300,7 +289,7 @@ void TCMECC_NoFixCallbackRegister(TCMECC_CALLBACK callback, uintptr_t contextHan
     instance interrupt is enabled. If peripheral instance's interrupt is not
     enabled user need to call it from the main while loop of the application.
 */
-void TCMECC_INTFIX_InterruptHandler(void)
+void __attribute__((used)) TCMECC_INTFIX_InterruptHandler(void)
 {
 
     if (tcmeccObj.fix_callback != NULL)
@@ -334,7 +323,7 @@ void TCMECC_INTFIX_InterruptHandler(void)
     instance interrupt is enabled. If peripheral instance's interrupt is not
     enabled user need to call it from the main while loop of the application.
 */
-void TCMECC_INTNOFIX_InterruptHandler(void)
+void __attribute__((used)) TCMECC_INTNOFIX_InterruptHandler(void)
 {
     if (tcmeccObj.nofix_callback != NULL)
     {

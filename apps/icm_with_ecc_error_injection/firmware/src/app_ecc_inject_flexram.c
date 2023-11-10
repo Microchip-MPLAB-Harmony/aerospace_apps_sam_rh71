@@ -45,13 +45,7 @@
 // *****************************************************************************
 #include "definitions.h"                // SYS function prototypes
 #include "app_ecc_error.h"
-
-// *****************************************************************************
-// *****************************************************************************
-// Section: Extern
-// *****************************************************************************
-// *****************************************************************************
-extern volatile app_ecc_error_count_t g_areaEccErrCountTable[APP_MEMORY_REGION_NUM];
+#include "app_ecc_inject_flexram.h"
 
 // *****************************************************************************
 // *****************************************************************************
@@ -88,7 +82,7 @@ static void APP_ECC_INJECT_FLEXRAM_FixCallback(uintptr_t context)
     uint32_t* fault_pointer = FLEXRAMECC_GetFailAddress();
     FLEXRAMECC_STATUS status_reg = FLEXRAMECC_StatusGet();
 
-    if ( status_reg & FLEXRAMECC_STATUS_MEM_FIX )
+    if ( ( status_reg & FLEXRAMECC_STATUS_MEM_FIX ) != 0U )
     {
         // Fault address not used
         (void)(fault_pointer);
@@ -125,28 +119,32 @@ static void APP_ECC_INJECT_FLEXRAM_NoFixCallback(uintptr_t context)
     bool isInstCacheWasEnabled = false;
     FLEXRAMECC_STATUS status_reg = FLEXRAMECC_StatusGet();
 
-    if ( status_reg & FLEXRAMECC_STATUS_MEM_NOFIX )
+    if ( ( status_reg & FLEXRAMECC_STATUS_MEM_NOFIX ) != 0U )
     {
-        if ( DATA_CACHE_IS_ENABLED() )
+        if ( DATA_CACHE_IS_ENABLED() != 0U )
         {
             isDataCacheWasEnabled = true;
             DCACHE_DISABLE();
         }
-        if ( INSTRUCTION_CACHE_IS_ENABLED() )
+        if ( INSTRUCTION_CACHE_IS_ENABLED() != 0U )
         {
             isInstCacheWasEnabled = true;
             ICACHE_DISABLE();
         }
 
         //write backs shall be implemented to avoid dead lock when MPU of flexRAM is in normal mode.
-        (*fault_pointer) = 0xDEADDEAD;
+        (*fault_pointer) = 0xDEADDEADUL;
         __ISB();
         __DSB();
 
         if ( isDataCacheWasEnabled )
+        {
             DCACHE_ENABLE();
+        }
         if ( isInstCacheWasEnabled )
+        {
             ICACHE_ENABLE();
+        }
 
         g_areaEccErrCountTable[APP_MEMORY_REGION_INTERNAL_SRAM].current_nofix++;
     }
@@ -214,8 +212,10 @@ void APP_ECC_INJECT_FLEXRAM_initialize_error(
     __DSB();
     __ISB();
 
-    if ( DATA_CACHE_IS_ENABLED() )
+    if ( DATA_CACHE_IS_ENABLED() != 0U )
+    {
         DCACHE_INVALIDATE_BY_ADDR(&(pBuffer[pEccErrorInject->buffer_index]), (int32_t)(sizeof(uint32_t)));
+    }
 
     pEccErrorInject->data = pBuffer[pEccErrorInject->buffer_index];
     __DSB();
@@ -230,7 +230,7 @@ void APP_ECC_INJECT_FLEXRAM_initialize_error(
 
 // *****************************************************************************
 /* Function:
-    void APP_ECC_INJECT_FLEXRAM_generate_error(app_ecc_error_inject_t* pEccErrorInject,
+    void APP_ECC_INJECT_FLEXRAM_generate_error(const app_ecc_error_inject_t* pEccErrorInject,
             uint32_t* pBuffer, app_error_type_t error_type)
 
    Summary:
@@ -259,14 +259,18 @@ void APP_ECC_INJECT_FLEXRAM_generate_error(const app_ecc_error_inject_t* pEccErr
 
     if ( error_type == APP_ERROR_TYPE_FIXABLE )
     {
-        tcb1 ^= 0x04;
+        tcb1 ^= 0x04U;
     }
     else if ( error_type == APP_ERROR_TYPE_UNFIXABLE )
     {
-        tcb1 ^= 0x05;
+        tcb1 ^= 0x05U;
+    }
+    else
+    {
+        /* Error Type not handled */
     }
 
-    if ( DATA_CACHE_IS_ENABLED() )
+    if ( DATA_CACHE_IS_ENABLED() != 0U )
     {
         isDataCacheWasEnabled = true;
         DCACHE_DISABLE();

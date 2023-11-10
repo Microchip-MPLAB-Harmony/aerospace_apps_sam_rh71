@@ -64,13 +64,13 @@
 // *****************************************************************************
 // *****************************************************************************
 /* Return fixable counter field value in TCMECC status word. */
-#define TCMECC_STATUS_GET_CPT_FIX(status) ( (status & TCMECC_STATUS_CPT_FIX_MASK) >> TCMECC_SR_MEM_FIX_I_Pos ) 
+#define TCMECC_STATUS_GET_CPT_FIX(status) ( ((status) & TCMECC_STATUS_CPT_FIX_MASK) >> TCMECC_SR_MEM_FIX_I_Pos ) 
 
 /* Return unfixable counter field value in TCMECC status word. */
-#define TCMECC_STATUS_GET_CPT_NOFIX(status) ( (status & TCMECC_STATUS_CPT_NOFIX_MASK) >> TCMECC_SR_MEM_NOFIX_I_Pos ) 
+#define TCMECC_STATUS_GET_CPT_NOFIX(status) ( ((status) & TCMECC_STATUS_CPT_NOFIX_MASK) >> TCMECC_SR_MEM_NOFIX_I_Pos ) 
 
 /* Return Hardware error size field value in TCMECC status word. */
-#define TCMECC_STATUS_GET_HES(status) ( (status & TCMECC_STATUS_HES_MASK) >> TCMECC_SR_HES_Pos ) 
+#define TCMECC_STATUS_GET_HES(status) ( ((status) & TCMECC_STATUS_HES_MASK) >> TCMECC_SR_HES_Pos ) 
 
 // *****************************************************************************
 // *****************************************************************************
@@ -84,23 +84,21 @@
    Description:
     This data type identifies the TCMECC status
 */
-typedef enum
-{
-    TCMECC_STATUS_MEM_FIX_I = TCMECC_SR_MEM_FIX_I_Msk,
-    TCMECC_STATUS_MEM_FIX_D = TCMECC_SR_MEM_FIX_D_Msk, 
-    TCMECC_STATUS_CPT_FIX_MASK = TCMECC_SR_CPT_FIX_Msk,
-    TCMECC_STATUS_OVER_FIX = TCMECC_SR_OVER_FIX_Msk,
-    TCMECC_STATUS_MEM_NOFIX_I = TCMECC_SR_MEM_NOFIX_I_Msk,
-    TCMECC_STATUS_MEM_NOFIX_D = TCMECC_SR_MEM_NOFIX_D_Msk,
-    TCMECC_STATUS_CPT_NOFIX_MASK = TCMECC_SR_CPT_NOFIX_Msk,
-    TCMECC_STATUS_OVER_NOFIX = TCMECC_SR_OVER_NOFIX_Msk,
-    TCMECC_STATUS_HES_MASK = TCMECC_SR_HES_Msk, 
-    TCMECC_STATUS_ONE = TCMECC_SR_ONE_Msk,
-    TCMECC_STATUS_MEM_ID_I = TCMECC_SR_MEM_ID_I_Msk,
-    TCMECC_STATUS_MEM_ID_D = TCMECC_SR_MEM_ID_D_Msk,
-    /* Force the compiler to reserve 32-bit memory for enum */
-    TCMECC_STATUS_INVALID = 0xFFFFFFFF
-} TCMECC_STATUS;
+typedef uint32_t TCMECC_STATUS;
+
+#define TCMECC_STATUS_MEM_FIX_I                 (TCMECC_SR_MEM_FIX_I_Msk)
+#define TCMECC_STATUS_MEM_FIX_D                 (TCMECC_SR_MEM_FIX_D_Msk)
+#define TCMECC_STATUS_CPT_FIX_MASK              (TCMECC_SR_CPT_FIX_Msk)
+#define TCMECC_STATUS_OVER_FIX                  (TCMECC_SR_OVER_FIX_Msk)
+#define TCMECC_STATUS_MEM_NOFIX_I               (TCMECC_SR_MEM_NOFIX_I_Msk)
+#define TCMECC_STATUS_MEM_NOFIX_D               (TCMECC_SR_MEM_NOFIX_D_Msk)
+#define TCMECC_STATUS_CPT_NOFIX_MASK            (TCMECC_SR_CPT_NOFIX_Msk)
+#define TCMECC_STATUS_OVER_NOFIX                (TCMECC_SR_OVER_NOFIX_Msk)
+#define TCMECC_STATUS_HES_MASK                  (TCMECC_SR_HES_Msk)
+#define TCMECC_STATUS_ONE                       (TCMECC_SR_ONE_Msk)
+#define TCMECC_STATUS_MEM_ID_I                  (TCMECC_SR_MEM_ID_I_Msk)
+#define TCMECC_STATUS_MEM_ID_D                  (TCMECC_SR_MEM_ID_D_Msk)
+#define TCMECC_STATUS_INVALID                   (0xFFFFFFFFUL)
 
 // *****************************************************************************
 /* TCMECC Callback
@@ -189,7 +187,10 @@ void TCMECC_ResetCounters(void);
 static inline void TCMECC_TestModeReadEnable(void)
 {
     TCMECC_REGS->TCMECC_CR |= TCMECC_CR_TEST_MODE_RD_Msk;
-    while ( ( TCMECC_REGS->TCMECC_CR & TCMECC_CR_TEST_MODE_RD_Msk ) != TCMECC_CR_TEST_MODE_RD_Msk );
+    while ( ( TCMECC_REGS->TCMECC_CR & TCMECC_CR_TEST_MODE_RD_Msk ) != TCMECC_CR_TEST_MODE_RD_Msk )
+    {
+        /* Wait for the update of the control register */
+    }
 }
 
 // *****************************************************************************
@@ -211,7 +212,10 @@ static inline void TCMECC_TestModeReadEnable(void)
 static inline void TCMECC_TestModeReadDisable(void)
 {
     TCMECC_REGS->TCMECC_CR &= ~(TCMECC_CR_TEST_MODE_RD_Msk);
-    while ( (TCMECC_REGS->TCMECC_CR & TCMECC_CR_TEST_MODE_RD_Msk) == TCMECC_CR_TEST_MODE_RD_Msk );
+    while ( (TCMECC_REGS->TCMECC_CR & TCMECC_CR_TEST_MODE_RD_Msk) == TCMECC_CR_TEST_MODE_RD_Msk )
+    {
+        /* Wait for the update of the control register */
+    }
 }
 
 // *****************************************************************************
@@ -235,7 +239,10 @@ static inline void TCMECC_TestModeReadDisable(void)
 static inline void TCMECC_TestModeWriteEnable(void)
 {
     TCMECC_REGS->TCMECC_CR |= TCMECC_CR_TEST_MODE_WR_Msk;
-    while ( ( TCMECC_REGS->TCMECC_CR & TCMECC_CR_TEST_MODE_WR_Msk ) != TCMECC_CR_TEST_MODE_WR_Msk );
+    while ( ( TCMECC_REGS->TCMECC_CR & TCMECC_CR_TEST_MODE_WR_Msk ) != TCMECC_CR_TEST_MODE_WR_Msk )
+    {
+        /* Wait for the update of the control register */
+    }
 
 }
 
@@ -258,7 +265,10 @@ static inline void TCMECC_TestModeWriteEnable(void)
 static inline void TCMECC_TestModeWriteDisable(void)
 {
     TCMECC_REGS->TCMECC_CR &= ~(TCMECC_CR_TEST_MODE_WR_Msk);
-    while ( (TCMECC_REGS->TCMECC_CR & TCMECC_CR_TEST_MODE_WR_Msk) == TCMECC_CR_TEST_MODE_WR_Msk );
+    while ( (TCMECC_REGS->TCMECC_CR & TCMECC_CR_TEST_MODE_WR_Msk) == TCMECC_CR_TEST_MODE_WR_Msk )
+    {
+        /* Wait for the update of the control register */
+    }
 }
 
 // *****************************************************************************

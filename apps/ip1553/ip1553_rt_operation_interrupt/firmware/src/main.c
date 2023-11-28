@@ -75,13 +75,13 @@
                                              IP1553_INT_MASK_TVR )
 
 /* Define the switch state press : Active LOW switch */
-#define APP_SWITCH_PRESSED_STATE           (0)
+#define APP_SWITCH_PRESSED_STATE           (0U)
 /* Define the switch button PB0 flag */
-#define APP_ID_BUTTON0                     (0x01)
+#define APP_ID_BUTTON0                     (0x01U)
 /* Define the switch button PB1 flag */
-#define APP_ID_BUTTON1                     (0x02)
+#define APP_ID_BUTTON1                     (0x02U)
 /* Define the switch button PB2 flag */
-#define APP_ID_BUTTON2                     (0x04)
+#define APP_ID_BUTTON2                     (0x04U)
 
 // *****************************************************************************
 // *****************************************************************************
@@ -99,15 +99,15 @@
    Remarks:
     None.
 */
-typedef enum
-{
-    APP_IP1553_BP0_STATES_NONE = 0,
-    APP_IP1553_BP0_STATES_BCE,
-    APP_IP1553_BP0_STATES_SREQ,
-    APP_IP1553_BP0_STATES_BUSY,
-    APP_IP1553_BP0_STATES_SUBSYSTEM,
-    APP_IP1553_BP0_STATES_TR,
-} APP_IP1553_BP0_STATES;
+typedef uint8_t APP_IP1553_BP0_STATES;
+
+#define APP_IP1553_BP0_STATES_NONE                     (0U)
+#define APP_IP1553_BP0_STATES_BCE                      (1U)
+#define APP_IP1553_BP0_STATES_SREQ                     (2U)
+#define APP_IP1553_BP0_STATES_BUSY                     (3U)
+#define APP_IP1553_BP0_STATES_SUBSYSTEM                (4U)
+#define APP_IP1553_BP0_STATES_TR                       (5U)
+
 
 // *****************************************************************************
 /* Application IP1553 Button 0 states
@@ -121,11 +121,11 @@ typedef enum
    Remarks:
     None.
 */
-typedef enum
-{
-    APP_IP1553_BP1_VECT_ABCD_BIT_FEED = 0,
-    APP_IP1553_BP1_VECT_1234_BIT_CAFE,
-} APP_IP1553_BP1_STATES;
+typedef uint8_t APP_IP1553_BP1_STATES;
+
+#define APP_IP1553_BP1_VECT_ABCD_BIT_FEED              (0U)
+#define APP_IP1553_BP1_VECT_1234_BIT_CAFE              (1U)
+
 
 // *****************************************************************************
 // *****************************************************************************
@@ -133,22 +133,22 @@ typedef enum
 // *****************************************************************************
 // *****************************************************************************
 /* Allocation of receive buffer for IP1553 */
-uint16_t IP1553RxBuffersRAM[IP1553_BUFFERS_NUM][IP1553_BUFFERS_SIZE] __attribute__((aligned (32)))__attribute__((section (".ram_nocache")));
+static uint16_t IP1553RxBuffersRAM[IP1553_BUFFERS_NUM][IP1553_BUFFERS_SIZE] __attribute__((aligned (32)))__attribute__((section (".ram_nocache")));
 
 /* Allocation of transmit buffer for IP1553 */
-uint16_t IP1553TxBuffersRAM[IP1553_BUFFERS_NUM][IP1553_BUFFERS_SIZE] __attribute__((aligned (32)))__attribute__((section (".ram_nocache")));
+static uint16_t IP1553TxBuffersRAM[IP1553_BUFFERS_NUM][IP1553_BUFFERS_SIZE] __attribute__((aligned (32)))__attribute__((section (".ram_nocache")));
 
 /* Bit field of reception buffer that are marked full */
-volatile uint32_t activeRxBuffers = 0;
+static volatile uint32_t activeRxBuffers = 0;
 
 /* Bit field of reception buffer that are marked sent */
-volatile uint32_t activeTxBuffers = 0;
+static volatile uint32_t activeTxBuffers = 0;
 
 /* Bit field of status containing the mode command interrupts indications */
-volatile uint32_t activeModeCommandInd = 0;
+static volatile uint32_t activeModeCommandInd = 0;
 
 /* Bit field of status containing the error interrupts that were triggered during transfer */
-volatile uint32_t transferErrors = 0;
+static volatile uint32_t transferErrors = 0;
 
 /* Variable containing the bitfield of the pressed button status */
 static volatile uint8_t buttonStatus = 0;
@@ -160,7 +160,7 @@ static volatile uint8_t buttonStatus = 0;
 // *****************************************************************************
 /* 
  Function:
-  void APP_IP1553_Print_Errors(uint32_t errors)
+  static void APP_IP1553_Print_Errors(uint32_t errors)
 
  Summary:
   Function called by the application to print the description of the errors that
@@ -175,26 +175,44 @@ static volatile uint8_t buttonStatus = 0;
  Remarks:
   None.
  */
-void APP_IP1553_Print_Errors(uint32_t errors)
+static void APP_IP1553_Print_Errors(uint32_t errors)
 {
     if ( (errors & IP1553_INT_MASK_MTE) == IP1553_INT_MASK_MTE )
+    {
         printf("  Error :  R/W memory transfer error has occurred.\r\n");
+    }
     if ( (errors & IP1553_INT_MASK_TE) == IP1553_INT_MASK_TE )
+    {
         printf("  Error : Error has occurred during processing of the reception, transmission, or transfer.\r\n");
+    }
     if ( (errors & IP1553_INT_MASK_TCE) == IP1553_INT_MASK_TCE )
+    {
         printf("  Error : Manchester code error has been detected on a word that has been received.\r\n");
+    }
     if ( (errors & IP1553_INT_MASK_TPE) == IP1553_INT_MASK_TPE )
+    {
         printf("  Error : Parity error has been detected on a received word.\r\n");
+    }
     if ( (errors & IP1553_INT_MASK_TDE) == IP1553_INT_MASK_TDE )
+    {
         printf("  Error : Data word has been received when a command word was expected and vice-versa.\r\n");
+    }
     if ( (errors & IP1553_INT_MASK_TTE) == IP1553_INT_MASK_TTE )
+    {
         printf("  Error : Response time of the addressed terminal is greater than expected or that the response is missing.\r\n");
+    }
     if ( (errors & IP1553_INT_MASK_TWE) == IP1553_INT_MASK_TWE )
+    {
         printf("  Error : The number of words received does not correspond to the number of words expected.\r\n");
+    }
     if ( (errors & IP1553_INT_MASK_BE) == IP1553_INT_MASK_BE )
+    {
         printf("  Error : A data word transmission has been stopped because data have not been provided in time on the Buffer interface.\r\n");
+    }
     if ( (errors & IP1553_INT_MASK_ITR) == IP1553_INT_MASK_ITR )
+    {
         printf("  Error : The transfer which has been commanded via the command IF is not legal and will not be performed.\r\n");
+    }
 }
 
 // *****************************************************************************
@@ -217,34 +235,54 @@ void APP_IP1553_Print_Errors(uint32_t errors)
  Remarks:
  None.
  */
-void APP_IP1553_PrintModeCommandInd(uint32_t status)
+static void APP_IP1553_PrintModeCommandInd(uint32_t status)
 {
     if ( (status & IP1553_INT_MASK_OTF) == IP1553_INT_MASK_OTF )
+    {
         printf("MC : Override Inhibit Terminal Flag.\r\n");
+    }
     if ( (status & IP1553_INT_MASK_ITF) == IP1553_INT_MASK_ITF )
+    {
         printf("MC : Inhibit Terminal Flag.\r\n");
+    }
     if ( (status & IP1553_INT_MASK_RRT) == IP1553_INT_MASK_RRT )
+    {
         printf("MC : Reset Remote Terminal.\r\n");
+    }
     if ( (status & IP1553_INT_MASK_SWD) == IP1553_INT_MASK_SWD )
+    {
         printf("MC : Synchronize Without Data Word.\r\n");
+    }
     if ( (status & IP1553_INT_MASK_SDR) == IP1553_INT_MASK_SDR )
+    {
         printf("MC : Synchronize With Data Word.\r\n");
+    }
     if ( (status & IP1553_INT_MASK_OSR) == IP1553_INT_MASK_OSR )
+    {
         printf("MC : Override Selected Transmitter Shutdown.\r\n");
+    }
     if ( (status & IP1553_INT_MASK_TSR) == IP1553_INT_MASK_TSR )
+    {
         printf("MC : Selected Transmitter Shutdown.\r\n");
+    }
     if ( (status & IP1553_INT_MASK_STR) == IP1553_INT_MASK_STR )
+    {
         printf("MC : Initiate Self-Test.\r\n");
+    }
     if ( (status & IP1553_INT_MASK_DBR) == IP1553_INT_MASK_DBR )
+    {
         printf("MC : Dynamic Bus Control.\r\n");
+    }
     if ( (status & IP1553_INT_MASK_TVR) == IP1553_INT_MASK_TVR )
+    {
         printf("MC : Transmit Vector Word.\r\n");
+    }
 }
 
 // *****************************************************************************
 /* 
  Function
-  void APP_IP1553_Callback(uintptr_t context)
+  static void APP_IP1553_Callback(uintptr_t context)
 
  Summary:
  Function called by IP1553 PLIB.
@@ -255,7 +293,7 @@ void APP_IP1553_PrintModeCommandInd(uint32_t status)
  Remarks:
  None.
  */
-void APP_IP1553_Callback(uintptr_t context)
+static void APP_IP1553_Callback(uintptr_t context)
 {
     uint32_t readStatus = IP1553_IrqStatusGet();
     
@@ -276,13 +314,13 @@ void APP_IP1553_Callback(uintptr_t context)
     }
 
     /* Store RT mode command indications */
-    if ( (readStatus & APP_IP1553_MC_INT_IND) != 0 )
+    if ( (readStatus & APP_IP1553_MC_INT_IND) != 0U )
     {
         activeModeCommandInd = readStatus & APP_IP1553_MC_INT_IND;
     }
 
     /* Store transfer error interrupt status if errors occurs */
-    if ( (readStatus & IP1553_INT_MASK_ERROR_MASK) != 0 )
+    if ( (readStatus & IP1553_INT_MASK_ERROR_MASK) != 0U )
     {
         transferErrors = readStatus & IP1553_INT_MASK_ERROR_MASK;
     }
@@ -292,7 +330,7 @@ void APP_IP1553_Callback(uintptr_t context)
 
 // *****************************************************************************
 /* Function:
-    void APP_ControlSwitch(PIO_PIN pin, uintptr_t context)
+    static void APP_ControlSwitch(PIO_PIN pin, uintptr_t context)
 
    Summary:
     Interrupt callback for PIO interrupt.
@@ -308,22 +346,32 @@ void APP_IP1553_Callback(uintptr_t context)
    Returns:
     None.
 */
-void APP_ControlSwitch(PIO_PIN pin, uintptr_t context)
+static void APP_ControlSwitch(PIO_PIN pin, uintptr_t context)
 {
     if ( pin == SWITCH0_PIN )
     {
         if ( SWITCH0_Get() == APP_SWITCH_PRESSED_STATE )
+        {
             buttonStatus |= APP_ID_BUTTON0;
+    	}
     }
     else if ( pin == SWITCH1_PIN )
     {
         if ( SWITCH1_Get() == APP_SWITCH_PRESSED_STATE )
+        {
             buttonStatus |= APP_ID_BUTTON1;
+        }
     }
     else if ( pin == SWITCH2_PIN )
     {
         if ( SWITCH2_Get() == APP_SWITCH_PRESSED_STATE )
+        {
             buttonStatus |= APP_ID_BUTTON2;
+        }
+    }
+    else
+    {
+        /* Pin not handled */
     }
 }
 
@@ -349,7 +397,7 @@ static void APP_IP1553_HandleButtonEvents(uint32_t buttons)
     static APP_IP1553_BP0_STATES statePb0 = APP_IP1553_BP0_STATES_NONE;
     static APP_IP1553_BP1_STATES statePb1 = APP_IP1553_BP1_VECT_ABCD_BIT_FEED;
 
-    if ( buttons & APP_ID_BUTTON0 )
+    if ( ( buttons & APP_ID_BUTTON0 ) != 0U )
     {
         if (statePb0 == APP_IP1553_BP0_STATES_NONE)
         {
@@ -405,13 +453,19 @@ static void APP_IP1553_HandleButtonEvents(uint32_t buttons)
             IP1553_SSBitCmdSet(false);
             IP1553_TRBitCmdSet(true);
         }
+        else
+        {
+            /* State not handled */
+        }
 
         statePb0++;
         if ( statePb0 > APP_IP1553_BP0_STATES_TR)
+        {
             statePb0 = APP_IP1553_BP0_STATES_NONE;
+        }
     }
 
-    if ( buttons & APP_ID_BUTTON1 )
+    if ( ( buttons & APP_ID_BUTTON1 ) != 0U )
     {
         if (statePb1 == APP_IP1553_BP1_VECT_ABCD_BIT_FEED)
         {
@@ -425,10 +479,16 @@ static void APP_IP1553_HandleButtonEvents(uint32_t buttons)
             IP1553_VectorWordSet(0x1234);
             IP1553_BitWordSet(0xCAFE);
         }
+        else
+        {
+            /* State not handled */
+        }
 
         statePb1++;
         if ( statePb1 > APP_IP1553_BP1_VECT_1234_BIT_CAFE)
+        {
             statePb1 = APP_IP1553_BP1_VECT_ABCD_BIT_FEED;
+        }
     }
 }
 
@@ -492,11 +552,11 @@ int main(void)
     IP1553_ResetRxBuffersStatus(APP_IP1553_BUFFER_USED);
 
     /* Prepare content in buffers to send*/
-    for (uint8_t i = 0; i < IP1553_BUFFERS_NUM; i++)
+    for (uint8_t i = 0U; i < IP1553_BUFFERS_NUM; i++)
     {
-        for (uint8_t j = 0; j < IP1553_BUFFERS_SIZE; j++)
+        for (uint8_t j = 0U; j < IP1553_BUFFERS_SIZE; j++)
         {
-            IP1553TxBuffersRAM[i][j] = (i << 12) + (j + 1);
+            IP1553TxBuffersRAM[i][j] = (uint16_t)( ((uint16_t)i << 12U) + (j + 1U) );
         }
     }
     
@@ -508,33 +568,37 @@ int main(void)
     while ( true )
     {
         /* Check if there was error during transfer */
-        if ( transferErrors )
+        if ( transferErrors != 0U )
         {
             APP_IP1553_Print_Errors(transferErrors);
-            transferErrors = 0;
+            transferErrors = 0U;
         }
 
         /* Print and reset Rx buffers*/
-        if ( activeRxBuffers )
+        if ( activeRxBuffers != 0U )
         {
             uint32_t lastActiveBuffers = activeRxBuffers;
-            activeRxBuffers = 0;
-            uint32_t buffer = 0;
-            while ( lastActiveBuffers != 0 )
+            activeRxBuffers = 0U;
+            uint32_t buffer = 0UL;
+            while ( lastActiveBuffers != 0U )
             {
-                while ( ( lastActiveBuffers & 0x1 ) == 0 )
+                while ( ( lastActiveBuffers & 0x1U ) == 0U )
                 {
                     buffer++;
-                    lastActiveBuffers >>= 1;
+                    lastActiveBuffers >>= 1U;
                 }
 
                 printf("RX buffer : %u", (unsigned int) buffer);
-                for (uint8_t index = 0; index < 32; index++)
+                for (uint8_t index = 0U; index < 32U; index++)
                 {
-                    if ( (index % 8) == 0 )
+                    if ( (index % 8U) == 0U )
+                    {
                         printf("\r\n    ");
+                    }
                     else
+                    {
                         printf(" ,");
+                    }
                     printf("0x%04X", IP1553RxBuffersRAM[buffer][index]);
                 }
                 printf("\r\n");
@@ -547,22 +611,22 @@ int main(void)
 
                 /* Go to next bit in lastActiveBuffer bit field */
                 buffer++;
-                lastActiveBuffers >>= 1;
+                lastActiveBuffers >>= 1U;
             }
         }
 
         /* Reset Tx buffers*/
-        if ( activeTxBuffers )
+        if ( activeTxBuffers != 0U )
         {
             uint32_t lastActiveBuffers = activeTxBuffers;
-            activeTxBuffers = 0;
-            uint32_t buffer = 0;
-            while ( lastActiveBuffers != 0 )
+            activeTxBuffers = 0U;
+            uint32_t buffer = 0UL;
+            while ( lastActiveBuffers != 0U )
             {
-                while ( ( lastActiveBuffers & 0x1 ) == 0 )
+                while ( ( lastActiveBuffers & 0x1U ) == 0U )
                 {
                     buffer++;
-                    lastActiveBuffers >>= 1;
+                    lastActiveBuffers >>= 1U;
                 }
 
                 /* Reset Tx buffer status */
@@ -572,12 +636,12 @@ int main(void)
 
                 /* Go to next bit in lastActiveBuffer bit field */
                 buffer++;
-                lastActiveBuffers >>= 1;
+                lastActiveBuffers >>= 1U;
             }
         }
         
         /* Display mode command interrupt indications */
-        if (activeModeCommandInd)
+        if ( activeModeCommandInd != 0U )
         {
             APP_IP1553_PrintModeCommandInd(activeModeCommandInd);
             
@@ -587,15 +651,15 @@ int main(void)
                 printf("  Received word : 0x%04X\r\n", IP1553_GetFirstStatusWord());
             }
 
-            activeModeCommandInd = 0;
+            activeModeCommandInd = 0U;
         }
 
         /* Handle buttons events */
-        if ( buttonStatus != 0 )
+        if ( buttonStatus != 0U )
         {
             uint8_t button = buttonStatus;
             APP_IP1553_HandleButtonEvents(button);
-            buttonStatus &= ~(button & 0xFF);
+            buttonStatus &= ~(button & 0xFFU);
         }
     }
 

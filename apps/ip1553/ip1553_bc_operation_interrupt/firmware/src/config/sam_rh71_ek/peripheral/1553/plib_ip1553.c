@@ -50,6 +50,7 @@
 
 #include <stddef.h>
 #include "device.h"
+#include "interrupts.h"
 #include "plib_ip1553.h"
 
 // *****************************************************************************
@@ -278,6 +279,10 @@ void IP1553_BcStartDataTransfer(IP1553_DATA_TX_TYPE transferType, uint8_t txAddr
     {
         cmdr3 |= IP1553_CMDR3_BCR(1);
     }
+    else
+    {
+        /* No data sent or received by BC */
+    }
     IP1553_REGS->IP1553_CMDR3 = cmdr3;
 }
 
@@ -343,7 +348,7 @@ void IP1553_BcModeCommandTransfer(uint8_t rtAddr, IP1553_MODE_CMD modeCommand, u
 */
 uint16_t IP1553_GetFirstStatusWord( void )
 {
-    return ( ( IP1553_REGS->IP1553_CTRL1 & IP1553_CTRL1_IP1553DATA1_Msk ) >> IP1553_CTRL1_IP1553DATA1_Pos );
+    return (uint16_t)( ( IP1553_REGS->IP1553_CTRL1 & IP1553_CTRL1_IP1553DATA1_Msk ) >> IP1553_CTRL1_IP1553DATA1_Pos );
 }
 
 // *****************************************************************************
@@ -364,7 +369,7 @@ uint16_t IP1553_GetFirstStatusWord( void )
 */
 uint16_t IP1553_GetSecondStatusWord( void )
 {
-    return ( ( IP1553_REGS->IP1553_CTRL1 & IP1553_CTRL1_IP1553DATA2_Msk) >> IP1553_CTRL1_IP1553DATA2_Pos );
+    return (uint16_t)( ( IP1553_REGS->IP1553_CTRL1 & IP1553_CTRL1_IP1553DATA2_Msk) >> IP1553_CTRL1_IP1553DATA2_Pos );
 }
 
 // *****************************************************************************
@@ -397,12 +402,6 @@ uint16_t IP1553_GetSecondStatusWord( void )
 
   Returns:
     None.
-
-  Example:
-    <code>
-        // Refer to the description of the IP1553_CALLBACK data type for
-        // example usage.
-    </code>
 
   Remarks:
     None.
@@ -443,7 +442,7 @@ void IP1553_CallbackRegister(IP1553_CALLBACK callback, uintptr_t contextHandle)
     instance interrupt is enabled. If peripheral instance's interrupt is not
     enabled user need to call it from the main while loop of the application.
 */
-void IP1553_InterruptHandler(void)
+void __attribute__((used)) IP1553_InterruptHandler(void)
 {
 
     if (ip1553Obj.callback != NULL)
@@ -470,7 +469,7 @@ void IP1553_InterruptHandler(void)
 */
 void IP1553_InterruptEnable(IP1553_INT_MASK interruptMask)
 {
-    IP1553_REGS->IP1553_IER = interruptMask;
+    IP1553_REGS->IP1553_IER = (uint32_t)interruptMask;
 }
 
 // *****************************************************************************
@@ -491,5 +490,5 @@ void IP1553_InterruptEnable(IP1553_INT_MASK interruptMask)
 */
 void IP1553_InterruptDisable(IP1553_INT_MASK interruptMask)
 {
-    IP1553_REGS->IP1553_IDR = interruptMask;
+    IP1553_REGS->IP1553_IDR = (uint32_t)interruptMask;
 }

@@ -67,19 +67,19 @@
 // *****************************************************************************
 // *****************************************************************************
 /* Number of IP1553 buffers */
-#define IP1553_BUFFERS_NUM                               (32)
+#define IP1553_BUFFERS_NUM                               (32UL)
 
 /* Size in number of 16 bit word in one buffers */
-#define IP1553_BUFFERS_SIZE                              (32)
+#define IP1553_BUFFERS_SIZE                              (32UL)
 
 /* Return 32 bit bitfield with bit value to 1 for the corresponding x buffer. */
-#define IP1553_BUFFER_TO_BITFIELD_SA(x)                  (1UL << x)
+#define IP1553_BUFFER_TO_BITFIELD_SA(x)                  (1UL << (x))
 
 /* IP1553 RT address value for broadcast mode */
-#define IP1553_RT_ADDRESS_BROADCAST_MODE                 (0x1F)
+#define IP1553_RT_ADDRESS_BROADCAST_MODE                 (0x1FU)
 
 /* Return ETRANS field value in IP1553 interrupt mask. */
-#define IP1553_INT_MASK_GET_ETRANS(status) ( (status & IP1553_INT_MASK_ETRANS_MASK) >> IP1553_ISR_ETRANS_Pos ) 
+#define IP1553_INT_MASK_GET_ETRANS(status)               (uint8_t)( ((status) & IP1553_INT_MASK_ETRANS_MASK) >> IP1553_ISR_ETRANS_Pos ) 
 
 // *****************************************************************************
 // *****************************************************************************
@@ -93,44 +93,42 @@
    Description:
     This data type identifies the IP1553 interrupt status.
 */
-typedef enum
-{
-    IP1553_INT_MASK_EMT = IP1553_ISR_EMT_Msk,
-    IP1553_INT_MASK_MTE = IP1553_ISR_MTE_Msk,
-    IP1553_INT_MASK_ERX = IP1553_ISR_ERX_Msk,
-    IP1553_INT_MASK_ETX = IP1553_ISR_ETX_Msk,
-    IP1553_INT_MASK_ETRANS_MASK = IP1553_ISR_ETRANS_Msk,
-    IP1553_INT_MASK_TE = IP1553_ISR_TE_Msk,
-    IP1553_INT_MASK_TCE = IP1553_ISR_TCE_Msk,
-    IP1553_INT_MASK_TPE = IP1553_ISR_TPE_Msk,
-    IP1553_INT_MASK_TDE = IP1553_ISR_TDE_Msk,
-    IP1553_INT_MASK_TTE = IP1553_ISR_TTE_Msk,
-    IP1553_INT_MASK_TWE = IP1553_ISR_TWE_Msk,
-    IP1553_INT_MASK_BE = IP1553_ISR_BE_Msk,
-    IP1553_INT_MASK_ITR = IP1553_ISR_ITR_Msk,
-    IP1553_INT_MASK_TVR = IP1553_ISR_TVR_Msk,
-    IP1553_INT_MASK_DBR = IP1553_ISR_DBR_Msk,
-    IP1553_INT_MASK_STR = IP1553_ISR_STR_Msk,
-    IP1553_INT_MASK_TSR = IP1553_ISR_TSR_Msk,
-    IP1553_INT_MASK_OSR = IP1553_ISR_OSR_Msk,
-    IP1553_INT_MASK_SDR = IP1553_ISR_SDR_Msk,
-    IP1553_INT_MASK_SWD = IP1553_ISR_SWD_Msk,
-    IP1553_INT_MASK_RRT = IP1553_ISR_RRT_Msk,
-    IP1553_INT_MASK_ITF = IP1553_ISR_ITF_Msk,
-    IP1553_INT_MASK_OTF = IP1553_ISR_OTF_Msk,
-    IP1553_INT_MASK_IPB = IP1553_ISR_IPB_Msk,
-    IP1553_INT_MASK_ERROR_MASK = ( IP1553_INT_MASK_MTE |
-                                   IP1553_INT_MASK_TE |
-                                   IP1553_INT_MASK_TCE |
-                                   IP1553_INT_MASK_TPE |
-                                   IP1553_INT_MASK_TDE |
-                                   IP1553_INT_MASK_TTE |
-                                   IP1553_INT_MASK_TWE |
-                                   IP1553_INT_MASK_BE |
-                                   IP1553_INT_MASK_ITR ),
-    /* Force the compiler to reserve 32-bit memory for enum */
-    IP1553_INT_MASK_INVALID = 0xFFFFFFFF
-} IP1553_INT_MASK;
+typedef uint32_t IP1553_INT_MASK;
+
+#define IP1553_INT_MASK_EMT             ( IP1553_ISR_EMT_Msk )
+#define IP1553_INT_MASK_MTE             ( IP1553_ISR_MTE_Msk )
+#define IP1553_INT_MASK_ERX             ( IP1553_ISR_ERX_Msk )
+#define IP1553_INT_MASK_ETX             ( IP1553_ISR_ETX_Msk )
+#define IP1553_INT_MASK_ETRANS_MASK     ( IP1553_ISR_ETRANS_Msk )
+#define IP1553_INT_MASK_TE              ( IP1553_ISR_TE_Msk )
+#define IP1553_INT_MASK_TCE             ( IP1553_ISR_TCE_Msk )
+#define IP1553_INT_MASK_TPE             ( IP1553_ISR_TPE_Msk )
+#define IP1553_INT_MASK_TDE             ( IP1553_ISR_TDE_Msk )
+#define IP1553_INT_MASK_TTE             ( IP1553_ISR_TTE_Msk )
+#define IP1553_INT_MASK_TWE             ( IP1553_ISR_TWE_Msk )
+#define IP1553_INT_MASK_BE              ( IP1553_ISR_BE_Msk )
+#define IP1553_INT_MASK_ITR             ( IP1553_ISR_ITR_Msk )
+#define IP1553_INT_MASK_TVR             ( IP1553_ISR_TVR_Msk )
+#define IP1553_INT_MASK_DBR             ( IP1553_ISR_DBR_Msk )
+#define IP1553_INT_MASK_STR             ( IP1553_ISR_STR_Msk )
+#define IP1553_INT_MASK_TSR             ( IP1553_ISR_TSR_Msk )
+#define IP1553_INT_MASK_OSR             ( IP1553_ISR_OSR_Msk )
+#define IP1553_INT_MASK_SDR             ( IP1553_ISR_SDR_Msk )
+#define IP1553_INT_MASK_SWD             ( IP1553_ISR_SWD_Msk )
+#define IP1553_INT_MASK_RRT             ( IP1553_ISR_RRT_Msk )
+#define IP1553_INT_MASK_ITF             ( IP1553_ISR_ITF_Msk )
+#define IP1553_INT_MASK_OTF             ( IP1553_ISR_OTF_Msk )
+#define IP1553_INT_MASK_IPB             ( IP1553_ISR_IPB_Msk )
+#define IP1553_INT_MASK_ERROR_MASK      ( IP1553_INT_MASK_MTE | \
+                                          IP1553_INT_MASK_TE  | \
+                                          IP1553_INT_MASK_TCE | \
+                                          IP1553_INT_MASK_TPE | \
+                                          IP1553_INT_MASK_TDE | \
+                                          IP1553_INT_MASK_TTE | \
+                                          IP1553_INT_MASK_TWE | \
+                                          IP1553_INT_MASK_BE  | \
+                                          IP1553_INT_MASK_ITR )
+#define IP1553_INT_MASK_INVALID         ( 0xFFFFFFFFUL )
 
 // *****************************************************************************
 /* IP1553 Callback
@@ -181,7 +179,7 @@ typedef struct
 */
 typedef enum
 {
-    IP1553_DATA_TX_TYPE_BC_TO_RT = 0,
+    IP1553_DATA_TX_TYPE_BC_TO_RT = 0U,
     IP1553_DATA_TX_TYPE_RT_TO_BC,
     IP1553_DATA_TX_TYPE_RT_TO_RT,
 } IP1553_DATA_TX_TYPE;
@@ -200,9 +198,11 @@ typedef enum
 */
 typedef enum
 {
-    IP1553_BUS_A = 0,
+    IP1553_BUS_A = 0U,
     IP1553_BUS_B
 } IP1553_BUS;
+
+/* MISRA C-2012 Rule 5.2 is deviated in the below code block. Deviation record ID - H3_MISRAC_2012_R_5_2_DR_1*/
 
 // *****************************************************************************
 /* IP1553 Bus Controller Mode Command code
@@ -218,20 +218,22 @@ typedef enum
 */
 typedef enum
 {
-    IP1553_MODE_CMD_DYNAMIC_BUS_CONTROL = 0,
-    IP1553_MODE_CMD_SYNCHRONIZE_WITHOUT_DATA = 1,
-    IP1553_MODE_CMD_TRANSMIT_STATUS_WORD = 2,
-    IP1553_MODE_CMD_INITIATE_SELF_TEST = 3,
-    IP1553_MODE_CMD_TRANSMITTER_SHUTDOWN = 4,
-    IP1553_MODE_CMD_OVERRIDE_TRANSMITTER_SHUTDOWN = 5,
-    IP1553_MODE_CMD_INHIBIT_TERMINAL_FLAG_BIT = 6,
-    IP1553_MODE_CMD_OVERRIDE_INHIBIT_TERMINAL_FLAG_BIT = 7,
-    IP1553_MODE_CMD_RESET_REMOTE_TERMINAL = 8,
-    IP1553_MODE_CMD_TRANSMIT_VECTOR_WORD = 16,
-    IP1553_MODE_CMD_SYNCHRONIZE_WITH_DATA = 17,
-    IP1553_MODE_CMD_TRANSMIT_LAST_COMMAND = 18,
-    IP1553_MODE_CMD_TRANSMIT_BIT_WORD = 19,
+    IP1553_MODE_CMD_DYNAMIC_BUS_CONTROL = 0U,
+    IP1553_MODE_CMD_SYNCHRONIZE_WITHOUT_DATA = 1U,
+    IP1553_MODE_CMD_TRANSMIT_STATUS_WORD = 2U,
+    IP1553_MODE_CMD_INITIATE_SELF_TEST = 3U,
+    IP1553_MODE_CMD_TRANSMITTER_SHUTDOWN = 4U,
+    IP1553_MODE_CMD_OVERRIDE_TRANSMITTER_SHUTDOWN = 5U,
+    IP1553_MODE_CMD_INHIBIT_TERMINAL_FLAG_BIT = 6U,
+    IP1553_MODE_CMD_OVERRIDE_INHIBIT_TERMINAL_FLAG_BIT = 7U,
+    IP1553_MODE_CMD_RESET_REMOTE_TERMINAL = 8U,
+    IP1553_MODE_CMD_TRANSMIT_VECTOR_WORD = 16U,
+    IP1553_MODE_CMD_SYNCHRONIZE_WITH_DATA = 17U,
+    IP1553_MODE_CMD_TRANSMIT_LAST_COMMAND = 18U,
+    IP1553_MODE_CMD_TRANSMIT_BIT_WORD = 19U,
 } IP1553_MODE_CMD;
+
+/* MISRAC 2012 deviation block end */
 
 // *****************************************************************************
 // *****************************************************************************

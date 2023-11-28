@@ -50,6 +50,7 @@
 
 #include <stddef.h>
 #include "device.h"
+#include "interrupts.h"
 #include "plib_ip1553.h"
 
 // *****************************************************************************
@@ -246,7 +247,7 @@ IP1553_INT_MASK IP1553_IrqStatusGet( void )
 */
 uint16_t IP1553_GetFirstStatusWord( void )
 {
-    return ( ( IP1553_REGS->IP1553_CTRL1 & IP1553_CTRL1_IP1553DATA1_Msk ) >> IP1553_CTRL1_IP1553DATA1_Pos );
+    return (uint16_t)( ( IP1553_REGS->IP1553_CTRL1 & IP1553_CTRL1_IP1553DATA1_Msk ) >> IP1553_CTRL1_IP1553DATA1_Pos );
 }
 
 // *****************************************************************************
@@ -271,9 +272,14 @@ void IP1553_BCEnableCmdSet(bool enable)
 {
     uint32_t crReg = ( IP1553_REGS->IP1553_CR & ~IP1553_CR_BEC_Msk );
     if (enable == true)
+    {
         crReg |= IP1553_CR_BEC(1);
+    }
     IP1553_REGS->IP1553_CR = crReg;
-    while (IP1553_REGS->IP1553_CR != crReg);
+    while (IP1553_REGS->IP1553_CR != crReg)
+    {
+        /* Wait for the update of the configuration register with the new value */
+    }
 }
 
 // *****************************************************************************
@@ -297,9 +303,14 @@ void IP1553_SREQBitCmdSet(bool enable)
 {
     uint32_t crReg = ( IP1553_REGS->IP1553_CR & ~IP1553_CR_SRC_Msk );
     if (enable == true)
+    {
         crReg |= IP1553_CR_SRC(1);
+    }
     IP1553_REGS->IP1553_CR = crReg;
-    while (IP1553_REGS->IP1553_CR != crReg);
+    while (IP1553_REGS->IP1553_CR != crReg)
+    {
+        /* Wait for the update of the configuration register with the new value */
+    }
 }
 
 // *****************************************************************************
@@ -324,9 +335,14 @@ void IP1553_BusyBitCmdSet(bool enable)
 {
     uint32_t crReg = ( IP1553_REGS->IP1553_CR & ~IP1553_CR_BC_Msk );
     if (enable == true)
+    {
         crReg |= IP1553_CR_BC(1);
+    }
     IP1553_REGS->IP1553_CR = crReg;
-    while (IP1553_REGS->IP1553_CR != crReg);
+    while (IP1553_REGS->IP1553_CR != crReg)
+    {
+        /* Wait for the update of the configuration register with the new value */
+    }
 }
 
 // *****************************************************************************
@@ -350,9 +366,14 @@ void IP1553_SSBitCmdSet(bool enable)
 {
     uint32_t crReg = ( IP1553_REGS->IP1553_CR & ~IP1553_CR_SC_Msk );
     if (enable == true)
+    {
         crReg |= IP1553_CR_SC(1);
+    }
     IP1553_REGS->IP1553_CR = crReg;
-    while (IP1553_REGS->IP1553_CR != crReg);
+    while (IP1553_REGS->IP1553_CR != crReg)
+    {
+        /* Wait for the update of the configuration register with the new value */
+    }
 }
 
 // *****************************************************************************
@@ -380,9 +401,14 @@ void IP1553_TRBitCmdSet(bool enable)
 {
     uint32_t crReg = ( IP1553_REGS->IP1553_CR & ~IP1553_CR_TC_Msk );
     if (enable == true)
+    {
         crReg |= IP1553_CR_TC(1);
+    }
     IP1553_REGS->IP1553_CR = crReg;
-    while (IP1553_REGS->IP1553_CR != crReg);
+    while (IP1553_REGS->IP1553_CR != crReg)
+    {
+        /* Wait for the update of the configuration register with the new value */
+    }
 }
 
 // *****************************************************************************
@@ -404,7 +430,7 @@ void IP1553_TRBitCmdSet(bool enable)
 */
 void IP1553_BitWordSet(uint16_t bitWord)
 {
-    IP1553_REGS->IP1553_BITR = ( bitWord & 0xFFFF );
+    IP1553_REGS->IP1553_BITR = (uint32_t)( bitWord & 0xFFFFUL );
 }
 
 // *****************************************************************************
@@ -426,6 +452,6 @@ void IP1553_BitWordSet(uint16_t bitWord)
 */
 void IP1553_VectorWordSet(uint16_t vectorWord)
 {
-    IP1553_REGS->IP1553_VWR = ( vectorWord & 0xFFFF );
+    IP1553_REGS->IP1553_VWR = (uint32_t)( vectorWord & 0xFFFFUL );
 }
 

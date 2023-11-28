@@ -50,6 +50,7 @@
 
 #include <stddef.h>
 #include "device.h"
+#include "interrupts.h"
 #include "plib_ip1553.h"
 
 // *****************************************************************************
@@ -277,6 +278,10 @@ void IP1553_BcStartDataTransfer(IP1553_DATA_TX_TYPE transferType, uint8_t txAddr
     {
         cmdr3 |= IP1553_CMDR3_BCR(1);
     }
+    else
+    {
+        /* No data sent or received by BC */
+    }
     IP1553_REGS->IP1553_CMDR3 = cmdr3;
 }
 
@@ -342,7 +347,7 @@ void IP1553_BcModeCommandTransfer(uint8_t rtAddr, IP1553_MODE_CMD modeCommand, u
 */
 uint16_t IP1553_GetFirstStatusWord( void )
 {
-    return ( ( IP1553_REGS->IP1553_CTRL1 & IP1553_CTRL1_IP1553DATA1_Msk ) >> IP1553_CTRL1_IP1553DATA1_Pos );
+    return (uint16_t)( ( IP1553_REGS->IP1553_CTRL1 & IP1553_CTRL1_IP1553DATA1_Msk ) >> IP1553_CTRL1_IP1553DATA1_Pos );
 }
 
 // *****************************************************************************
@@ -363,6 +368,6 @@ uint16_t IP1553_GetFirstStatusWord( void )
 */
 uint16_t IP1553_GetSecondStatusWord( void )
 {
-    return ( ( IP1553_REGS->IP1553_CTRL1 & IP1553_CTRL1_IP1553DATA2_Msk) >> IP1553_CTRL1_IP1553DATA2_Pos );
+    return (uint16_t)( ( IP1553_REGS->IP1553_CTRL1 & IP1553_CTRL1_IP1553DATA2_Msk) >> IP1553_CTRL1_IP1553DATA2_Pos );
 }
 

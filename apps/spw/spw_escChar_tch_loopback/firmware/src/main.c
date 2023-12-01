@@ -58,7 +58,7 @@
 // *****************************************************************************
 
 /* Number of Tx packet in transmitter list */
-#define APP_TX_NUM_PACKET                   (1)
+#define APP_TX_NUM_PACKET                   (1U)
 
 #define APP_SPW_LINK_ERR_INT_MASK           ( SPW_LINK_INT_MASK_DISERR    | \
                                               SPW_LINK_INT_MASK_PARERR    | \
@@ -76,10 +76,10 @@
 // *****************************************************************************
 
 /* Tx send list */
-SPW_PKTTX_SEND_LIST_ENTRY __attribute__((aligned (32)))__attribute__((section (".ram_nocache"))) app_tx_packet_send_list[APP_TX_NUM_PACKET] = {0};
+static SPW_PKTTX_SEND_LIST_ENTRY __attribute__((aligned (32)))__attribute__((section (".ram_nocache"))) app_tx_packet_send_list[APP_TX_NUM_PACKET] = {0};
 
 /* Store number of TCH time code event */
-volatile uint8_t app_num_tc_event = 0;
+static volatile uint8_t app_num_tc_event = 0;
 
 
 // *****************************************************************************
@@ -89,7 +89,7 @@ volatile uint8_t app_num_tc_event = 0;
 // *****************************************************************************
 
 // *****************************************************************************
-/* void APP_SPW_PrintInterruptErrors(uint32_t errors)
+/* static void APP_SPW_PrintInterruptErrors(uint32_t errors)
 
   Summary:
     Function called by the application to print the description of the link
@@ -104,24 +104,40 @@ volatile uint8_t app_num_tc_event = 0;
   Remarks:
     None.
 */
-void APP_SPW_PrintInterruptErrors(uint32_t errors)
+static void APP_SPW_PrintInterruptErrors(uint32_t errors)
 {
     if ((errors & SPW_LINK_INT_MASK_DISERR) == SPW_LINK_INT_MASK_DISERR)
+    {
         printf("  Link interface disconnection error detected.\r\n");
+    }
     if ((errors & SPW_LINK_INT_MASK_PARERR) == SPW_LINK_INT_MASK_PARERR)
+    {
         printf("  Link interface parity error detected.\r\n");
+    }
     if ((errors & SPW_LINK_INT_MASK_ESCERR) == SPW_LINK_INT_MASK_ESCERR)
+    {
         printf("  Link interface ESC error detected.\r\n");
+    }
     if ((errors & SPW_LINK_INT_MASK_CRERR) == SPW_LINK_INT_MASK_CRERR)
+    {
         printf("  Link interface credit error detected.\r\n");
+    }
     if ((errors & SPW_LINK_INT_MASK_LINKABORT) == SPW_LINK_INT_MASK_LINKABORT)
+    {
         printf("  Link state has made a transition from Run to Error Reset\r\n");
+    }
     if ((errors & SPW_LINK_INT_MASK_EEPTRANS) == SPW_LINK_INT_MASK_EEPTRANS)
+    {
         printf("  EEP transmitted.\r\n");
+    }
     if ((errors & SPW_LINK_INT_MASK_EEPREC) == SPW_LINK_INT_MASK_EEPREC)
+    {
         printf("  EEP received.\r\n");
+    }
     if ((errors & SPW_LINK_INT_MASK_DISCARD) == SPW_LINK_INT_MASK_DISCARD)
+    {
         printf("  Transmit packet discarded.\r\n");
+    }
 }
 
 // *****************************************************************************
@@ -148,11 +164,19 @@ static void APP_PckTxSendEscapeCharOnTimeCode(SPW_LINK link, uint8_t escChar, ui
 {
     /* Prepare send list with 1 packet with RMAP header */
     memset(&(app_tx_packet_send_list[0]), 0, sizeof(SPW_PKTTX_SEND_LIST_ENTRY)*APP_TX_NUM_PACKET);
-    app_tx_packet_send_list[0].Entry = 1;
+    app_tx_packet_send_list[0].Entry = 1U;
     if ( link == SPW_LINK_1 )
-        app_tx_packet_send_list[0].EscMask = 0x8;
+    {
+        app_tx_packet_send_list[0].EscMask = 0x8U;
+    }
     else if ( link == SPW_LINK_2 )
-        app_tx_packet_send_list[0].EscMask = 0x4;
+    {
+        app_tx_packet_send_list[0].EscMask = 0x4U;
+    }
+    else
+    {
+        /* Link ID not valid */
+    }
     app_tx_packet_send_list[0].EscChar = escChar;
 
     /* Enable packet TX interrupts */
@@ -168,7 +192,7 @@ static void APP_PckTxSendEscapeCharOnTimeCode(SPW_LINK link, uint8_t escChar, ui
         timeCode);
 }
 
-/* void APP_SPW_Callback(SPW_INT_MASK irqStatus, uintptr_t context)
+/* static void APP_SPW_Callback(SPW_INT_MASK irqStatus, uintptr_t context)
 
   Summary:
     Function called by SPW PLIB.
@@ -179,13 +203,15 @@ static void APP_PckTxSendEscapeCharOnTimeCode(SPW_LINK link, uint8_t escChar, ui
   Remarks:
     None.
 */
-void APP_SPW_Callback(SPW_INT_MASK irqStatus, uintptr_t context)
+static void APP_SPW_Callback(SPW_INT_MASK irqStatus, uintptr_t context)
 {
-    if (irqStatus & SPW_INT_MASK_PKTTX1)
+    uint32_t distStatus = 0UL;
+    
+    if ( (irqStatus & SPW_INT_MASK_PKTTX1) != 0U )
     {
         SPW_PKTTX_INT_MASK status = SPW_PKTTX_IrqStatusGetMaskedAndClear();
 
-        if (status & SPW_PKTTX_INT_MASK_DEACT)
+        if ( (status & SPW_PKTTX_INT_MASK_DEACT) != 0U )
         {
             SPW_PKTTX_UnlockStatus();
             
@@ -194,79 +220,91 @@ void APP_SPW_Callback(SPW_INT_MASK irqStatus, uintptr_t context)
         }
     }
 
-    if (irqStatus & SPW_INT_MASK_LINK1)
+    if ( (irqStatus & SPW_INT_MASK_LINK1) != 0U )
     {
         SPW_LINK_INT_MASK status = SPW_LINK_IrqStatusGetMaskedAndClear(SPW_LINK_1);
 
-        if (status & SPW_LINK_INT_MASK_ESCEVENT1)
+        if ( (status & SPW_LINK_INT_MASK_ESCEVENT1) != 0U )
         {
             printf("  - Link 1 Esc Event 1 : 0x%02X\r\n", (unsigned int)SPW_LINK_LastRecvEscapeCharEvent1Get(SPW_LINK_1));
         }
 
-        if (status & SPW_LINK_INT_MASK_ESCEVENT2)
+        if ( (status & SPW_LINK_INT_MASK_ESCEVENT2) != 0U )
         {
             printf("  - Link 1 Esc Event 2 : 0x%02X\r\n", (unsigned int)SPW_LINK_LastRecvEscapeCharEvent2Get(SPW_LINK_1));
         }
         
-        if ( status & APP_SPW_LINK_ERR_INT_MASK)
+        if ( ( status & APP_SPW_LINK_ERR_INT_MASK) != 0U )
         {
             printf("ERROR(s) on SPW Link 1 :\r\n");
             APP_SPW_PrintInterruptErrors(status);
         }
     }
 
-    if (irqStatus & SPW_INT_MASK_LINK2)
+    if ( (irqStatus & SPW_INT_MASK_LINK2) != 0U )
     {
         SPW_LINK_INT_MASK status = SPW_LINK_IrqStatusGetMaskedAndClear(SPW_LINK_2);
         
-        if (status & SPW_LINK_INT_MASK_ESCEVENT1)
+        if ( (status & SPW_LINK_INT_MASK_ESCEVENT1) != 0U )
         {
             printf("  - Link 2 Esc Event 1 : 0x%02X\r\n", (unsigned int)SPW_LINK_LastRecvEscapeCharEvent1Get(SPW_LINK_2));
         }
-        if (status & SPW_LINK_INT_MASK_ESCEVENT2)
+        if ( (status & SPW_LINK_INT_MASK_ESCEVENT2) != 0U )
         {
             printf("  - Link 2 Esc Event 2 : 0x%02X\r\n", (unsigned int)SPW_LINK_LastRecvEscapeCharEvent2Get(SPW_LINK_2));
         }
         
-        if ( status & APP_SPW_LINK_ERR_INT_MASK)
+        if ( ( status & APP_SPW_LINK_ERR_INT_MASK) != 0U )
         {
             printf("  - ERROR(s) on SPW Link 2 :\r\n");
             APP_SPW_PrintInterruptErrors(status);
         }
     }
     
-    if (irqStatus & SPW_INT_MASK_DI1)
+    if ( (irqStatus & SPW_INT_MASK_DI1) != 0U )
     {
-        uint32_t distStatus = SPW_LINK_DistIrqStatusGetMaskedAndClear(SPW_LINK_1);
-        printf("  - Link1 DI=0x%08X\r\n", (unsigned int)distStatus);  
+        distStatus = SPW_LINK_DistIrqStatusGetMaskedAndClear(SPW_LINK_1);
+        if (distStatus != 0U)
+        {
+            printf("  - Link1 DI=0x%08X\r\n", (unsigned int)distStatus);
+        }
     }
     
-    if (irqStatus & SPW_INT_MASK_DIA1)
+    if ( (irqStatus & SPW_INT_MASK_DIA1) != 0U )
     {
-        uint32_t distStatus = SPW_LINK_DistAckIrqStatusGetMaskedAndClear(SPW_LINK_1);
-        printf("  - Link1 DIA=0x%08X\r\n", (unsigned int)distStatus);
+        distStatus = SPW_LINK_DistAckIrqStatusGetMaskedAndClear(SPW_LINK_1);
+        if (distStatus != 0U)
+        {
+            printf("  - Link1 DIA=0x%08X\r\n", (unsigned int)distStatus);
+        }
     }
     
-    if (irqStatus & SPW_INT_MASK_DI2)
+    if ( (irqStatus & SPW_INT_MASK_DI2) != 0U )
     {
-        uint32_t distStatus = SPW_LINK_DistIrqStatusGetMaskedAndClear(SPW_LINK_2);
-        printf("  - Link2 DI=0x%08X\r\n", (unsigned int)distStatus);        
+        distStatus = SPW_LINK_DistIrqStatusGetMaskedAndClear(SPW_LINK_2);
+        if (distStatus != 0U)
+        {
+            printf("  - Link2 DI=0x%08X\r\n", (unsigned int)distStatus);
+        }
     }
     
-        if (irqStatus & SPW_INT_MASK_DIA2)
+    if ( (irqStatus & SPW_INT_MASK_DIA2) != 0U )
     {
-        uint32_t distStatus = SPW_LINK_DistAckIrqStatusGetMaskedAndClear(SPW_LINK_2);
-        printf("  - Link2 DIA=0x%08X\r\n", (unsigned int)distStatus);    
+        distStatus = SPW_LINK_DistAckIrqStatusGetMaskedAndClear(SPW_LINK_2);
+        if (distStatus != 0U)
+        {
+            printf("  - Link2 DIA=0x%08X\r\n", (unsigned int)distStatus);  
+        }
     }
     
-    if (irqStatus & SPW_INT_MASK_TCH)
+    if ( (irqStatus & SPW_INT_MASK_TCH) != 0U )
     {
         SPW_TCH_INT_MASK tchStatus = SPW_TCH_IrqStatusGetMaskedAndClear();
-        if (tchStatus & SPW_TCH_INT_MASK_TIMECODE)
+        if ( (tchStatus & SPW_TCH_INT_MASK_TIMECODE) != 0U )
         {
             printf("  - TC=0x%02X\r\n", (unsigned int)SPW_TCH_LastTimeCodeGet());
         }
-        if (tchStatus & SPW_TCH_INT_MASK_TCEVENT)
+        if ( (tchStatus & SPW_TCH_INT_MASK_TCEVENT) != 0U )
         {
             printf("  - TC event\r\n");
             app_num_tc_event++;
@@ -327,8 +365,8 @@ int main ( void )
     printf("Wait for both SWP link switch to run state\r\n");
 
     /* Wait link goes to Run state */
-    SPW_LINK_STATE spwLink1Status = 0;
-    SPW_LINK_STATE spwLink2Status = 0;
+    SPW_LINK_STATE spwLink1Status = SPW_LINK_STATE_ERROR_RESET;
+    SPW_LINK_STATE spwLink2Status = SPW_LINK_STATE_ERROR_RESET;
     do
     {
         spwLink1Status = SPW_LINK_GET_STATE(SPW_LINK_StatusGet(SPW_LINK_1));
@@ -350,7 +388,7 @@ int main ( void )
 
     printf("Configure Time Code event to count time code '0x10' occurrences\r\n");
     SPW_TCH_ConfigureTcEvent(0xFF, 0x10);
-    app_num_tc_event = 0;
+    app_num_tc_event = 0U;
     
     printf("Prepare send of distributed interrupt '4' with send list that start on matching time code 0x04\r\n");
     APP_PckTxSendEscapeCharOnTimeCode(SPW_LINK_1, 0x84, 0x04);
@@ -362,11 +400,14 @@ int main ( void )
     SPW_TCH_ConfigureEvent(SPW_SYNC_EVENT_MASK_RTCOUT0);
     SPW_TCH_ConfigureRestart(0, false, SPW_TCH_CFG_RESTART_IN_PPS, 0);
 
-    while ( app_num_tc_event < 2 );
+    while ( app_num_tc_event < 2U )
+    {
+        /* Wait events */
+    }
 
     printf("Stop TCH event and restart\r\n");
     SPW_TCH_ConfigureEvent(0);
-    SPW_TCH_ConfigureRestart(0, false, 0, 0);
+    SPW_TCH_ConfigureRestart(0, false, SPW_TCH_CFG_RESTART_IN_PPS, 0);
     
     while ( true );
 

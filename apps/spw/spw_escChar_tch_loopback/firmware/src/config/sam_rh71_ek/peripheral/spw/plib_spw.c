@@ -50,6 +50,7 @@
 
 #include <stddef.h>
 #include "device.h"
+#include "interrupts.h"
 #include "plib_spw.h"
 #include "plib_spw_link.h"
 #include "plib_spw_router.h"
@@ -124,12 +125,6 @@ void SPW_Initialize(void)
   Returns:
     None.
 
-  Example:
-    <code>
-        // Refer to the description of the SPW_CALLBACK data type for
-        // example usage.
-    </code>
-
   Remarks:
     None.
 */
@@ -169,7 +164,7 @@ void SPW_CallbackRegister(SPW_CALLBACK callback, uintptr_t contextHandle)
     instance interrupt is enabled. If peripheral instance's interrupt is not
     enabled user need to call it from the main while loop of the application.
 */
-void SPW_InterruptHandler(void)
+void __attribute__((used)) SPW_InterruptHandler(void)
 {
     SPW_INT_MASK status = SPW_INT_MASK_NONE;
 
@@ -177,24 +172,42 @@ void SPW_InterruptHandler(void)
     uint32_t group1 = SPW_REGS->SPW_GROUP_IRQSTS1;
     uint32_t group2 = SPW_REGS->SPW_GROUP_IRQSTS2;
     
-    if ( group1 & SPW_GROUP_IRQSTS1_TX1_Msk )
+    if ( ( group1 & SPW_GROUP_IRQSTS1_TX1_Msk ) != 0U )
+    {
         status |= SPW_INT_MASK_PKTTX1;
-    if ( group1 & SPW_GROUP_IRQSTS1_RX1_Msk )
+    }
+    if ( ( group1 & SPW_GROUP_IRQSTS1_RX1_Msk ) != 0U )
+    {
         status |= SPW_INT_MASK_PKTRX1;
-    if ( group1 & SPW_GROUP_IRQSTS1_TCH_Msk )
+    }
+    if ( ( group1 & SPW_GROUP_IRQSTS1_TCH_Msk ) != 0U )
+    {
         status |= SPW_INT_MASK_TCH;
-    if ( group2 & SPW_GROUP_IRQSTS2_Link2_Msk )
+    }
+    if ( ( group2 & SPW_GROUP_IRQSTS2_Link2_Msk ) != 0U )
+    {
         status |= SPW_INT_MASK_LINK2;
-    if ( group2 & SPW_GROUP_IRQSTS2_Dia2_Msk )
+    }
+    if ( ( group2 & SPW_GROUP_IRQSTS2_Dia2_Msk ) != 0U )
+    {
         status |= SPW_INT_MASK_DIA2;
-    if ( group2 & SPW_GROUP_IRQSTS2_Di2_Msk )
+    }
+    if ( ( group2 & SPW_GROUP_IRQSTS2_Di2_Msk ) != 0U )
+    {
         status |= SPW_INT_MASK_DI2;
-    if ( group2 & SPW_GROUP_IRQSTS2_Link1_Msk )
+    }
+    if ( ( group2 & SPW_GROUP_IRQSTS2_Link1_Msk ) != 0U )
+    {
         status |= SPW_INT_MASK_LINK1;
-    if ( group2 & SPW_GROUP_IRQSTS2_Dia1_Msk )
+    }
+    if ( ( group2 & SPW_GROUP_IRQSTS2_Dia1_Msk ) != 0U )
+    {
         status |= SPW_INT_MASK_DIA1;
-    if ( group2 & SPW_GROUP_IRQSTS2_Di1_Msk )
+    }
+    if ( ( group2 & SPW_GROUP_IRQSTS2_Di1_Msk ) != 0U )
+    {
         status |= SPW_INT_MASK_DI1;
+    }
 
     if ( spwObj.callback != NULL )
     {

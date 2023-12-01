@@ -78,19 +78,19 @@
 #define SPW_ROUTER_RMAP_PORT                                   (17)
 
 /* Return SPW ROUTER DEST field from Router status word. */
-#define SPW_ROUTER_STATUS_GET_DEST(status) ( (status & SPW_ROUTER_STATUS_DEST_MASK) >> SPW_ROUTER_STS_DEST_Pos )
+#define SPW_ROUTER_STATUS_GET_DEST(status) ( ((status) & SPW_ROUTER_STATUS_DEST_MASK) >> SPW_ROUTER_STS_DEST_Pos )
 
 /* Return SPW ROUTER SOURCE from Router status word. */
-#define SPW_ROUTER_STATUS_GET_SOURCE(status) ( (status & SPW_ROUTER_STATUS_SOURCE_MASK) >> SPW_ROUTER_STS_SOURCE_Pos )
+#define SPW_ROUTER_STATUS_GET_SOURCE(status) ( ((status) & SPW_ROUTER_STATUS_SOURCE_MASK) >> SPW_ROUTER_STS_SOURCE_Pos )
 
 /* Return SPW ROUTER BYTE from Router status word. */
-#define SPW_ROUTER_STATUS_GET_BYTE(status) ( (status & SPW_ROUTER_STATUS_BYTE_MASK) >> SPW_ROUTER_STS_BYTE_Pos )
+#define SPW_ROUTER_STATUS_GET_BYTE(status) ( ((status) & SPW_ROUTER_STATUS_BYTE_MASK) >> SPW_ROUTER_STS_BYTE_Pos )
 
 /* Return SPW ROUTER COUNT from Router status word. */
-#define SPW_ROUTER_STATUS_GET_COUNT(status) ( (status & SPW_ROUTER_STATUS_COUNT_MASK) >> SPW_ROUTER_STS_COUNT_Pos )
+#define SPW_ROUTER_STATUS_GET_COUNT(status) ( ((status) & SPW_ROUTER_STATUS_COUNT_MASK) >> SPW_ROUTER_STS_COUNT_Pos )
 
 /* Return SPW ROUTER TIMEOUT ADDR from Router status word. */
-#define SPW_ROUTER_TIMEOUT_STATUS_GET_ADDR(status) ( (status & SPW_ROUTER_TIMEOUT_STATUS_ADDR_MASK) >> SPW_ROUTER_TIMEOUT_ADDR_Pos )
+#define SPW_ROUTER_TIMEOUT_STATUS_GET_ADDR(status) ( ((status) & SPW_ROUTER_TIMEOUT_STATUS_ADDR_MASK) >> SPW_ROUTER_TIMEOUT_ADDR_Pos )
 
 // *****************************************************************************
 // *****************************************************************************
@@ -112,7 +112,7 @@ typedef enum
     SPW_ROUTER_PHYS_ADDR_PKTRX = SPW_ROUTER_PKTRX_PORT,
     SPW_ROUTER_PHYS_ADDR_RMAP = SPW_ROUTER_RMAP_PORT,
     /* Force the compiler to reserve 32-bit memory for enum */
-    SPW_ROUTER_PHYS_ADDR_INVALID = 0xFFFFFFFF
+    SPW_ROUTER_PHYS_ADDR_INVALID = 0xFFFFFFFFUL
 } SPW_ROUTER_PHYS_ADDR;
 
 // *****************************************************************************
@@ -123,15 +123,13 @@ typedef enum
    Description:
     This data type identifies the SPW ROUTER status
 */
-typedef enum
-{
-    SPW_ROUTER_STATUS_DEST_MASK = SPW_ROUTER_STS_DEST_Msk, 
-    SPW_ROUTER_STATUS_SOURCE_MASK = SPW_ROUTER_STS_SOURCE_Msk,
-    SPW_ROUTER_STATUS_BYTE_MASK = SPW_ROUTER_STS_BYTE_Msk,
-    SPW_ROUTER_STATUS_COUNT_MASK = SPW_ROUTER_STS_COUNT_Msk,
-    /* Force the compiler to reserve 32-bit memory for enum */
-    SPW_ROUTER_STATUS_INVALID = 0xFFFFFFFF
-} SPW_ROUTER_STATUS;
+typedef uint32_t SPW_ROUTER_STATUS;
+
+#define SPW_ROUTER_STATUS_DEST_MASK              (SPW_ROUTER_STS_DEST_Msk)
+#define SPW_ROUTER_STATUS_SOURCE_MASK            (SPW_ROUTER_STS_SOURCE_Msk)
+#define SPW_ROUTER_STATUS_BYTE_MASK              (SPW_ROUTER_STS_BYTE_Msk)
+#define SPW_ROUTER_STATUS_COUNT_MASK             (SPW_ROUTER_STS_COUNT_Msk)
+#define SPW_ROUTER_STATUS_INVALID                (0xFFFFFFFFUL)
 
 // *****************************************************************************
 /* SPW ROUTER Timeout status
@@ -141,13 +139,11 @@ typedef enum
    Description:
     This data type identifies the SPW ROUTER Timeout status
 */
-typedef enum
-{
-    SPW_ROUTER_TIMEOUT_STATUS_ADDR_MASK = SPW_ROUTER_TIMEOUT_ADDR_Msk, 
-    SPW_ROUTER_TIMEOUT_STATUS_LOCKED = SPW_ROUTER_TIMEOUT_LOCKED_Msk,
-    /* Force the compiler to reserve 32-bit memory for enum */
-    SPW_ROUTER_TIMEOUT_STATUS_INVALID = 0xFFFFFFFF
-} SPW_ROUTER_TIMEOUT_STATUS;
+typedef uint32_t SPW_ROUTER_TIMEOUT_STATUS;
+
+#define SPW_ROUTER_TIMEOUT_STATUS_ADDR_MASK      (SPW_ROUTER_TIMEOUT_ADDR_Msk)
+#define SPW_ROUTER_TIMEOUT_STATUS_LOCKED         (SPW_ROUTER_TIMEOUT_LOCKED_Msk)
+#define SPW_ROUTER_TIMEOUT_STATUS_INVALID        (0xFFFFFFFFUL)
 
 // *****************************************************************************
 // *****************************************************************************

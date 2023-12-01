@@ -77,21 +77,19 @@
    Description:
     This data type identifies the SPW IRQ lines that have pending interrupt
 */
-typedef enum
-{
-    SPW_INT_MASK_NONE = 0,
-    SPW_INT_MASK_PKTRX1 = ( 1 << 0),
-    SPW_INT_MASK_PKTTX1 = ( 1 << 1),
-    SPW_INT_MASK_TCH = ( 1 << 2),
-    SPW_INT_MASK_LINK2 = ( 1 << 3),
-    SPW_INT_MASK_DIA2 = ( 1 << 4),
-    SPW_INT_MASK_DI2 = ( 1 << 5),
-    SPW_INT_MASK_LINK1 = ( 1 << 6),
-    SPW_INT_MASK_DIA1 = ( 1 << 7),
-    SPW_INT_MASK_DI1 = ( 1 << 8),
-    /* Force the compiler to reserve 32-bit memory for enum */
-    SPW_INT_MASK_INVALID = 0xFFFFFFFF
-} SPW_INT_MASK;
+typedef uint32_t SPW_INT_MASK;
+
+#define SPW_INT_MASK_NONE                                         (0UL)
+#define SPW_INT_MASK_PKTRX1                                       ( 1UL << 0U)
+#define SPW_INT_MASK_PKTTX1                                       ( 1UL << 1U)
+#define SPW_INT_MASK_TCH                                          ( 1UL << 2U)
+#define SPW_INT_MASK_LINK2                                        ( 1UL << 3U)
+#define SPW_INT_MASK_DIA2                                         ( 1UL << 4U)
+#define SPW_INT_MASK_DI2                                          ( 1UL << 5U)
+#define SPW_INT_MASK_LINK1                                        ( 1UL << 6U)
+#define SPW_INT_MASK_DIA1                                         ( 1UL << 7U)
+#define SPW_INT_MASK_DI1                                          ( 1UL << 8U)
+#define SPW_INT_MASK_INVALID                                      (0xFFFFFFFFUL)
 
 // *****************************************************************************
 /* SPW Synchronization events mask
@@ -101,13 +99,12 @@ typedef enum
    Description:
     This data type identifies the SPW synchronization events mask
 */
-typedef enum
-{
-    SPW_SYNC_EVENT_MASK_RTCOUT0 = 0x01,
-    SPW_SYNC_EVENT_MASK_RTCOUT1 = 0x02,
-    /* Force the compiler to reserve 32-bit memory for enum */
-    SPW_SYNC_EVENT_MASK_INVALID = 0xFFFFFFFF
-} SPW_SYNC_EVENT_MASK;
+typedef uint32_t SPW_SYNC_EVENT_MASK;
+
+#define SPW_SYNC_EVENT_MASK_RTCOUT0                               (0x01UL)
+#define SPW_SYNC_EVENT_MASK_RTCOUT1                               (0x02UL)
+#define SPW_SYNC_EVENT_MASK_INVALID                               (0xFFFFFFFFUL)
+
 
 // *****************************************************************************
 /* SPW Callback

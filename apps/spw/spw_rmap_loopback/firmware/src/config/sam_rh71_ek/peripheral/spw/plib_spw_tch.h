@@ -80,16 +80,14 @@
    Description:
     This data type identifies the SPW TCH Interrupt status mask.
 */
-typedef enum
-{
-    SPW_TCH_INT_MASK_TCEVENT = SPW_TCH_PI_RM_TCEVENT_Msk,
-    SPW_TCH_INT_MASK_TIMECODE = SPW_TCH_PI_RM_TIMECODE_Msk,
-    SPW_TCH_INT_MASK_ANYTIMECODE = SPW_TCH_PI_RM_ANYTIMECODE_Msk,
-    SPW_TCH_INT_MASK_LATEWD = SPW_TCH_PI_RM_LATEWD_Msk,
-    SPW_TCH_INT_MASK_EARLYWD = SPW_TCH_PI_RM_EARLYWD_Msk,
-    /* Force the compiler to reserve 32-bit memory for enum */
-    SPW_TCH_INT_MASK_INVALID = 0xFFFFFFFF
-} SPW_TCH_INT_MASK;
+typedef uint32_t SPW_TCH_INT_MASK;
+
+#define SPW_TCH_INT_MASK_TCEVENT              (SPW_TCH_PI_RM_TCEVENT_Msk)
+#define SPW_TCH_INT_MASK_TIMECODE             (SPW_TCH_PI_RM_TIMECODE_Msk)
+#define SPW_TCH_INT_MASK_ANYTIMECODE          (SPW_TCH_PI_RM_ANYTIMECODE_Msk)
+#define SPW_TCH_INT_MASK_LATEWD               (SPW_TCH_PI_RM_LATEWD_Msk)
+#define SPW_TCH_INT_MASK_EARLYWD              (SPW_TCH_PI_RM_EARLYWD_Msk)
+#define SPW_TCH_INT_MASK_INVALID              (0xFFFFFFFFUL)
 
 // *****************************************************************************
 /* SPW TCH Selected link for sender or listener
@@ -99,13 +97,11 @@ typedef enum
    Description:
     This data type identifies the SPW TCH Selected link for sender or listener.
 */
-typedef enum
-{
-    SPW_TCH_SEL_LINK_MASK_L1 = 0x01,
-    SPW_TCH_SEL_LINK_MASK_L2 = 0x02,
-    /* Force the compiler to reserve 32-bit memory for enum */
-    SPW_TCH_SEL_LINK_MASK_INVALID = 0xFFFFFFFF
-} SPW_TCH_SEL_LINK_MASK;
+typedef uint32_t SPW_TCH_SEL_LINK_MASK;
+
+#define SPW_TCH_SEL_LINK_MASK_L1                                    (0x01UL)
+#define SPW_TCH_SEL_LINK_MASK_L2                                    (0x02UL)
+#define SPW_TCH_SEL_LINK_MASK_INVALID                               (0xFFFFFFFFUL)
 
 // *****************************************************************************
 /* SPW TCH Configure restart input
@@ -120,7 +116,7 @@ typedef enum
     SPW_TCH_CFG_RESTART_IN_PPS = 0,
     SPW_TCH_CFG_RESTART_IN_EVENT = 1,
     /* Force the compiler to reserve 32-bit memory for enum */
-    SPW_TCH_CFG_RESTART_IN_INVALID = 0xFFFFFFFF
+    SPW_TCH_CFG_RESTART_IN_INVALID = 0xFFFFFFFFUL
 } SPW_TCH_CFG_RESTART_IN;
 
 // *****************************************************************************

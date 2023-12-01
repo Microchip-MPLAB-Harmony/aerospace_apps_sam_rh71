@@ -66,7 +66,7 @@
 // *****************************************************************************
 // *****************************************************************************
 /* Return count field value in SPW PKTRX previous status word. This is the number of packets received in previous buffer. */
-#define SPW_PKTRX_PREV_STATUS_GET_COUNT(status) ( (status & SPW_PKTRX_PREV_STATUS_CNT_MASK) >> SPW_PKTRX1_PREVBUFSTS_CNT_Pos )
+#define SPW_PKTRX_PREV_STATUS_GET_COUNT(status) ( ((status) & SPW_PKTRX_PREV_STATUS_CNT_MASK) >> SPW_PKTRX1_PREVBUFSTS_CNT_Pos )
 
 // *****************************************************************************
 // *****************************************************************************
@@ -80,18 +80,17 @@
    Description:
     This data type identifies the SPW PKTRX status
 */
-typedef enum
-{
-    SPW_PKTRX_STATUS_COUNT_MASK = SPW_PKTRX1_STATUS_COUNT_Msk, 
-    SPW_PKTRX_STATUS_PACKET = SPW_PKTRX1_STATUS_PACKET_Msk,
-    SPW_PKTRX_STATUS_LOCKED = SPW_PKTRX1_STATUS_LOCKED_Msk,
-    SPW_PKTRX_STATUS_ARM = SPW_PKTRX1_STATUS_ARM_Msk,
-    SPW_PKTRX_STATUS_ACT = SPW_PKTRX1_STATUS_ACT_Msk,
-    SPW_PKTRX_STATUS_PENDING = SPW_PKTRX1_STATUS_PENDING_Msk,
-    SPW_PKTRX_STATUS_DEACT = SPW_PKTRX1_STATUS_DEACT_Msk,
-    /* Force the compiler to reserve 32-bit memory for enum */
-    SPW_PKTRX_STATUS_INVALID = 0xFFFFFFFF
-} SPW_PKTRX_STATUS;
+typedef uint32_t SPW_PKTRX_STATUS;
+
+#define SPW_PKTRX_STATUS_COUNT_MASK              (SPW_PKTRX1_STATUS_COUNT_Msk)
+#define SPW_PKTRX_STATUS_PACKET                  (SPW_PKTRX1_STATUS_PACKET_Msk)
+#define SPW_PKTRX_STATUS_LOCKED                  (SPW_PKTRX1_STATUS_LOCKED_Msk)
+#define SPW_PKTRX_STATUS_ARM                     (SPW_PKTRX1_STATUS_ARM_Msk)
+#define SPW_PKTRX_STATUS_ACT                     (SPW_PKTRX1_STATUS_ACT_Msk)
+#define SPW_PKTRX_STATUS_PENDING                 (SPW_PKTRX1_STATUS_PENDING_Msk)
+#define SPW_PKTRX_STATUS_DEACT                   (SPW_PKTRX1_STATUS_DEACT_Msk)
+#define SPW_PKTRX_STATUS_INVALID                 (0xFFFFFFFFUL)
+
 
 // *****************************************************************************
 /* SPW PKTRX previous buffer status
@@ -101,17 +100,15 @@ typedef enum
    Description:
     This data type identifies the SPW PKTRX previous buffer
 */
-typedef enum
-{
-    SPW_PKTRX_PREV_STATUS_CNT_MASK = SPW_PKTRX1_PREVBUFSTS_CNT_Msk,
-    SPW_PKTRX_PREV_STATUS_EEP = SPW_PKTRX1_PREVBUFSTS_EEP_Msk,
-    SPW_PKTRX_PREV_STATUS_FULLI = SPW_PKTRX1_PREVBUFSTS_FULLI_Msk,
-    SPW_PKTRX_PREV_STATUS_FULLD = SPW_PKTRX1_PREVBUFSTS_FULLD_Msk,
-    SPW_PKTRX_PREV_STATUS_DMAERR = SPW_PKTRX1_PREVBUFSTS_DMAERR_Msk,
-    SPW_PKTRX_PREV_STATUS_LOCKED = SPW_PKTRX1_PREVBUFSTS_LOCKED_Msk,
-    /* Force the compiler to reserve 32-bit memory for enum */
-    SPW_PKTRX_PREV_STATUS_INVALID = 0xFFFFFFFF
-} SPW_PKTRX_PREV_STATUS;
+typedef uint32_t SPW_PKTRX_PREV_STATUS;
+
+#define SPW_PKTRX_PREV_STATUS_CNT_MASK        (SPW_PKTRX1_PREVBUFSTS_CNT_Msk)
+#define SPW_PKTRX_PREV_STATUS_EEP             (SPW_PKTRX1_PREVBUFSTS_EEP_Msk)
+#define SPW_PKTRX_PREV_STATUS_FULLI           (SPW_PKTRX1_PREVBUFSTS_FULLI_Msk)
+#define SPW_PKTRX_PREV_STATUS_FULLD           (SPW_PKTRX1_PREVBUFSTS_FULLD_Msk)
+#define SPW_PKTRX_PREV_STATUS_DMAERR          (SPW_PKTRX1_PREVBUFSTS_DMAERR_Msk)
+#define SPW_PKTRX_PREV_STATUS_LOCKED          (SPW_PKTRX1_PREVBUFSTS_LOCKED_Msk)
+#define SPW_PKTRX_PREV_STATUS_INVALID         (0xFFFFFFFFUL)
 
 // *****************************************************************************
 /* SPW PKTRX interrupt status
@@ -121,16 +118,14 @@ typedef enum
    Description:
     This data type identifies the SPW PKTRX interrupt status
 */
-typedef enum
-{
-    SPW_PKTRX_INT_MASK_DEACT = SPW_PKTRX1_PI_R_DEACT_Msk,
-    SPW_PKTRX_INT_MASK_EOP = SPW_PKTRX1_PI_R_EOP_Msk,
-    SPW_PKTRX_INT_MASK_EEP = SPW_PKTRX1_PI_R_EEP_Msk,
-    SPW_PKTRX_INT_MASK_DISCARD = SPW_PKTRX1_PI_R_DISCARD_Msk,
-    SPW_PKTRX_INT_MASK_ACT = SPW_PKTRX1_PI_R_ACT_Msk,
-    /* Force the compiler to reserve 32-bit memory for enum */
-    SPW_PKTRX_INT_MASK_INVALID = 0xFFFFFFFF
-} SPW_PKTRX_INT_MASK;
+typedef uint32_t SPW_PKTRX_INT_MASK;
+
+#define SPW_PKTRX_INT_MASK_DEACT              (SPW_PKTRX1_PI_R_DEACT_Msk)
+#define SPW_PKTRX_INT_MASK_EOP                (SPW_PKTRX1_PI_R_EOP_Msk)
+#define SPW_PKTRX_INT_MASK_EEP                (SPW_PKTRX1_PI_R_EEP_Msk)
+#define SPW_PKTRX_INT_MASK_DISCARD            (SPW_PKTRX1_PI_R_DISCARD_Msk)
+#define SPW_PKTRX_INT_MASK_ACT                (SPW_PKTRX1_PI_R_ACT_Msk)
+#define SPW_PKTRX_INT_MASK_INVALID            (0xFFFFFFFFUL)
 
 // *****************************************************************************
 /* SPW PKTRX next receive buffer start condition
@@ -147,8 +142,11 @@ typedef enum
     SPW_PKTRX_NXTBUF_START_TCH1 = SPW_PKTRX1_NXTBUFCFG_START_STARTTCH1_Val,
     SPW_PKTRX_NXTBUF_START_LATER = SPW_PKTRX1_NXTBUFCFG_START_STARTLATER_Val,
     /* Force the compiler to reserve 32-bit memory for enum */
-    SPW_PKTRX_NXTBUF_START_INVALID = 0xFFFFFFFF
+    SPW_PKTRX_NXTBUF_START_INVALID = 0xFFFFFFFFUL
 } SPW_PKTRX_NXTBUF_START;
+
+
+/* MISRA C-2012 Rule 6.1 is deviated in the below code block. Deviation record ID - H3_MISRAC_2012_R_6_1_DR_1*/
 
 // *****************************************************************************
 /* SPW PKTRX packet information data
@@ -184,6 +182,8 @@ typedef struct
     uint32_t Etime     : 19;
     uint32_t NotUsed3  : 13;
 } SPW_PKTRX_INFO;
+
+/* MISRAC 2012 deviation block end */
 
 // *****************************************************************************
 // *****************************************************************************

@@ -66,7 +66,7 @@
 // *****************************************************************************
 // *****************************************************************************
 /* Return PREV field value in SPW PKTTX status word. */
-#define SPW_PKTTX_STATUS_PREV_GET(status) ( (SPW_PKTTX_PREV)( (status & SPW_PKTTX_STATUS_PREV_MASK) >> SPW_PKTTX1_STATUS_PREV_Pos ) )
+#define SPW_PKTTX_STATUS_PREV_GET(status) ( (SPW_PKTTX_PREV)( ((status) & SPW_PKTTX_STATUS_PREV_MASK) >> SPW_PKTTX1_STATUS_PREV_Pos ) )
 
 // *****************************************************************************
 // *****************************************************************************
@@ -82,16 +82,14 @@
    Description:
     This data type identifies the SPW PKTTX status
 */
-typedef enum
-{
-    SPW_PKTTX_STATUS_ARM = SPW_PKTTX1_STATUS_ARM_Msk, 
-    SPW_PKTTX_STATUS_ACT = SPW_PKTTX1_STATUS_ACT_Msk,
-    SPW_PKTTX_STATUS_PENDING = SPW_PKTTX1_STATUS_PENDING_Msk,
-    SPW_PKTTX_STATUS_DEACT = SPW_PKTTX1_STATUS_DEACT_Msk,
-    SPW_PKTTX_STATUS_PREV_MASK = SPW_PKTTX1_STATUS_PREV_Msk,
-    /* Force the compiler to reserve 32-bit memory for enum */
-    SPW_PKTTX_STATUS_INVALID = 0xFFFFFFFF
-} SPW_PKTTX_STATUS;
+typedef uint32_t SPW_PKTTX_STATUS;
+
+#define SPW_PKTTX_STATUS_ARM                (SPW_PKTTX1_STATUS_ARM_Msk)
+#define SPW_PKTTX_STATUS_ACT                (SPW_PKTTX1_STATUS_ACT_Msk)
+#define SPW_PKTTX_STATUS_PENDING            (SPW_PKTTX1_STATUS_PENDING_Msk)
+#define SPW_PKTTX_STATUS_DEACT              (SPW_PKTTX1_STATUS_DEACT_Msk)
+#define SPW_PKTTX_STATUS_PREV_MASK          (SPW_PKTTX1_STATUS_PREV_Msk)
+#define SPW_PKTTX_STATUS_INVALID            (0xFFFFFFFFUL)
 
 // *****************************************************************************
 /* SPW PKTTX Previous status
@@ -110,7 +108,7 @@ typedef enum
     SPW_PKTTX_PREV_ABORTEDUSERCMD,
     SPW_PKTTX_PREV_ABORTEDTIMEOUT,
     /* Force the compiler to reserve 32-bit memory for enum */
-    SPW_PKTTX_PREV_INVALID = 0xFFFFFFFF
+    SPW_PKTTX_PREV_INVALID = 0xFFFFFFFFUL
 }SPW_PKTTX_PREV;
 
 // *****************************************************************************
@@ -121,15 +119,13 @@ typedef enum
    Description:
     This data type identifies the SPW PKTTX interrupt status
 */
-typedef enum
-{
-    SPW_PKTTX_INT_MASK_DEACT = SPW_PKTTX1_PI_R_DEACT_Msk,
-    SPW_PKTTX_INT_MASK_ACT = SPW_PKTTX1_PI_R_ACT_Msk,
-    SPW_PKTTX_INT_MASK_EOP = SPW_PKTTX1_PI_R_EOP_Msk,
-    SPW_PKTTX_INT_MASK_EEP = SPW_PKTTX1_PI_R_EEP_Msk,
-    /* Force the compiler to reserve 32-bit memory for enum */
-    SPW_PKTTX_INT_MASK_INVALID = 0xFFFFFFFF
-}SPW_PKTTX_INT_MASK;
+typedef uint32_t SPW_PKTTX_INT_MASK;
+
+#define SPW_PKTTX_INT_MASK_DEACT            (SPW_PKTTX1_PI_R_DEACT_Msk)
+#define SPW_PKTTX_INT_MASK_ACT              (SPW_PKTTX1_PI_R_ACT_Msk)
+#define SPW_PKTTX_INT_MASK_EOP              (SPW_PKTTX1_PI_R_EOP_Msk)
+#define SPW_PKTTX_INT_MASK_EEP              (SPW_PKTTX1_PI_R_EEP_Msk)
+#define SPW_PKTTX_INT_MASK_INVALID          (0xFFFFFFFFUL)
 
 // *****************************************************************************
 /* SPW PKTTX next send list start mode
@@ -145,8 +141,10 @@ typedef enum
     SPW_PKTTX_NXTSEND_START_NOW = SPW_PKTTX1_NXTSENDCFG_START_STARTNOW_Val,
     SPW_PKTTX_NXTSEND_START_TCH1 = SPW_PKTTX1_NXTSENDCFG_START_STARTTCH1_Val,
     /* Force the compiler to reserve 32-bit memory for enum */
-    SPW_PKTTX_NXTSEND_START_INVALID = 0xFFFFFFFF
+    SPW_PKTTX_NXTSEND_START_INVALID = 0xFFFFFFFFUL
 }SPW_PKTTX_NXTSEND_START;
+
+/* MISRA C-2012 Rule 6.1 is deviated in the below code block. Deviation record ID - H3_MISRAC_2012_R_6_1_DR_1*/
 
 // *****************************************************************************
 /* SPW PKTTX send list entry
@@ -206,6 +204,8 @@ typedef struct
     uint32_t NotUsed5   : 13;
 }SPW_PKTTX_SEND_LIST_ENTRY;
 
+/* MISRAC 2012 deviation block end */
+
 // *****************************************************************************
 // *****************************************************************************
 // Section: Interface Routines
@@ -227,7 +227,7 @@ void SPW_PKTTX_InterruptDisable(SPW_PKTTX_INT_MASK interruptMask);
 void SPW_PKTTX_SetNextSendList(uint8_t* routerBytesTable,
                                SPW_PKTTX_SEND_LIST_ENTRY* sendListAddress,
                                uint16_t length,
-                               bool abort,
+                               bool abortCurrent,
                                SPW_PKTTX_NXTSEND_START startMode,
                                uint8_t startValue);
 

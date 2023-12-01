@@ -58,38 +58,38 @@
 // *****************************************************************************
 
 /* Data size of sent and received packets in words */
-#define APP_DATA_SIZE_WORDS                 (16)
+#define APP_DATA_SIZE_WORDS                 (16U)
 
 /* Number of Rx packet in receive buffer */
-#define APP_RX_PACKET_NUM                   (1)
+#define APP_RX_PACKET_NUM                   (1U)
 
 /* Size of Rx packet in receive buffer in bytes :
    Set to the maximum receive size for RMAP reply : 4 word status + data */
-#define APP_RX_PACKET_SIZE_BYTES            ((16+(APP_DATA_SIZE_WORDS*4))*APP_RX_PACKET_NUM)
+#define APP_RX_PACKET_SIZE_BYTES            ((16U+(APP_DATA_SIZE_WORDS*4U))*APP_RX_PACKET_NUM)
 
 /* Number of Tx packet in transmitter list */
-#define APP_TX_NUM_PACKET                   (1)
+#define APP_TX_NUM_PACKET                   (1U)
 
 /* RMAP target logical address for RMAP command examples */
-#define APP_RMAP_TARGET_LOGICAL_ADDRESS     (0x42)
+#define APP_RMAP_TARGET_LOGICAL_ADDRESS     (0x42U)
 
 /* RMAP destination key for RMAP command examples */
-#define APP_RMAP_DESTINATION_KEY            (0x89)
+#define APP_RMAP_DESTINATION_KEY            (0x89U)
 
 /* RMAP initiator reply logical address for RMAP command examples */
-#define APP_RMAP_REPLY_LOGICAL_ADDRESS      (0x46)
+#define APP_RMAP_REPLY_LOGICAL_ADDRESS      (0x46U)
 
 /* RMAP header max size */
-#define APP_RMAP_HEADER_MAX_SIZE            (28)
+#define APP_RMAP_HEADER_MAX_SIZE            (28U)
 
 /* RMAP transaction ID for RMAP command examples */
-#define APP_RMAP_TRANSACTION_ID             (0xABCD)
+#define APP_RMAP_TRANSACTION_ID             (0xABCDU)
 
 /* RMAP write reply size in bytes */
-#define APP_RMAP_WRITE_REPLY_SIZE_BYTES     (8)
+#define APP_RMAP_WRITE_REPLY_SIZE_BYTES     (8U)
 
 /* RMAP read reply size in bytes (without data bytes) */
-#define APP_RMAP_READ_REPLY_SIZE_BYTES      (13)
+#define APP_RMAP_READ_REPLY_SIZE_BYTES      (13U)
 
 // *****************************************************************************
 // *****************************************************************************
@@ -98,35 +98,35 @@
 // *****************************************************************************
 
 /* Tx buffer of data */
-uint32_t __attribute__((aligned (32)))__attribute__((section (".ram_nocache"))) app_tx_data[APP_DATA_SIZE_WORDS] = {0};
+static uint32_t __attribute__((aligned (32)))__attribute__((section (".ram_nocache"))) app_tx_data[APP_DATA_SIZE_WORDS] = {0};
 
 /* Tx send list */
-SPW_PKTTX_SEND_LIST_ENTRY __attribute__((aligned (32)))__attribute__((section (".ram_nocache"))) app_tx_packet_send_list[APP_TX_NUM_PACKET] = {0};
+static SPW_PKTTX_SEND_LIST_ENTRY __attribute__((aligned (32)))__attribute__((section (".ram_nocache"))) app_tx_packet_send_list[APP_TX_NUM_PACKET] = {0};
 
 /* Store information if the TX sequence is ended */
-volatile bool app_tx_is_end = false;
+static volatile bool app_tx_is_end = false;
 
 /* Rx buffer of data */
-uint8_t __attribute__((aligned (32)))__attribute__((section (".ram_nocache"))) app_rx_buffer_data[APP_RX_PACKET_SIZE_BYTES] = {0};
+static uint8_t __attribute__((aligned (32)))__attribute__((section (".ram_nocache"))) app_rx_buffer_data[APP_RX_PACKET_SIZE_BYTES] = {0};
 
 /* Rx packet information list */
-SPW_PKTRX_INFO __attribute__((aligned (32)))__attribute__((section (".ram_nocache"))) app_rx_packet_info[APP_RX_PACKET_NUM] = {0};
+static SPW_PKTRX_INFO __attribute__((aligned (32)))__attribute__((section (".ram_nocache"))) app_rx_packet_info[APP_RX_PACKET_NUM] = {0};
 
 /* Store information if the RX sequence is ended */
-volatile bool app_rx_is_end = false;
+static volatile bool app_rx_is_end = false;
 
 /* Rmap header buffer */
-uint8_t __attribute__((aligned (32)))__attribute__((section (".ram_nocache"))) app_buffer_rmap_header[APP_RMAP_HEADER_MAX_SIZE] = {0};
+static uint8_t __attribute__((aligned (32)))__attribute__((section (".ram_nocache"))) app_buffer_rmap_header[APP_RMAP_HEADER_MAX_SIZE] = {0};
 
 /* Rmap target buffer to be read/write using the RMAP commands */
-uint32_t __attribute__((aligned (32)))__attribute__((section (".ram_nocache"))) app_rmap_modified_buffer[APP_DATA_SIZE_WORDS] = {0};
+static uint32_t __attribute__((aligned (32)))__attribute__((section (".ram_nocache"))) app_rmap_modified_buffer[APP_DATA_SIZE_WORDS] = {0};
 
 // *****************************************************************************
 // *****************************************************************************
 // Section: Local functions
 // *****************************************************************************
 // *****************************************************************************
-/* void APP_SPW_PrintInterruptErrors(uint32_t errors)
+/* static void APP_SPW_PrintInterruptErrors(uint32_t errors)
 
   Summary:
     Function called by the application to print the description of the link
@@ -141,28 +141,44 @@ uint32_t __attribute__((aligned (32)))__attribute__((section (".ram_nocache"))) 
   Remarks:
     None.
 */
-void APP_SPW_PrintInterruptErrors(uint32_t errors)
+static void APP_SPW_PrintInterruptErrors(uint32_t errors)
 {
     if ((errors & SPW_LINK_INT_MASK_DISERR) == SPW_LINK_INT_MASK_DISERR)
+    {
         printf("  Link interface disconnection error detected.\r\n");
+    }
     if ((errors & SPW_LINK_INT_MASK_PARERR) == SPW_LINK_INT_MASK_PARERR)
+    {
         printf("  Link interface parity error detected.\r\n");
+    }
     if ((errors & SPW_LINK_INT_MASK_ESCERR) == SPW_LINK_INT_MASK_ESCERR)
+    {
         printf("  Link interface ESC error detected.\r\n");
+    }
     if ((errors & SPW_LINK_INT_MASK_CRERR) == SPW_LINK_INT_MASK_CRERR)
+    {
         printf("  Link interface credit error detected.\r\n");
+    }
     if ((errors & SPW_LINK_INT_MASK_LINKABORT) == SPW_LINK_INT_MASK_LINKABORT)
+    {
         printf("  Link state has made a transition from Run to Error Reset\r\n");
+    }
     if ((errors & SPW_LINK_INT_MASK_EEPTRANS) == SPW_LINK_INT_MASK_EEPTRANS)
+    {
         printf("  EEP transmitted.\r\n");
+    }
     if ((errors & SPW_LINK_INT_MASK_EEPREC) == SPW_LINK_INT_MASK_EEPREC)
+    {
         printf("  EEP received.\r\n");
+    }
     if ((errors & SPW_LINK_INT_MASK_DISCARD) == SPW_LINK_INT_MASK_DISCARD)
+    {
         printf("  Transmit packet discarded.\r\n");
+    }
 }
 
 // *****************************************************************************
-/* void APP_SPW_InitRx(void)
+/* static void APP_SPW_InitRx(void)
 
    Summary:
     Initialize SPW packet reception circular buffer and start the receptions
@@ -182,9 +198,9 @@ static void APP_SPW_InitRx(uint8_t expectedDataSize)
 {
     uint32_t rxDataSize = expectedDataSize;
     /* round up data size to word size */
-    if ( (rxDataSize % 4) != 0)
+    if ( (rxDataSize % 4U) != 0U )
     {
-        rxDataSize += (4 - (rxDataSize % 4));
+        rxDataSize += (4U - (rxDataSize % 4U));
     }
 
     printf("Initialize packet receiver to receive %d packet(s) of %u bytes\r\n", APP_RX_PACKET_NUM, (unsigned int)rxDataSize);
@@ -209,7 +225,7 @@ static void APP_SPW_InitRx(uint8_t expectedDataSize)
             APP_RX_PACKET_NUM,
             false,
             SPW_PKTRX_NXTBUF_START_NOW,
-            0);
+            0U);
 
     /* Enable packet RX interrupts */
     SPW_PKTRX_InterruptEnable(SPW_PKTRX_INT_MASK_DEACT);
@@ -241,8 +257,12 @@ static void APP_SendCommandRMAP(SPW_LINK link, APP_RMAP_COMMAND_CODE commandCode
     if (commandCode != APP_RMAP_COMMAND_CODE_READ_INC)
     {
         /* Build buffer of data to be transmitted */
-        for (uint32_t i = 0; i < APP_DATA_SIZE_WORDS; i++) {
-            app_tx_data[i]= (((i*4)+3)<<24) + (((i*4)+2)<<16) + (((i*4)+1)<<8) + (i*4) ;
+        for (uint32_t i = 0U; i < APP_DATA_SIZE_WORDS; i++)
+        {
+            app_tx_data[i]= (((i*4U)+3U)<<24U) + \
+                            (((i*4U)+2U)<<16U) + \
+                            (((i*4U)+1U)<<8U)  + \
+                            (i*4U) ;
         }
     }
 
@@ -253,29 +273,29 @@ static void APP_SendCommandRMAP(SPW_LINK link, APP_RMAP_COMMAND_CODE commandCode
                                commandCode,
                                APP_RMAP_DESTINATION_KEY,
                                NULL,
-                               0,
+                               0U,
                                APP_RMAP_REPLY_LOGICAL_ADDRESS,
                                APP_RMAP_TRANSACTION_ID,
-                               0,
+                               0U,
                                memAddress,
-                               APP_DATA_SIZE_WORDS*4);
+                               APP_DATA_SIZE_WORDS*4U);
 
     /* Prepare send list with 1 packet with RMAP header */
     memset(&(app_tx_packet_send_list[0]), 0, sizeof(SPW_PKTTX_SEND_LIST_ENTRY)*APP_TX_NUM_PACKET);
-    app_tx_packet_send_list[0].RSize = 2;
-    app_tx_packet_send_list[0].RB1 = link;
+    app_tx_packet_send_list[0].RSize = 2U;
+    app_tx_packet_send_list[0].RB1 = (uint32_t)link;
     app_tx_packet_send_list[0].RB2 = SPW_ROUTER_RMAP_PORT;
-    app_tx_packet_send_list[0].EscMask = 0xF;
-    app_tx_packet_send_list[0].EscChar = 0xFA;
-    app_tx_packet_send_list[0].HCrc = 1;
+    app_tx_packet_send_list[0].EscMask = 0xFU;
+    app_tx_packet_send_list[0].EscChar = 0xFAU;
+    app_tx_packet_send_list[0].HCrc = 1U;
     app_tx_packet_send_list[0].HSize = rmap_header_size;
     app_tx_packet_send_list[0].HAddr = (unsigned int )  &(app_buffer_rmap_header[0]);
 
     /* If RMAP Command is write, add data buffer address and size */
     if (commandCode != APP_RMAP_COMMAND_CODE_READ_INC)
     {
-        app_tx_packet_send_list[0].DCrc = 1;
-        app_tx_packet_send_list[0].DSize = APP_DATA_SIZE_WORDS * 4;
+        app_tx_packet_send_list[0].DCrc = 1U;
+        app_tx_packet_send_list[0].DSize = APP_DATA_SIZE_WORDS * 4U;
         app_tx_packet_send_list[0].DAddr = (unsigned int) &(app_tx_data[0]);
     }
 
@@ -291,7 +311,7 @@ static void APP_SendCommandRMAP(SPW_LINK link, APP_RMAP_COMMAND_CODE commandCode
         APP_TX_NUM_PACKET,
         true,
         SPW_PKTTX_NXTSEND_START_NOW,
-        0);
+        0U);
 }
 
 // *****************************************************************************
@@ -313,9 +333,13 @@ static void APP_SendCommandRMAP(SPW_LINK link, APP_RMAP_COMMAND_CODE commandCode
 static int8_t APP_SPW_WaitAndCheckRmapReply(uint32_t expectedSize)
 {
     int8_t res = 0;
+    bool tmp_app_rx_is_end = app_rx_is_end;
 
-    /* Wait end of packet form transmit and receive modules */
-    while ( (app_tx_is_end == false) ||  (app_rx_is_end == false) );
+    /* Wait end of packet form transmit and receive modules */      
+    while ( (app_tx_is_end == false) ||  (tmp_app_rx_is_end == false) )
+    {
+        tmp_app_rx_is_end = app_rx_is_end;
+    }
 
     /* Check if there was error in TX send list */
     SPW_PKTTX_STATUS tx_status = SPW_PKTTX_StatusGet();
@@ -333,14 +357,14 @@ static int8_t APP_SPW_WaitAndCheckRmapReply(uint32_t expectedSize)
     SPW_PKTRX_PREV_STATUS status = SPW_PKTRX_GetPreviousBufferStatus();
     /* Check we receive 1 packet with Buffer Info Full and Locked status. */
 
-    SPW_PKTRX_PREV_STATUS expected_status = SPW_PKTRX_PREV_STATUS_LOCKED | SPW_PKTRX_PREV_STATUS_FULLI | SPW_PKTRX_PREV_STATUS_FULLD | 1;
+    SPW_PKTRX_PREV_STATUS expected_status = SPW_PKTRX_PREV_STATUS_LOCKED | SPW_PKTRX_PREV_STATUS_FULLI | SPW_PKTRX_PREV_STATUS_FULLD | 1U;
     if (status != expected_status) {
         printf("    ERROR : RX status differ from expected : 0x%x != 0x%x\r\n", (unsigned int)status, (unsigned int)expected_status);
         res = -1;
     }
 
     /* Check received packet is not split */
-    if (app_rx_packet_info[0].Split) {
+    if ( (app_rx_packet_info[0].Split) != 0U) {
         printf("    ERROR : Packet split : Data have been discarded\r\n");
         res = -1;
     }
@@ -353,7 +377,7 @@ static int8_t APP_SPW_WaitAndCheckRmapReply(uint32_t expectedSize)
 
     /* Get byte pointer on Rx buffer */
     uint8_t* rx_buffer_reply = (uint8_t*)(app_rx_packet_info[0].DAddr);
-    if ( (rx_buffer_reply[1] == 0x01) && (APP_RMAP_PackeTypeGet(rx_buffer_reply[2]) == APP_RMAP_PCK_TYPE_REPLY) )
+    if ( (rx_buffer_reply[1] == 0x01U) && (APP_RMAP_PackeTypeGet(rx_buffer_reply[2]) == APP_RMAP_PCK_TYPE_REPLY) )
     {
         // Write reply
         if ( APP_RMAP_CommandCodeGet(rx_buffer_reply[2]) == APP_RMAP_COMMAND_CODE_WRITE_INC_REPLY )
@@ -376,20 +400,24 @@ static int8_t APP_SPW_WaitAndCheckRmapReply(uint32_t expectedSize)
 
             printf("ID = 0x%x, with status : 0x%x\r\n", transaction_id, rx_buffer_reply[3]);
 
-            if ( (rx_buffer_reply[3] != 0) || (transaction_id != APP_RMAP_TRANSACTION_ID) )
+            if ( (rx_buffer_reply[3] != 0U) || (transaction_id != APP_RMAP_TRANSACTION_ID) )
             {
                 res = -1;
             }
 
             if ( APP_RMAP_CommandCodeGet(rx_buffer_reply[2]) == APP_RMAP_COMMAND_CODE_READ_INC )
             {
-                uint32_t data_length =  ((uint16_t)(rx_buffer_reply[8]) << 16) + ((uint16_t)(rx_buffer_reply[9]) << 8) + rx_buffer_reply[10];
+                uint32_t data_length =  (uint32_t)(((uint32_t)(rx_buffer_reply[8]) << 16U) + \
+                                                   ((uint32_t)(rx_buffer_reply[9]) << 8U)  + \
+                                                   rx_buffer_reply[10]);
                 printf("      Receive %u bytes of data :", (unsigned int)data_length);
-                for (uint32_t i=0; i<data_length; i++)
+                for (uint32_t i=0U; i<data_length; i++)
                 {
-                    if ((i%16) == 0)
+                    if ((i%16U) == 0U)
+                    {
                         printf("\r\n        ");
-                    printf("%02X, ", rx_buffer_reply[12+i]);
+                    }
+                    printf("%02X, ", rx_buffer_reply[12U+i]);
                 }
                 printf("\r\n");
             }
@@ -405,7 +433,7 @@ static int8_t APP_SPW_WaitAndCheckRmapReply(uint32_t expectedSize)
 }
 
 // *****************************************************************************
-/* void APP_SPW_Callback(SPW_INT_MASK irqStatus, uintptr_t context)
+/* static void APP_SPW_Callback(SPW_INT_MASK irqStatus, uintptr_t context)
 
   Summary:
     Function called by SPW PLIB.
@@ -416,36 +444,36 @@ static int8_t APP_SPW_WaitAndCheckRmapReply(uint32_t expectedSize)
   Remarks:
     None.
 */
-void APP_SPW_Callback(SPW_INT_MASK irqStatus, uintptr_t context)
+static void APP_SPW_Callback(SPW_INT_MASK irqStatus, uintptr_t context)
 {
-    if (irqStatus & SPW_INT_MASK_PKTTX1)
+    if ( (irqStatus & SPW_INT_MASK_PKTTX1) != 0U )
     {
         SPW_PKTTX_INT_MASK status = SPW_PKTTX_IrqStatusGetMaskedAndClear();
 
-        if (status & SPW_PKTTX_INT_MASK_DEACT)
+        if ( (status & SPW_PKTTX_INT_MASK_DEACT) != 0U )
         {
             app_tx_is_end = true;
         }
     }
 
-    if (irqStatus & SPW_INT_MASK_PKTRX1)
+    if ( (irqStatus & SPW_INT_MASK_PKTRX1) != 0U )
     {
         SPW_PKTRX_INT_MASK status = SPW_PKTRX_IrqStatusGetMaskedAndClear();
 
-        if (status & SPW_PKTRX_INT_MASK_DEACT)
+        if ( (status & SPW_PKTRX_INT_MASK_DEACT) != 0U )
         {
             app_rx_is_end = true;
         }
     }
 
-    if (irqStatus & SPW_INT_MASK_LINK1)
+    if ( (irqStatus & SPW_INT_MASK_LINK1) != 0U )
     {
         SPW_LINK_INT_MASK status = SPW_LINK_IrqStatusGetMaskedAndClear(SPW_LINK_1);
         printf("ERROR(s) on SPW Link 1 :\r\n");
         APP_SPW_PrintInterruptErrors(status);
     }
 
-    if (irqStatus & SPW_INT_MASK_LINK2)
+    if ( (irqStatus & SPW_INT_MASK_LINK2) != 0U )
     {
         SPW_LINK_INT_MASK status = SPW_LINK_IrqStatusGetMaskedAndClear(SPW_LINK_2);
         printf("ERROR(s) on SPW Link 2 :\r\n");
@@ -493,8 +521,8 @@ int main ( void )
     printf("Wait for both SWP link switch to run state\r\n");
 
     /* Wait link goes to Run state */
-    SPW_LINK_STATE spwLink1Status = 0;
-    SPW_LINK_STATE spwLink2Status = 0;
+    SPW_LINK_STATE spwLink1Status = SPW_LINK_STATE_ERROR_RESET;
+    SPW_LINK_STATE spwLink2Status = SPW_LINK_STATE_ERROR_RESET;
     do
     {
         spwLink1Status = SPW_LINK_GET_STATE(SPW_LINK_StatusGet(SPW_LINK_1));
@@ -522,13 +550,13 @@ int main ( void )
         printf("  RMAP write command reply with status OK\r\n");
     }
 
-    APP_SPW_InitRx( APP_RMAP_READ_REPLY_SIZE_BYTES + (APP_DATA_SIZE_WORDS * 4) );
+    APP_SPW_InitRx( APP_RMAP_READ_REPLY_SIZE_BYTES + (APP_DATA_SIZE_WORDS * 4U) );
 
     printf("Send SWP packet with RMAP command read\r\n");
     APP_SendCommandRMAP(SPW_LINK_1, APP_RMAP_COMMAND_CODE_READ_INC, (uint32_t)&(app_rmap_modified_buffer[0]));
 
     printf("Wait RMAP reply\r\n");
-    result = APP_SPW_WaitAndCheckRmapReply(APP_RMAP_READ_REPLY_SIZE_BYTES + (APP_DATA_SIZE_WORDS * 4) );
+    result = APP_SPW_WaitAndCheckRmapReply(APP_RMAP_READ_REPLY_SIZE_BYTES + (APP_DATA_SIZE_WORDS * 4U) );
 
     if (result != 0)
     {
@@ -539,7 +567,10 @@ int main ( void )
         printf("  RMAP read command reply with status OK\r\n");
     }
 
-    while ( true );
+    while ( true )
+    {
+        /* End of example */
+    }
 
     /* Execution should not come here during normal operation */
 

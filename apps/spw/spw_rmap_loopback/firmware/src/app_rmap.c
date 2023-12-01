@@ -112,14 +112,14 @@ uint8_t APP_RMAP_GenerateHeader( const uint8_t* headerBufferAddress,
                                uint32_t dataLength )
 {
     uint8_t* header_ptr = (uint8_t*)headerBufferAddress;
-    uint8_t header_size = 15;
-    uint8_t reply_address_length = 0;
+    uint8_t header_size = 15U;
+    uint8_t reply_address_length = 0U;
 
-    if (replyAddrTableSize != 0)
+    if (replyAddrTableSize != 0U)
     {
-        reply_address_length = (replyAddrTableSize / 4) + 1;
+        reply_address_length = (replyAddrTableSize / 4U) + 1U;
     }
-    header_size += reply_address_length * 4;
+    header_size += reply_address_length * 4U;
 
     // Target logical address
     *(header_ptr++) = targetLogicalAddr;
@@ -131,14 +131,14 @@ uint8_t APP_RMAP_GenerateHeader( const uint8_t* headerBufferAddress,
     // Key
     *(header_ptr++) = key ;
     // Reply address
-    if (replyAddrTableSize != 0)
+    if (replyAddrTableSize != 0U)
     {
         // Fill unused with zero
-        for (uint8_t i=0; i< ( (reply_address_length * 4) - replyAddrTableSize); i++)
+        for (uint8_t i=0U; i< ( (reply_address_length * 4U) - replyAddrTableSize); i++)
         {
-            *(header_ptr++) = 0;
+            *(header_ptr++) = 0U;
         }
-        for (uint8_t i=0; i<replyAddrTableSize; i++)
+        for (uint8_t i=0U; i<replyAddrTableSize; i++)
         {
             *(header_ptr++) = replyAddrTablePtr[i];
         }
@@ -146,19 +146,19 @@ uint8_t APP_RMAP_GenerateHeader( const uint8_t* headerBufferAddress,
     // Initiator logical address
     *(header_ptr++) = initiatorLogicalAddr ;
     // Transaction Identifier
-    *(header_ptr++) = (transactionId >> 8) & 0xFF;
-    *(header_ptr++) = transactionId & 0xFF;
+    *(header_ptr++) = (uint8_t)((transactionId >> 8U) & 0xFFU);
+    *(header_ptr++) = (uint8_t)(transactionId & 0xFFU);
     // Extended Address
     *(header_ptr++) = extendedMemAddr;
     // Memory address
-    *(header_ptr++) = (MemAddr >> 24) & 0xFF;
-    *(header_ptr++) = (MemAddr >> 16) & 0xFF;
-    *(header_ptr++) = (MemAddr >> 8) & 0xFF;
-    *(header_ptr++) = MemAddr & 0xFF;
+    *(header_ptr++) = (uint8_t)((MemAddr >> 24U) & 0xFFU);
+    *(header_ptr++) = (uint8_t)((MemAddr >> 16U) & 0xFFU);
+    *(header_ptr++) = (uint8_t)((MemAddr >> 8U) & 0xFFU);
+    *(header_ptr++) = (uint8_t)(MemAddr & 0xFFU);
     // Data lenght
-    *(header_ptr++) = (dataLength >> 16) & 0xFF;
-    *(header_ptr++) = (dataLength >> 8) & 0xFF;
-    *(header_ptr++) = dataLength & 0xFF;
+    *(header_ptr++) = (uint8_t)((dataLength >> 16U) & 0xFFU);
+    *(header_ptr++) = (uint8_t)((dataLength >> 8U) & 0xFFU);
+    *(header_ptr++) = (uint8_t)(dataLength & 0xFFU);
 
     return header_size;
 }
@@ -187,7 +187,7 @@ uint8_t APP_RMAP_GenerateHeader( const uint8_t* headerBufferAddress,
 */
 uint8_t APP_RMAP_GenerateInstructionByte(APP_RMAP_PCK_TYPE packetType, APP_RMAP_COMMAND_CODE commandCode, uint8_t replyAddrLength)
 {
-    return (packetType << 6) | (commandCode << 2) | replyAddrLength;
+    return ((uint8_t)packetType << 6U) | ((uint8_t)commandCode << 2U) | replyAddrLength;
 }
 
 // *****************************************************************************
@@ -211,7 +211,7 @@ uint8_t APP_RMAP_GenerateInstructionByte(APP_RMAP_PCK_TYPE packetType, APP_RMAP_
 */
 APP_RMAP_PCK_TYPE APP_RMAP_PackeTypeGet(uint8_t instuctionByte)
 {
-    return (APP_RMAP_PCK_TYPE)(instuctionByte >> 6);
+    return (APP_RMAP_PCK_TYPE)(uint8_t)(instuctionByte >> 6U);
 }
 
 // *****************************************************************************
@@ -235,6 +235,6 @@ APP_RMAP_PCK_TYPE APP_RMAP_PackeTypeGet(uint8_t instuctionByte)
 */
 APP_RMAP_COMMAND_CODE APP_RMAP_CommandCodeGet(uint8_t instuctionByte)
 {
-    return (APP_RMAP_COMMAND_CODE)((instuctionByte & 0x3C) >> 2);
+    return (APP_RMAP_COMMAND_CODE)(uint8_t)((instuctionByte & 0x3CU) >> 2U);
 }
 

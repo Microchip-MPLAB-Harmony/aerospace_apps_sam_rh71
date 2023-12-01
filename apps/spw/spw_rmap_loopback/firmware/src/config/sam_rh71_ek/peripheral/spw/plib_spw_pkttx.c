@@ -167,7 +167,7 @@ void SPW_PKTTX_InterruptDisable(SPW_PKTTX_INT_MASK interruptMask)
                        packets in the send list. All bytes are set to 0 if this pointer is NULL.
     sendListAddress - pointer to the send list type object that will be transmitted.
     length - number of entries in send list.
-    abort - set to True if any ongoing send list should be abort when this send list wants to start.
+    abortCurrent - set to True if any ongoing send list should be abort when this send list wants to start.
     startMode - send list start mode condition.
     startValue - Matching value for event start condition.
 
@@ -177,19 +177,23 @@ void SPW_PKTTX_InterruptDisable(SPW_PKTTX_INT_MASK interruptMask)
 void SPW_PKTTX_SetNextSendList(uint8_t* routerBytesTable,
                                SPW_PKTTX_SEND_LIST_ENTRY* sendListAddress,
                                uint16_t length,
-                               bool abort,
+                               bool abortCurrent,
                                SPW_PKTTX_NXTSEND_START startMode,
                                uint8_t startValue)
 {
     if ( routerBytesTable == NULL )
+    {
         SPW_REGS->SPW_PKTTX1_NXTSENDROUT = 0;
+    }
     else
-        SPW_REGS->SPW_PKTTX1_NXTSENDROUT = (routerBytesTable[0] << 24 ) | \
-                                           (routerBytesTable[1] << 16 ) | \
-                                           (routerBytesTable[2] << 8 ) | \
-                                           (routerBytesTable[3]);
+    {
+        SPW_REGS->SPW_PKTTX1_NXTSENDROUT = ((uint32_t)(routerBytesTable[0]) << 24 ) | \
+                                           ((uint32_t)(routerBytesTable[1]) << 16 ) | \
+                                           ((uint32_t)(routerBytesTable[2]) << 8 ) | \
+                                           ((uint32_t)(routerBytesTable[3]));
+    }
     SPW_REGS->SPW_PKTTX1_NXTSENDADDR = (uint32_t)sendListAddress;
-    SPW_REGS->SPW_PKTTX1_NXTSENDCFG = SPW_PKTTX1_NXTSENDCFG_ABORT(abort) | \
+    SPW_REGS->SPW_PKTTX1_NXTSENDCFG = SPW_PKTTX1_NXTSENDCFG_ABORT(abortCurrent) | \
                                       SPW_PKTTX1_NXTSENDCFG_START(startMode)  | \
                                       SPW_PKTTX1_NXTSENDCFG_VALUE(startValue)  | \
                                       SPW_PKTTX1_NXTSENDCFG_LEN(length);

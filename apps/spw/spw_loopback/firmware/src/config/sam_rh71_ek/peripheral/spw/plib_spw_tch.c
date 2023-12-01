@@ -76,9 +76,13 @@ void SPW_TCH_LinkListenerSet(SPW_TCH_SEL_LINK_MASK links)
 {
     uint32_t cfgListenReg = 0;
     if ( (links & SPW_TCH_SEL_LINK_MASK_L1) == SPW_TCH_SEL_LINK_MASK_L1)
+    {
         cfgListenReg |= SPW_TCH_CFGLISTEN_L1(1);
+    }
     if ( (links & SPW_TCH_SEL_LINK_MASK_L2) == SPW_TCH_SEL_LINK_MASK_L2)
+    {
         cfgListenReg |= SPW_TCH_CFGLISTEN_L2(1);
+    }
     SPW_REGS->SPW_TCH_CFGLISTEN = cfgListenReg;
 }
 
@@ -102,9 +106,13 @@ void SPW_TCH_LinkSenderSet(SPW_TCH_SEL_LINK_MASK links)
 {
     uint32_t cfgSendReg = 0;
     if ( (links & SPW_TCH_SEL_LINK_MASK_L1) == SPW_TCH_SEL_LINK_MASK_L1)
+    {
         cfgSendReg |= SPW_TCH_CFGSEND_S1(1);
+    }
     if ( (links & SPW_TCH_SEL_LINK_MASK_L2) == SPW_TCH_SEL_LINK_MASK_L2)
+    {
         cfgSendReg |= SPW_TCH_CFGSEND_S2(1);
+    }
     SPW_REGS->SPW_TCH_CFGSEND = cfgSendReg;
 }
 
@@ -152,7 +160,10 @@ void SPW_TCH_ConfigureRestart(uint8_t timeCodeValue, bool oneshot, SPW_TCH_CFG_R
 {
     uint32_t cgfRestartReg = SPW_TCH_CFGRESTART_VALUE(timeCodeValue);
     if (oneshot == true)
+    {
         cgfRestartReg |= SPW_TCH_CFGRESTART_ONESHOT(1);
+    }
+
     if (inputEvent == SPW_TCH_CFG_RESTART_IN_PPS)
     {
         cgfRestartReg |= SPW_TCH_CFGRESTART_PPS(1);
@@ -161,6 +172,11 @@ void SPW_TCH_ConfigureRestart(uint8_t timeCodeValue, bool oneshot, SPW_TCH_CFG_R
     {
         cgfRestartReg |= SPW_TCH_CFGRESTART_EVENT(eventMask);
     }
+    else
+    {
+        /* No restart event selected */
+    }
+
     SPW_REGS->SPW_TCH_CFGRESTART = cgfRestartReg;
 }
 
@@ -230,7 +246,9 @@ void SPW_TCH_LastTimeCodeSet(uint8_t timeCode, bool now)
 {
     uint32_t lastTimeCodeReg = SPW_TCH_LASTTIMECODE_VALUE(timeCode);
     if (now == true)
+    {
         lastTimeCodeReg |= SPW_TCH_LASTTIMECODE_SEND(1);
+    }
     SPW_REGS->SPW_TCH_LASTTIMECODE = lastTimeCodeReg;
 }
 

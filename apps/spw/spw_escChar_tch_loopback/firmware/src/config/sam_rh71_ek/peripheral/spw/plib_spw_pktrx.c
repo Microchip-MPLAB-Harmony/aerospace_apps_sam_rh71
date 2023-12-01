@@ -84,9 +84,13 @@
 void SPW_PKTRX_SetDiscard(bool discard)
 {
     if (discard == true)
+    {
         SPW_REGS->SPW_PKTRX1_CFG = SPW_PKTRX1_CFG_DISCARD(1);
+    }
     else
+    {
         SPW_REGS->SPW_PKTRX1_CFG = 0;
+    }
 }
 
 // *****************************************************************************

@@ -65,7 +65,7 @@
 // *****************************************************************************
 // *****************************************************************************
 /* Return SPW RMAP Error Code from RMAP status word. */
-#define SPW_RMAP_STATUS_GET_ERRCODE(status) ( (SPW_RMAP_ERRCODE)( (status & SPW_RMAP_STATUS_ERRCODE_MASK) >> SPW_RMAP1_STS_RC_ERRCODE_Pos ) )
+#define SPW_RMAP_STATUS_GET_ERRCODE(status) ( (SPW_RMAP_ERRCODE)( ((status) & SPW_RMAP_STATUS_ERRCODE_MASK) >> SPW_RMAP1_STS_RC_ERRCODE_Pos ) )
 
 // *****************************************************************************
 // *****************************************************************************
@@ -79,13 +79,11 @@
    Description:
     This data type identifies the SPW RMAP status
 */
-typedef enum
-{
-    SPW_RMAP_STATUS_ERRCODE_MASK = SPW_RMAP1_STS_RC_ERRCODE_Msk, 
-    SPW_RMAP_STATUS_VALID = SPW_RMAP1_STS_RC_VALID_Msk,
-    /* Force the compiler to reserve 32-bit memory for enum */
-    SPW_RMAP_STATUS_INVALID = 0xFFFFFFFF
-} SPW_RMAP_STATUS;
+typedef uint32_t SPW_RMAP_STATUS;
+
+#define SPW_RMAP_STATUS_ERRCODE_MASK            (SPW_RMAP1_STS_RC_ERRCODE_Msk)
+#define SPW_RMAP_STATUS_VALID                   (SPW_RMAP1_STS_RC_VALID_Msk)
+#define SPW_RMAP_STATUS_INVALID                 (0xFFFFFFFFUL)
 
 // *****************************************************************************
 /* SPW RMAP Error Code
@@ -124,7 +122,7 @@ typedef enum
     /* Unsupported reply address length */
     SPW_RMAP_ERRCODE_REPLYADDERROR = SPW_RMAP1_STS_RC_ERRCODE_REPLYADDERROR_Val,
     /* Force the compiler to reserve 32-bit memory for enum */
-    SPW_RMAP_ERRCODE_INVALID = 0xFFFFFFFF
+    SPW_RMAP_ERRCODE_INVALID = 0xFFFFFFFFUL
 } SPW_RMAP_ERRCODE;
 
 // *****************************************************************************

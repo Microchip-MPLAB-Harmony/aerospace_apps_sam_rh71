@@ -102,7 +102,9 @@ void SPW_ROUTER_TimeoutDisable(bool disable)
 {
     uint32_t cfgReg = ( SPW_REGS->SPW_ROUTER_CFG & ~SPW_ROUTER_CFG_DISTIMEOUT_Msk );
     if (disable == true)
+    {
         cfgReg |= SPW_ROUTER_CFG_DISTIMEOUT(1);
+    }
     SPW_REGS->SPW_ROUTER_CFG = cfgReg;
 }
 
@@ -126,7 +128,9 @@ void SPW_ROUTER_LogicalAddressRoutingEnable(bool enable)
 {
     uint32_t cfgReg = ( SPW_REGS->SPW_ROUTER_CFG & ~SPW_ROUTER_CFG_LAENA_Msk );
     if (enable == true)
+    {
         cfgReg |= SPW_ROUTER_CFG_LAENA(1);
+    }
     SPW_REGS->SPW_ROUTER_CFG = cfgReg;
 }
 
@@ -150,7 +154,9 @@ void SPW_ROUTER_FallbackEnable(bool enable)
 {
     uint32_t cfgReg = ( SPW_REGS->SPW_ROUTER_CFG & ~SPW_ROUTER_CFG_FALLBACK_Msk );
     if (enable == true)
+    {
         cfgReg |= SPW_ROUTER_CFG_FALLBACK(1);
+    }
     SPW_REGS->SPW_ROUTER_CFG = cfgReg;
 }
 
@@ -174,12 +180,14 @@ void SPW_ROUTER_FallbackEnable(bool enable)
 */
 void SPW_ROUTER_RoutingTableEntrySet(uint8_t logicalAddress, bool delHeader, SPW_ROUTER_PHYS_ADDR physicalAddress)
 {
-    if ( logicalAddress >= 32 )
+    if ( logicalAddress >= 32U )
     {
         uint32_t entry = SPW_ROUTER_TABLE_ADDR(physicalAddress);
         if (delHeader == true)
+        {
             entry |= SPW_ROUTER_TABLE_DELHEAD(1);
-        SPW_REGS->SPW_ROUTER_TABLE[logicalAddress-32] = entry; 
+        }
+        SPW_REGS->SPW_ROUTER_TABLE[logicalAddress-32U] = entry; 
     }
 }
 

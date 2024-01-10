@@ -4,15 +4,12 @@ package:
   version: "v3.1.0"
   type: "application"
   status: "production"
-  required: true
+  required: false
 
   dependencies:
     - name: "csp"
       type: "package"
-      version: "v3.18.0"
+      version: "v3.18.2"
     - name: "aerospace"
       type: "package"
-      version: "v3.4.0"
-    - name: "dev_packs"
-      type: "package"
-      version: "3.18.0"
+      version: "v3.5.0"

@@ -66,7 +66,7 @@
 // *****************************************************************************
 // *****************************************************************************
 /* Return PREV field value in SPW PKTTX status word. */
-#define SPW_PKTTX_STATUS_PREV_GET(status) ( (SPW_PKTTX_PREV)( ((status) & SPW_PKTTX_STATUS_PREV_MASK) >> SPW_PKTTX1_STATUS_PREV_Pos ) )
+#define SPW_PKTTX_STATUS_PREV_GET(status) ((SPW_PKTTX_PREV)(uint8_t)(((status) & SPW_PKTTX_STATUS_PREV_MASK) >> SPW_PKTTX1_STATUS_PREV_Pos))
 
 // *****************************************************************************
 // *****************************************************************************

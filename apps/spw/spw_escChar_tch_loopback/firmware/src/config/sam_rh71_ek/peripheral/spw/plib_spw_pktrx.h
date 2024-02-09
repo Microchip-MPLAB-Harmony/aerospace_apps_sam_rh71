@@ -66,7 +66,7 @@
 // *****************************************************************************
 // *****************************************************************************
 /* Return count field value in SPW PKTRX previous status word. This is the number of packets received in previous buffer. */
-#define SPW_PKTRX_PREV_STATUS_GET_COUNT(status) ( ((status) & SPW_PKTRX_PREV_STATUS_CNT_MASK) >> SPW_PKTRX1_PREVBUFSTS_CNT_Pos )
+#define SPW_PKTRX_PREV_STATUS_GET_COUNT(status) (uint16_t)( ((status) & SPW_PKTRX_PREV_STATUS_CNT_MASK) >> SPW_PKTRX1_PREVBUFSTS_CNT_Pos )
 
 // *****************************************************************************
 // *****************************************************************************

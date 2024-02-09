@@ -4,17 +4,20 @@
 
 
 project: ip1553_bc_operation_blocking
-creation_date: 2023-11-28T10:53:56.229+01:00[Europe/Paris]    # ISO 8601 format: https://www.w3.org/TR/NOTE-datetime
+creation_date: 2024-02-09T16:57:17.266+01:00[Europe/Paris]    # ISO 8601 format: https://www.w3.org/TR/NOTE-datetime
 operating_system: Windows 10
 mcc_mode: IDE            # [IDE|Standalone|Headless]
-mcc_version: v5.3.7
-mcc_core_version: v5.5.7
+mcc_version: v5.4.1
+mcc_core_version: v5.6.1
 mplabx_version: v6.15        # if MPLAB X plugin only
-harmony_version: v1.3.2
-compiler: XC32 (v4.30) 
+harmony_version: v1.4.1
+compiler: XC32 4.35
 
 modules:
-    - {name: "csp", version: "v3.18.0-1-g10fa1ab"}
-    - {name: "dev_packs", version: "v3.18.0-rc.1-3-g35069ab"}
-    - {name: "aerospace", version: "v3.4.0-1-gd9486ea"}
+    - {name: "csp", version: "v3.18.2"}
+    - {name: "CMSIS_5", version: "5.8.0"}
+    - {name: "aerospace", version: "v3.5.0"}
+
+packs:
+    - {name: "SAMRH71_DFP", version: "2.5.142"}
 

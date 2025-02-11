@@ -155,6 +155,24 @@
       </logicalFolder>
       <itemPath>../src/app_rmap.h</itemPath>
     </logicalFolder>
+    <logicalFolder name="ExternalFiles"
+                   displayName="Important Files"
+                   projectFiles="true">
+      <logicalFolder name="f1" displayName="sam_rh71_ek.mhc" projectFiles="true">
+        <itemPath>../src/config/sam_rh71_ek/sam_rh71_ek.mhc/cmsis.yml</itemPath>
+        <itemPath>../src/config/sam_rh71_ek/sam_rh71_ek.mhc/core.yml</itemPath>
+        <itemPath>../src/config/sam_rh71_ek/sam_rh71_ek.mhc/dfp.yml</itemPath>
+        <itemPath>../src/config/sam_rh71_ek/sam_rh71_ek.mhc/flexcom1.yml</itemPath>
+        <itemPath>../src/config/sam_rh71_ek/sam_rh71_ek.mhc/GraphSettings.yml</itemPath>
+        <itemPath>../src/config/sam_rh71_ek/sam_rh71_ek.mhc/project.yml</itemPath>
+        <itemPath>../src/config/sam_rh71_ek/sam_rh71_ek.mhc/settings.yml</itemPath>
+        <itemPath>../src/config/sam_rh71_ek/sam_rh71_ek.mhc/spw.yml</itemPath>
+        <itemPath>../src/config/sam_rh71_ek/sam_rh71_ek.mhc/stdio.yml</itemPath>
+      </logicalFolder>
+      <itemPath>Makefile</itemPath>
+      <itemPath>../src/config/sam_rh71_ek/harmony-manifest-success.yml</itemPath>
+      <itemPath>spw_rmap_loopback.mc3</itemPath>
+    </logicalFolder>
     <logicalFolder name="LinkerScript"
                    displayName="Linker Files"
                    projectFiles="true">
@@ -209,24 +227,6 @@
       <itemPath>../src/app_rmap.c</itemPath>
       <itemPath>../src/main.c</itemPath>
       <itemPath>../src/config/sam_rh71_ek/pin_configurations.csv</itemPath>
-    </logicalFolder>
-    <logicalFolder name="ExternalFiles"
-                   displayName="Important Files"
-                   projectFiles="false">
-      <logicalFolder name="f1" displayName="sam_rh71_ek.mhc" projectFiles="true">
-        <itemPath>../src/config/sam_rh71_ek/sam_rh71_ek.mhc/cmsis.yml</itemPath>
-        <itemPath>../src/config/sam_rh71_ek/sam_rh71_ek.mhc/core.yml</itemPath>
-        <itemPath>../src/config/sam_rh71_ek/sam_rh71_ek.mhc/dfp.yml</itemPath>
-        <itemPath>../src/config/sam_rh71_ek/sam_rh71_ek.mhc/flexcom1.yml</itemPath>
-        <itemPath>../src/config/sam_rh71_ek/sam_rh71_ek.mhc/GraphSettings.yml</itemPath>
-        <itemPath>../src/config/sam_rh71_ek/sam_rh71_ek.mhc/project.yml</itemPath>
-        <itemPath>../src/config/sam_rh71_ek/sam_rh71_ek.mhc/settings.yml</itemPath>
-        <itemPath>../src/config/sam_rh71_ek/sam_rh71_ek.mhc/spw.yml</itemPath>
-        <itemPath>../src/config/sam_rh71_ek/sam_rh71_ek.mhc/stdio.yml</itemPath>
-      </logicalFolder>
-      <itemPath>Makefile</itemPath>
-      <itemPath>../src/config/sam_rh71_ek/harmony-manifest-success.yml</itemPath>
-      <itemPath>spw_rmap_loopback.mc3</itemPath>
     </logicalFolder>
   </logicalFolder>
   <sourceRootList>

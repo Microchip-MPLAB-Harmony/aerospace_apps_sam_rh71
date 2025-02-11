@@ -113,23 +113,16 @@ Initialize Main Clock (MAINCK)
 *********************************************************************************/
 static void CLK_MainClockInitialize(void)
 {
-    /* Enable Main Crystal Oscillator */
-    PMC_REGS->CKGR_MOR = (PMC_REGS->CKGR_MOR & ~CKGR_MOR_MOSCXTST_Msk) | CKGR_MOR_KEY_PASSWD | CKGR_MOR_MOSCXTST(0) | CKGR_MOR_MOSCXTEN_Msk;
+    /* Disable Main Crystal Oscillator and Enable External Clock Signal on XIN pin  */
+    PMC_REGS->CKGR_MOR = (PMC_REGS->CKGR_MOR & ~CKGR_MOR_MOSCXTEN_Msk) | CKGR_MOR_KEY_PASSWD | CKGR_MOR_MOSCXTBY_Msk;
 
-    /* Wait until the main oscillator clock is ready */
-    while ( (PMC_REGS->PMC_SR & PMC_SR_MOSCXTS_Msk) != PMC_SR_MOSCXTS_Msk)
-    {
-        /* Wait until the main oscillator clock is ready */
-    }
-
-    /* Main Crystal Oscillator is selected as the Main Clock (MAINCK) source.
-    Switch Main Clock (MAINCK) to Main Crystal Oscillator clock */
+     /* External clock signal (XIN pin) is selected as the Main Clock (MAINCK) source.
+        Switch Main Clock (MAINCK) to External signal on XIN pin */
     PMC_REGS->CKGR_MOR |= CKGR_MOR_KEY_PASSWD | CKGR_MOR_MOSCSEL_Msk;
 
-    /* Wait until MAINCK is switched to Main Crystal Oscillator */
     while ( (PMC_REGS->PMC_SR & PMC_SR_MOSCSELS_Msk) != PMC_SR_MOSCSELS_Msk)
     {
-        /* Wait until MAINCK is switched to Main Crystal Oscillator */
+        /* Wait until MAINCK is switched to External Clock Signal (XIN pin) */
     }
 
     /* Disable the RC Oscillator */

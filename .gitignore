@@ -2,6 +2,7 @@
 *.elf
 *.map
 *.d
+*.bak*
 **/nbproject/private
 **/nbproject/Makefile-*
 **/nbproject/Package-*
@@ -9,6 +10,7 @@
 **/*.X/debug
 **/*.X/dist
 **/*.X/build
+**/*.X/queuelogs
 **/*.X/.generated_files
 **/*.X/defmplabxtrace.log*
 **/*.IAR/Debug

@@ -62,7 +62,7 @@
 
 
 /* Callback object for channel 0 */
-volatile static TC_TIMER_CALLBACK_OBJECT TC0_CH0_CallbackObj;
+static volatile TC_TIMER_CALLBACK_OBJECT TC0_CH0_CallbackObj;
 
 /* Initialize channel in timer mode */
 void TC0_CH0_TimerInitialize (void)
@@ -149,7 +149,7 @@ void __attribute__((used)) TC0_CH0_InterruptHandler(void)
 
 
 /* Callback object for channel 1 */
-volatile static TC_TIMER_CALLBACK_OBJECT TC0_CH1_CallbackObj;
+static volatile TC_TIMER_CALLBACK_OBJECT TC0_CH1_CallbackObj;
 
 /* Initialize channel in timer mode */
 void TC0_CH1_TimerInitialize (void)
@@ -236,7 +236,7 @@ void __attribute__((used)) TC0_CH1_InterruptHandler(void)
 
 
 /* Callback object for channel 2 */
-volatile static TC_TIMER_CALLBACK_OBJECT TC0_CH2_CallbackObj;
+static volatile TC_TIMER_CALLBACK_OBJECT TC0_CH2_CallbackObj;
 
 /* Initialize channel in timer mode */
 void TC0_CH2_TimerInitialize (void)

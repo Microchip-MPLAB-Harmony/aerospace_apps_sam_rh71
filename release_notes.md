@@ -1,12 +1,39 @@
-﻿---
-title: Release notes
-nav_order: 99
----
-
-![Microchip logo](https://raw.githubusercontent.com/wiki/Microchip-MPLAB-Harmony/Microchip-MPLAB-Harmony.github.io/images/microchip_logo.png)
+﻿![Microchip logo](https://raw.githubusercontent.com/wiki/Microchip-MPLAB-Harmony/Microchip-MPLAB-Harmony.github.io/images/microchip_logo.png)
 ![Harmony logo small](https://raw.githubusercontent.com/wiki/Microchip-MPLAB-Harmony/Microchip-MPLAB-Harmony.github.io/images/microchip_mplab_harmony_logo_small.png)
 
 # Microchip MPLAB® Harmony 3 Aerospace Application examples for SAMRH71 Release Notes
+
+## Harmony 3 Aerospace application examples for SAMRH71 family v3.2.0
+
+### Development kit and demo application support
+
+Following table provides number of peripheral library examples available for different development kits.
+
+| Development Kits  | MPLABx applications |
+|:-----------------:|:-------------------:|
+| SAM RH71 Evaluation Kit | 8 |
+
+### New Features
+
+- Applications updated and regenerated with modules CSP v3.21.0 and Aerospace v3.5.1.
+- Updated the clock settings to a unified configuration for all examples.
+- Update readme and link to online documentation
+
+### Known Issues
+
+- None
+
+### Development Tools
+
+- [MPLAB® X IDE v6.20](https://www.microchip.com/mplab/mplab-x-ide)
+- MPLAB® X IDE plug-ins:
+  - MPLAB® Code Configurator 5.5.1 or higher
+- [MPLAB® XC32 C/C++ Compiler v4.50](https://www.microchip.com/mplab/compilers)
+
+### Dependent Components
+
+* [CSP v3.21.0](https://github.com/Microchip-MPLAB-Harmony/csp/releases/tag/v3.21.0)
+* [Aerospace v3.5.1](https://github.com/Microchip-MPLAB-Harmony/aerospace/releases/tag/v3.5.1)
 
 ## Harmony 3 Aerospace application examples for SAMRH71 family v3.1.0
 

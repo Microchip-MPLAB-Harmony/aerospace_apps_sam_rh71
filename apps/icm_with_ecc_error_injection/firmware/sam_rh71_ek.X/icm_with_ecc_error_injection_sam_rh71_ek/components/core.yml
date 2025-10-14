@@ -1,0 +1,4553 @@
+configVersion: 1.0.0
+componentName: core
+coreVersion: 5.8.2
+device: ATSAMRH71F20C
+library: []
+dependency:
+- dependencyPackage: class com.microchip.mcc.harmony.HarmonyModule
+  name: core
+  type: module
+  version: ''
+- dependencyPackage: ''
+  name: csp
+  type: package
+  version: v3.23.0
+customDataClassName: com.microchip.utils_mh3.utils.persistence.CustomModuleData
+data:
+  attachments: {}
+  elementPosition:
+    attributes:
+      id: __ROOTVIEW
+    children:
+    - children:
+      - attributes:
+          id: core
+          x: '228'
+          y: '22'
+        type: ElementPosition
+      type: ElementPositions
+    type: ComponentGraph
+  symbols:
+    ADD_LINKER_FILE:
+      attributes:
+        id: ADD_LINKER_FILE
+      children:
+      - children:
+        - attributes:
+            value: 'false'
+          type: User
+        type: Values
+      type: Boolean
+    ADVANCED_EXCEPTION:
+      attributes:
+        id: ADVANCED_EXCEPTION
+      children:
+      - children:
+        - attributes:
+            value: 'false'
+          type: User
+        type: Values
+      type: Boolean
+    CLK_MAINCK_MOSCRCEN:
+      attributes:
+        id: CLK_MAINCK_MOSCRCEN
+      children:
+      - children:
+        - attributes:
+            value: 'false'
+          type: User
+        type: Values
+      type: Boolean
+    CLK_MAINCK_MOSCSEL:
+      attributes:
+        id: CLK_MAINCK_MOSCSEL
+      children:
+      - children:
+        - attributes:
+            value: '1'
+          type: User
+        type: Values
+      type: KeyValueSet
+    CLK_MAINCK_MOSCXTBY:
+      attributes:
+        id: CLK_MAINCK_MOSCXTBY
+      children:
+      - children:
+        - attributes:
+            value: 'true'
+          type: User
+        type: Values
+      type: Boolean
+    CLK_MAINCK_MOSCXTEN:
+      attributes:
+        id: CLK_MAINCK_MOSCXTEN
+      children:
+      - children:
+        - attributes:
+            value: 'false'
+          type: User
+        type: Values
+      type: Boolean
+    CLK_MCK_CSS:
+      attributes:
+        id: CLK_MCK_CSS
+      children:
+      - children:
+        - attributes:
+            id: core
+            value: '2'
+          type: Dynamic
+        type: Values
+      type: KeyValueSet
+    CLK_MCK_FREQ:
+      attributes:
+        id: CLK_MCK_FREQ
+      children:
+      - children:
+        - attributes:
+            id: core
+            value: '50000000'
+          type: Dynamic
+        type: Values
+      type: Integer
+    CLK_MCK_MDIV:
+      attributes:
+        id: CLK_MCK_MDIV
+      children:
+      - children:
+        - attributes:
+            id: core
+            value: '1'
+          type: Dynamic
+        type: Values
+      type: KeyValueSet
+    CLK_PLLACK_DIVA:
+      attributes:
+        id: CLK_PLLACK_DIVA
+      children:
+      - children:
+        - attributes:
+            id: core
+            value: '1'
+          type: Dynamic
+        type: Values
+      type: Integer
+    CLK_PLLACK_FREQ:
+      attributes:
+        id: CLK_PLLACK_FREQ
+      children:
+      - children:
+        - attributes:
+            id: core
+            value: '100000000'
+          type: Dynamic
+        type: Values
+      type: Integer
+    CLK_PLLACK_MULA:
+      attributes:
+        id: CLK_PLLACK_MULA
+      children:
+      - children:
+        - attributes:
+            id: core
+            value: '9'
+          type: Dynamic
+        type: Values
+      type: Integer
+    COMPILER_CHOICE:
+      attributes:
+        id: COMPILER_CHOICE
+      children:
+      - children:
+        - attributes:
+            id: core
+            value: '0'
+          type: Dynamic
+        type: Values
+      type: KeyValueSet
+    CPU_CLOCK_FREQUENCY:
+      attributes:
+        id: CPU_CLOCK_FREQUENCY
+      children:
+      - children:
+        - attributes:
+            id: core
+            value: '100000000'
+          type: Dynamic
+        type: Values
+      type: Integer
+    CoreMPU_PRIVDEFENA:
+      attributes:
+        id: CoreMPU_PRIVDEFENA
+      children:
+      - children:
+        - attributes:
+            value: 'true'
+          type: User
+        type: Values
+      type: Boolean
+    CoreUseMPU:
+      attributes:
+        id: CoreUseMPU
+      children:
+      - children:
+        - attributes:
+            value: 'true'
+          type: User
+        type: Values
+      type: Boolean
+    FLEXCOM1_CLOCK_ENABLE:
+      attributes:
+        id: FLEXCOM1_CLOCK_ENABLE
+      children:
+      - children:
+        - attributes:
+            id: flexcom1
+            value: 'true'
+          type: Dynamic
+        type: Values
+      type: Boolean
+    FLEXCOM1_CLOCK_FREQUENCY:
+      attributes:
+        id: FLEXCOM1_CLOCK_FREQUENCY
+      children:
+      - children:
+        - attributes:
+            id: core
+            value: '50000000'
+          type: Dynamic
+        type: Values
+      type: Integer
+    FLEXCOM1_INTERRUPT_ENABLE:
+      attributes:
+        id: FLEXCOM1_INTERRUPT_ENABLE
+      children:
+      - children:
+        - attributes:
+            id: flexcom1
+            value: 'false'
+          type: Dynamic
+        type: Values
+      type: Boolean
+    FLEXCOM1_INTERRUPT_ENABLE_UPDATE:
+      attributes:
+        id: FLEXCOM1_INTERRUPT_ENABLE_UPDATE
+      children:
+      - children:
+        - attributes:
+            id: core
+            value: 'true'
+          type: Dynamic
+        type: Values
+      type: Boolean
+    FLEXCOM1_INTERRUPT_HANDLER:
+      attributes:
+        id: FLEXCOM1_INTERRUPT_HANDLER
+      children:
+      - children:
+        - attributes:
+            id: flexcom1
+            value: FLEXCOM1_InterruptHandler
+          type: Dynamic
+        type: Values
+      type: String
+    FLEXCOM1_INTERRUPT_HANDLER_LOCK:
+      attributes:
+        id: FLEXCOM1_INTERRUPT_HANDLER_LOCK
+      children:
+      - children:
+        - attributes:
+            id: flexcom1
+            value: 'false'
+          type: Dynamic
+        type: Values
+      type: Boolean
+    FLEXRAMECC_INTFIX_INTERRUPT_ENABLE:
+      attributes:
+        id: FLEXRAMECC_INTFIX_INTERRUPT_ENABLE
+      children:
+      - children:
+        - attributes:
+            id: flexramecc
+            value: 'true'
+          type: Dynamic
+        type: Values
+      type: Boolean
+    FLEXRAMECC_INTFIX_INTERRUPT_ENABLE_UPDATE:
+      attributes:
+        id: FLEXRAMECC_INTFIX_INTERRUPT_ENABLE_UPDATE
+      children:
+      - children:
+        - attributes:
+            id: core
+            value: 'false'
+          type: Dynamic
+        type: Values
+      type: Boolean
+    FLEXRAMECC_INTFIX_INTERRUPT_HANDLER:
+      attributes:
+        id: FLEXRAMECC_INTFIX_INTERRUPT_HANDLER
+      children:
+      - children:
+        - attributes:
+            id: flexramecc
+            value: FLEXRAMECC_INTFIX_InterruptHandler
+          type: Dynamic
+        type: Values
+      type: String
+    FLEXRAMECC_INTFIX_INTERRUPT_HANDLER_LOCK:
+      attributes:
+        id: FLEXRAMECC_INTFIX_INTERRUPT_HANDLER_LOCK
+      children:
+      - children:
+        - attributes:
+            id: flexramecc
+            value: 'true'
+          type: Dynamic
+        type: Values
+      type: Boolean
+    FLEXRAMECC_INTNOFIX_INTERRUPT_ENABLE:
+      attributes:
+        id: FLEXRAMECC_INTNOFIX_INTERRUPT_ENABLE
+      children:
+      - children:
+        - attributes:
+            id: flexramecc
+            value: 'true'
+          type: Dynamic
+        type: Values
+      type: Boolean
+    FLEXRAMECC_INTNOFIX_INTERRUPT_ENABLE_UPDATE:
+      attributes:
+        id: FLEXRAMECC_INTNOFIX_INTERRUPT_ENABLE_UPDATE
+      children:
+      - children:
+        - attributes:
+            id: core
+            value: 'false'
+          type: Dynamic
+        type: Values
+      type: Boolean
+    FLEXRAMECC_INTNOFIX_INTERRUPT_HANDLER:
+      attributes:
+        id: FLEXRAMECC_INTNOFIX_INTERRUPT_HANDLER
+      children:
+      - children:
+        - attributes:
+            id: flexramecc
+            value: FLEXRAMECC_INTNOFIX_InterruptHandler
+          type: Dynamic
+        type: Values
+      type: String
+    FLEXRAMECC_INTNOFIX_INTERRUPT_HANDLER_LOCK:
+      attributes:
+        id: FLEXRAMECC_INTNOFIX_INTERRUPT_HANDLER_LOCK
+      children:
+      - children:
+        - attributes:
+            id: flexramecc
+            value: 'true'
+          type: Dynamic
+        type: Values
+      type: Boolean
+    HEMC_CLOCK_ENABLE:
+      attributes:
+        id: HEMC_CLOCK_ENABLE
+      children:
+      - children:
+        - attributes:
+            id: hemc
+            value: 'true'
+          type: Dynamic
+        type: Values
+      type: Boolean
+    HEMC_CLOCK_FREQUENCY:
+      attributes:
+        id: HEMC_CLOCK_FREQUENCY
+      children:
+      - children:
+        - attributes:
+            id: core
+            value: '100000000'
+          type: Dynamic
+        type: Values
+      type: Integer
+    HEMC_GCLK_CSS:
+      attributes:
+        id: HEMC_GCLK_CSS
+      children:
+      - children:
+        - attributes:
+            value: '2'
+          type: User
+        type: Values
+      type: KeyValueSet
+    HEMC_GCLK_ENABLE:
+      attributes:
+        id: HEMC_GCLK_ENABLE
+      children:
+      - children:
+        - attributes:
+            id: core
+            value: 'true'
+          type: Dynamic
+        type: Values
+      type: Boolean
+    HEMC_GCLK_FREQUENCY:
+      attributes:
+        id: HEMC_GCLK_FREQUENCY
+      children:
+      - children:
+        - attributes:
+            id: core
+            value: '100000000'
+          type: Dynamic
+        type: Values
+      type: Integer
+    HEMC_INTFIX_INTERRUPT_ENABLE:
+      attributes:
+        id: HEMC_INTFIX_INTERRUPT_ENABLE
+      children:
+      - children:
+        - attributes:
+            id: hemc
+            value: 'true'
+          type: Dynamic
+        type: Values
+      type: Boolean
+    HEMC_INTFIX_INTERRUPT_ENABLE_UPDATE:
+      attributes:
+        id: HEMC_INTFIX_INTERRUPT_ENABLE_UPDATE
+      children:
+      - children:
+        - attributes:
+            id: core
+            value: 'false'
+          type: Dynamic
+        type: Values
+      type: Boolean
+    HEMC_INTFIX_INTERRUPT_HANDLER:
+      attributes:
+        id: HEMC_INTFIX_INTERRUPT_HANDLER
+      children:
+      - children:
+        - attributes:
+            id: hemc
+            value: HEMC_INTFIX_InterruptHandler
+          type: Dynamic
+        type: Values
+      type: String
+    HEMC_INTFIX_INTERRUPT_HANDLER_LOCK:
+      attributes:
+        id: HEMC_INTFIX_INTERRUPT_HANDLER_LOCK
+      children:
+      - children:
+        - attributes:
+            id: hemc
+            value: 'true'
+          type: Dynamic
+        type: Values
+      type: Boolean
+    HEMC_INTNOFIX_INTERRUPT_ENABLE:
+      attributes:
+        id: HEMC_INTNOFIX_INTERRUPT_ENABLE
+      children:
+      - children:
+        - attributes:
+            id: hemc
+            value: 'true'
+          type: Dynamic
+        type: Values
+      type: Boolean
+    HEMC_INTNOFIX_INTERRUPT_ENABLE_UPDATE:
+      attributes:
+        id: HEMC_INTNOFIX_INTERRUPT_ENABLE_UPDATE
+      children:
+      - children:
+        - attributes:
+            id: core
+            value: 'false'
+          type: Dynamic
+        type: Values
+      type: Boolean
+    HEMC_INTNOFIX_INTERRUPT_HANDLER:
+      attributes:
+        id: HEMC_INTNOFIX_INTERRUPT_HANDLER
+      children:
+      - children:
+        - attributes:
+            id: hemc
+            value: HEMC_INTNOFIX_InterruptHandler
+          type: Dynamic
+        type: Values
+      type: String
+    HEMC_INTNOFIX_INTERRUPT_HANDLER_LOCK:
+      attributes:
+        id: HEMC_INTNOFIX_INTERRUPT_HANDLER_LOCK
+      children:
+      - children:
+        - attributes:
+            id: hemc
+            value: 'true'
+          type: Dynamic
+        type: Values
+      type: Boolean
+    ICM_CLOCK_ENABLE:
+      attributes:
+        id: ICM_CLOCK_ENABLE
+      children:
+      - children:
+        - attributes:
+            id: icm
+            value: 'true'
+          type: Dynamic
+        type: Values
+      type: Boolean
+    ICM_CLOCK_FREQUENCY:
+      attributes:
+        id: ICM_CLOCK_FREQUENCY
+      children:
+      - children:
+        - attributes:
+            id: core
+            value: '50000000'
+          type: Dynamic
+        type: Values
+      type: Integer
+    ICM_INTERRUPT_ENABLE:
+      attributes:
+        id: ICM_INTERRUPT_ENABLE
+      children:
+      - children:
+        - attributes:
+            id: icm
+            value: 'true'
+          type: Dynamic
+        type: Values
+      type: Boolean
+    ICM_INTERRUPT_ENABLE_UPDATE:
+      attributes:
+        id: ICM_INTERRUPT_ENABLE_UPDATE
+      children:
+      - children:
+        - attributes:
+            id: core
+            value: 'false'
+          type: Dynamic
+        type: Values
+      type: Boolean
+    ICM_INTERRUPT_HANDLER:
+      attributes:
+        id: ICM_INTERRUPT_HANDLER
+      children:
+      - children:
+        - attributes:
+            id: icm
+            value: ICM_InterruptHandler
+          type: Dynamic
+        type: Values
+      type: String
+    ICM_INTERRUPT_HANDLER_LOCK:
+      attributes:
+        id: ICM_INTERRUPT_HANDLER_LOCK
+      children:
+      - children:
+        - attributes:
+            id: icm
+            value: 'true'
+          type: Dynamic
+        type: Values
+      type: Boolean
+    KEIL_STACK_HEAP_SIZE:
+      attributes:
+        id: KEIL_STACK_HEAP_SIZE
+      children:
+      - children:
+        - attributes:
+            id: core
+            value: '0x1200'
+          type: Dynamic
+        type: Values
+      type: String
+    MPU_Region_0_Access:
+      attributes:
+        id: MPU_Region_0_Access
+      children:
+      - children:
+        - attributes:
+            id: core
+            value: '3'
+          type: Dynamic
+        - attributes:
+            value: '3'
+          type: User
+        type: Values
+      type: KeyValueSet
+    MPU_Region_0_Address:
+      attributes:
+        id: MPU_Region_0_Address
+      children:
+      - children:
+        - attributes:
+            id: core
+            value: '1610612736'
+          type: Dynamic
+        - attributes:
+            value: '1610612736'
+          type: User
+        type: Values
+      type: Hex
+    MPU_Region_0_Enable:
+      attributes:
+        id: MPU_Region_0_Enable
+      children:
+      - children:
+        - attributes:
+            value: 'true'
+          type: User
+        type: Values
+      type: Boolean
+    MPU_Region_0_Execute:
+      attributes:
+        id: MPU_Region_0_Execute
+      children:
+      - children:
+        - attributes:
+            id: core
+            value: 'true'
+          type: Dynamic
+        type: Values
+      type: Boolean
+    MPU_Region_0_Length:
+      attributes:
+        id: MPU_Region_0_Length
+      children:
+      - children:
+        - attributes:
+            id: core
+            value: 2MB
+          type: Dynamic
+        type: Values
+      type: String
+    MPU_Region_0_Share:
+      attributes:
+        id: MPU_Region_0_Share
+      children:
+      - children:
+        - attributes:
+            id: core
+            value: 'false'
+          type: Dynamic
+        type: Values
+      type: Boolean
+    MPU_Region_0_Size:
+      attributes:
+        id: MPU_Region_0_Size
+      children:
+      - children:
+        - attributes:
+            id: core
+            value: '23'
+          type: Dynamic
+        - attributes:
+            value: '16'
+          type: User
+        type: Values
+      type: KeyValueSet
+    MPU_Region_0_Type:
+      attributes:
+        id: MPU_Region_0_Type
+      children:
+      - children:
+        - attributes:
+            id: core
+            value: '0'
+          type: Dynamic
+        - attributes:
+            value: '0'
+          type: User
+        type: Values
+      type: KeyValueSet
+    MPU_Region_1_Access:
+      attributes:
+        id: MPU_Region_1_Access
+      children:
+      - children:
+        - attributes:
+            id: core
+            value: '3'
+          type: Dynamic
+        type: Values
+      type: KeyValueSet
+    MPU_Region_1_Address:
+      attributes:
+        id: MPU_Region_1_Address
+      children:
+      - children:
+        - attributes:
+            id: core
+            value: '553648128'
+          type: Dynamic
+        type: Values
+      type: Hex
+    MPU_Region_1_Enable:
+      attributes:
+        id: MPU_Region_1_Enable
+      children:
+      - children:
+        - attributes:
+            value: 'true'
+          type: User
+        type: Values
+      type: Boolean
+    MPU_Region_1_Execute:
+      attributes:
+        id: MPU_Region_1_Execute
+      children:
+      - children:
+        - attributes:
+            id: core
+            value: 'true'
+          type: Dynamic
+        type: Values
+      type: Boolean
+    MPU_Region_1_Length:
+      attributes:
+        id: MPU_Region_1_Length
+      children:
+      - children:
+        - attributes:
+            id: core
+            value: 128KB
+          type: Dynamic
+        type: Values
+      type: String
+    MPU_Region_1_Share:
+      attributes:
+        id: MPU_Region_1_Share
+      children:
+      - children:
+        - attributes:
+            id: core
+            value: 'false'
+          type: Dynamic
+        type: Values
+      type: Boolean
+    MPU_Region_1_Size:
+      attributes:
+        id: MPU_Region_1_Size
+      children:
+      - children:
+        - attributes:
+            id: core
+            value: '15'
+          type: Dynamic
+        - attributes:
+            value: '12'
+          type: User
+        type: Values
+      type: KeyValueSet
+    MPU_Region_1_Type:
+      attributes:
+        id: MPU_Region_1_Type
+      children:
+      - children:
+        - attributes:
+            id: core
+            value: '4'
+          type: Dynamic
+        - attributes:
+            value: '0'
+          type: User
+        type: Values
+      type: KeyValueSet
+    MPU_Region_Name0:
+      attributes:
+        id: MPU_Region_Name0
+      children:
+      - children:
+        - attributes:
+            value: HEMC
+          type: User
+        type: Values
+      type: String
+    MPU_Region_Name0_Options:
+      attributes:
+        id: MPU_Region_Name0_Options
+      children:
+      - children:
+        - attributes:
+            value: HEMC
+          type: User
+        type: Values
+      type: Combo
+    MPU_Region_Name1:
+      attributes:
+        id: MPU_Region_Name1
+      children:
+      - children:
+        - attributes:
+            value: SRAM
+          type: User
+        type: Values
+      type: String
+    MPU_Region_Name1_Options:
+      attributes:
+        id: MPU_Region_Name1_Options
+      children:
+      - children:
+        - attributes:
+            value: SRAM
+          type: User
+        type: Values
+      type: Combo
+    NMIC_CLOCK_FREQUENCY:
+      attributes:
+        id: NMIC_CLOCK_FREQUENCY
+      children:
+      - children:
+        - attributes:
+            id: core
+            value: '0'
+          type: Dynamic
+        type: Values
+      type: Integer
+    NMIC_GCLK_ENABLE:
+      attributes:
+        id: NMIC_GCLK_ENABLE
+      children:
+      - children:
+        - attributes:
+            id: core
+            value: 'true'
+          type: Dynamic
+        type: Values
+      type: Boolean
+    NMIC_GCLK_FREQUENCY:
+      attributes:
+        id: NMIC_GCLK_FREQUENCY
+      children:
+      - children:
+        - attributes:
+            id: core
+            value: '32000'
+          type: Dynamic
+        type: Values
+      type: Integer
+    NVIC_-14_0_HANDLER:
+      attributes:
+        id: NVIC_-14_0_HANDLER
+      children:
+      - children:
+        - attributes:
+            id: core
+            value: NonMaskableInt_Handler
+          type: Dynamic
+        type: Values
+      type: String
+    NVIC_12_0_ENABLE:
+      attributes:
+        id: NVIC_12_0_ENABLE
+      children:
+      - children:
+        - attributes:
+            id: core
+            value: 'true'
+          type: Dynamic
+        type: Values
+      type: Boolean
+    NVIC_12_0_HANDLER:
+      attributes:
+        id: NVIC_12_0_HANDLER
+      children:
+      - children:
+        - attributes:
+            id: core
+            value: PIOC_InterruptHandler
+          type: Dynamic
+        type: Values
+      type: String
+    NVIC_12_0_HANDLER_LOCK:
+      attributes:
+        id: NVIC_12_0_HANDLER_LOCK
+      children:
+      - children:
+        - attributes:
+            id: core
+            value: 'true'
+          type: Dynamic
+        type: Values
+      type: Boolean
+    NVIC_25_0_ENABLE:
+      attributes:
+        id: NVIC_25_0_ENABLE
+      children:
+      - children:
+        - attributes:
+            id: core
+            value: 'false'
+          type: Dynamic
+        type: Values
+      type: Boolean
+    NVIC_25_0_HANDLER:
+      attributes:
+        id: NVIC_25_0_HANDLER
+      children:
+      - children:
+        - attributes:
+            id: core
+            value: TC0_CH0_Handler
+          type: Dynamic
+        type: Values
+      type: String
+    NVIC_25_0_HANDLER_LOCK:
+      attributes:
+        id: NVIC_25_0_HANDLER_LOCK
+      children:
+      - children:
+        - attributes:
+            id: core
+            value: 'false'
+          type: Dynamic
+        type: Values
+      type: Boolean
+    NVIC_26_0_ENABLE:
+      attributes:
+        id: NVIC_26_0_ENABLE
+      children:
+      - children:
+        - attributes:
+            id: core
+            value: 'false'
+          type: Dynamic
+        type: Values
+      type: Boolean
+    NVIC_26_0_HANDLER:
+      attributes:
+        id: NVIC_26_0_HANDLER
+      children:
+      - children:
+        - attributes:
+            id: core
+            value: TC0_CH1_Handler
+          type: Dynamic
+        type: Values
+      type: String
+    NVIC_26_0_HANDLER_LOCK:
+      attributes:
+        id: NVIC_26_0_HANDLER_LOCK
+      children:
+      - children:
+        - attributes:
+            id: core
+            value: 'false'
+          type: Dynamic
+        type: Values
+      type: Boolean
+    NVIC_27_0_ENABLE:
+      attributes:
+        id: NVIC_27_0_ENABLE
+      children:
+      - children:
+        - attributes:
+            id: core
+            value: 'false'
+          type: Dynamic
+        type: Values
+      type: Boolean
+    NVIC_27_0_HANDLER:
+      attributes:
+        id: NVIC_27_0_HANDLER
+      children:
+      - children:
+        - attributes:
+            id: core
+            value: TC0_CH2_Handler
+          type: Dynamic
+        type: Values
+      type: String
+    NVIC_27_0_HANDLER_LOCK:
+      attributes:
+        id: NVIC_27_0_HANDLER_LOCK
+      children:
+      - children:
+        - attributes:
+            id: core
+            value: 'false'
+          type: Dynamic
+        type: Values
+      type: Boolean
+    NVIC_33_0_ENABLE:
+      attributes:
+        id: NVIC_33_0_ENABLE
+      children:
+      - children:
+        - attributes:
+            id: core
+            value: 'true'
+          type: Dynamic
+        - attributes:
+            value: 'true'
+          type: User
+        type: Values
+      type: Boolean
+    NVIC_33_0_HANDLER:
+      attributes:
+        id: NVIC_33_0_HANDLER
+      children:
+      - children:
+        - attributes:
+            id: core
+            value: ICM_InterruptHandler
+          type: Dynamic
+        type: Values
+      type: String
+    NVIC_33_0_HANDLER_LOCK:
+      attributes:
+        id: NVIC_33_0_HANDLER_LOCK
+      children:
+      - children:
+        - attributes:
+            id: core
+            value: 'true'
+          type: Dynamic
+        type: Values
+      type: Boolean
+    NVIC_40_0_ENABLE:
+      attributes:
+        id: NVIC_40_0_ENABLE
+      children:
+      - children:
+        - attributes:
+            id: core
+            value: 'true'
+          type: Dynamic
+        - attributes:
+            value: 'true'
+          type: User
+        type: Values
+      type: Boolean
+    NVIC_40_0_HANDLER:
+      attributes:
+        id: NVIC_40_0_HANDLER
+      children:
+      - children:
+        - attributes:
+            id: core
+            value: TCMECC_INTFIX_InterruptHandler
+          type: Dynamic
+        type: Values
+      type: String
+    NVIC_40_0_HANDLER_LOCK:
+      attributes:
+        id: NVIC_40_0_HANDLER_LOCK
+      children:
+      - children:
+        - attributes:
+            id: core
+            value: 'true'
+          type: Dynamic
+        type: Values
+      type: Boolean
+    NVIC_41_0_ENABLE:
+      attributes:
+        id: NVIC_41_0_ENABLE
+      children:
+      - children:
+        - attributes:
+            id: core
+            value: 'true'
+          type: Dynamic
+        - attributes:
+            value: 'true'
+          type: User
+        type: Values
+      type: Boolean
+    NVIC_41_0_HANDLER:
+      attributes:
+        id: NVIC_41_0_HANDLER
+      children:
+      - children:
+        - attributes:
+            id: core
+            value: TCMECC_INTNOFIX_InterruptHandler
+          type: Dynamic
+        type: Values
+      type: String
+    NVIC_41_0_HANDLER_LOCK:
+      attributes:
+        id: NVIC_41_0_HANDLER_LOCK
+      children:
+      - children:
+        - attributes:
+            id: core
+            value: 'true'
+          type: Dynamic
+        type: Values
+      type: Boolean
+    NVIC_42_0_ENABLE:
+      attributes:
+        id: NVIC_42_0_ENABLE
+      children:
+      - children:
+        - attributes:
+            id: core
+            value: 'true'
+          type: Dynamic
+        type: Values
+      type: Boolean
+    NVIC_42_0_HANDLER:
+      attributes:
+        id: NVIC_42_0_HANDLER
+      children:
+      - children:
+        - attributes:
+            id: core
+            value: FLEXRAMECC_INTFIX_InterruptHandler
+          type: Dynamic
+        type: Values
+      type: String
+    NVIC_42_0_HANDLER_LOCK:
+      attributes:
+        id: NVIC_42_0_HANDLER_LOCK
+      children:
+      - children:
+        - attributes:
+            id: core
+            value: 'true'
+          type: Dynamic
+        type: Values
+      type: Boolean
+    NVIC_43_0_ENABLE:
+      attributes:
+        id: NVIC_43_0_ENABLE
+      children:
+      - children:
+        - attributes:
+            id: core
+            value: 'true'
+          type: Dynamic
+        type: Values
+      type: Boolean
+    NVIC_43_0_HANDLER:
+      attributes:
+        id: NVIC_43_0_HANDLER
+      children:
+      - children:
+        - attributes:
+            id: core
+            value: FLEXRAMECC_INTNOFIX_InterruptHandler
+          type: Dynamic
+        type: Values
+      type: String
+    NVIC_43_0_HANDLER_LOCK:
+      attributes:
+        id: NVIC_43_0_HANDLER_LOCK
+      children:
+      - children:
+        - attributes:
+            id: core
+            value: 'true'
+          type: Dynamic
+        type: Values
+      type: Boolean
+    NVIC_4_0_ENABLE:
+      attributes:
+        id: NVIC_4_0_ENABLE
+      children:
+      - children:
+        - attributes:
+            id: core
+            value: 'false'
+          type: Dynamic
+        type: Values
+      type: Boolean
+    NVIC_4_0_HANDLER:
+      attributes:
+        id: NVIC_4_0_HANDLER
+      children:
+      - children:
+        - attributes:
+            id: core
+            value: WDT_Handler
+          type: Dynamic
+        type: Values
+      type: String
+    NVIC_4_0_HANDLER_LOCK:
+      attributes:
+        id: NVIC_4_0_HANDLER_LOCK
+      children:
+      - children:
+        - attributes:
+            id: core
+            value: 'false'
+          type: Dynamic
+        type: Values
+      type: Boolean
+    NVIC_60_0_ENABLE:
+      attributes:
+        id: NVIC_60_0_ENABLE
+      children:
+      - children:
+        - attributes:
+            id: core
+            value: 'true'
+          type: Dynamic
+        type: Values
+      type: Boolean
+    NVIC_60_0_HANDLER:
+      attributes:
+        id: NVIC_60_0_HANDLER
+      children:
+      - children:
+        - attributes:
+            id: core
+            value: HEMC_INTFIX_InterruptHandler
+          type: Dynamic
+        type: Values
+      type: String
+    NVIC_60_0_HANDLER_LOCK:
+      attributes:
+        id: NVIC_60_0_HANDLER_LOCK
+      children:
+      - children:
+        - attributes:
+            id: core
+            value: 'true'
+          type: Dynamic
+        type: Values
+      type: Boolean
+    NVIC_61_0_ENABLE:
+      attributes:
+        id: NVIC_61_0_ENABLE
+      children:
+      - children:
+        - attributes:
+            id: core
+            value: 'true'
+          type: Dynamic
+        type: Values
+      type: Boolean
+    NVIC_61_0_HANDLER:
+      attributes:
+        id: NVIC_61_0_HANDLER
+      children:
+      - children:
+        - attributes:
+            id: core
+            value: HEMC_INTNOFIX_InterruptHandler
+          type: Dynamic
+        type: Values
+      type: String
+    NVIC_61_0_HANDLER_LOCK:
+      attributes:
+        id: NVIC_61_0_HANDLER_LOCK
+      children:
+      - children:
+        - attributes:
+            id: core
+            value: 'true'
+          type: Dynamic
+        type: Values
+      type: Boolean
+    NVIC_8_0_ENABLE:
+      attributes:
+        id: NVIC_8_0_ENABLE
+      children:
+      - children:
+        - attributes:
+            id: core
+            value: 'false'
+          type: Dynamic
+        type: Values
+      type: Boolean
+    NVIC_8_0_HANDLER:
+      attributes:
+        id: NVIC_8_0_HANDLER
+      children:
+      - children:
+        - attributes:
+            id: core
+            value: FLEXCOM1_InterruptHandler
+          type: Dynamic
+        type: Values
+      type: String
+    NVIC_8_0_HANDLER_LOCK:
+      attributes:
+        id: NVIC_8_0_HANDLER_LOCK
+      children:
+      - children:
+        - attributes:
+            id: core
+            value: 'false'
+          type: Dynamic
+        type: Values
+      type: Boolean
+    PIN_134_FUNCTION_NAME:
+      attributes:
+        id: PIN_134_FUNCTION_NAME
+      children:
+      - children:
+        - attributes:
+            value: SWITCH0
+          type: User
+        type: Values
+      type: String
+    PIN_134_FUNCTION_TYPE:
+      attributes:
+        id: PIN_134_FUNCTION_TYPE
+      children:
+      - children:
+        - attributes:
+            value: GPIO
+          type: User
+        type: Values
+      type: String
+    PIN_134_IFEN:
+      attributes:
+        id: PIN_134_IFEN
+      children:
+      - children:
+        - attributes:
+            id: core
+            value: 'true'
+          type: Dynamic
+        type: Values
+      type: Boolean
+    PIN_134_IFSCEN:
+      attributes:
+        id: PIN_134_IFSCEN
+      children:
+      - children:
+        - attributes:
+            id: core
+            value: '1'
+          type: Dynamic
+        type: Values
+      type: KeyValueSet
+    PIN_134_PERIPHERAL_FUNCTION:
+      attributes:
+        id: PIN_134_PERIPHERAL_FUNCTION
+      children:
+      - children:
+        - attributes:
+            value: GPIO
+          type: User
+        type: Values
+      type: String
+    PIN_134_PIO_FILTER:
+      attributes:
+        id: PIN_134_PIO_FILTER
+      children:
+      - children:
+        - attributes:
+            value: Debounce Filter
+          type: User
+        type: Values
+      type: String
+    PIN_134_PIO_INTERRUPT:
+      attributes:
+        id: PIN_134_PIO_INTERRUPT
+      children:
+      - children:
+        - attributes:
+            value: Low Level
+          type: User
+        type: Values
+      type: String
+    PIN_134_PU:
+      attributes:
+        id: PIN_134_PU
+      children:
+      - children:
+        - attributes:
+            value: 'True'
+          type: User
+        type: Values
+      type: String
+    PIN_135_FUNCTION_NAME:
+      attributes:
+        id: PIN_135_FUNCTION_NAME
+      children:
+      - children:
+        - attributes:
+            value: SWITCH1
+          type: User
+        type: Values
+      type: String
+    PIN_135_FUNCTION_TYPE:
+      attributes:
+        id: PIN_135_FUNCTION_TYPE
+      children:
+      - children:
+        - attributes:
+            value: GPIO
+          type: User
+        type: Values
+      type: String
+    PIN_135_IFEN:
+      attributes:
+        id: PIN_135_IFEN
+      children:
+      - children:
+        - attributes:
+            id: core
+            value: 'true'
+          type: Dynamic
+        type: Values
+      type: Boolean
+    PIN_135_IFSCEN:
+      attributes:
+        id: PIN_135_IFSCEN
+      children:
+      - children:
+        - attributes:
+            id: core
+            value: '1'
+          type: Dynamic
+        type: Values
+      type: KeyValueSet
+    PIN_135_PERIPHERAL_FUNCTION:
+      attributes:
+        id: PIN_135_PERIPHERAL_FUNCTION
+      children:
+      - children:
+        - attributes:
+            value: GPIO
+          type: User
+        type: Values
+      type: String
+    PIN_135_PIO_FILTER:
+      attributes:
+        id: PIN_135_PIO_FILTER
+      children:
+      - children:
+        - attributes:
+            value: Debounce Filter
+          type: User
+        type: Values
+      type: String
+    PIN_135_PIO_INTERRUPT:
+      attributes:
+        id: PIN_135_PIO_INTERRUPT
+      children:
+      - children:
+        - attributes:
+            value: Low Level
+          type: User
+        type: Values
+      type: String
+    PIN_135_PU:
+      attributes:
+        id: PIN_135_PU
+      children:
+      - children:
+        - attributes:
+            value: 'True'
+          type: User
+        type: Values
+      type: String
+    PIN_136_FUNCTION_NAME:
+      attributes:
+        id: PIN_136_FUNCTION_NAME
+      children:
+      - children:
+        - attributes:
+            value: SWITCH2
+          type: User
+        type: Values
+      type: String
+    PIN_136_FUNCTION_TYPE:
+      attributes:
+        id: PIN_136_FUNCTION_TYPE
+      children:
+      - children:
+        - attributes:
+            value: GPIO
+          type: User
+        type: Values
+      type: String
+    PIN_136_IFEN:
+      attributes:
+        id: PIN_136_IFEN
+      children:
+      - children:
+        - attributes:
+            id: core
+            value: 'true'
+          type: Dynamic
+        type: Values
+      type: Boolean
+    PIN_136_IFSCEN:
+      attributes:
+        id: PIN_136_IFSCEN
+      children:
+      - children:
+        - attributes:
+            id: core
+            value: '1'
+          type: Dynamic
+        type: Values
+      type: KeyValueSet
+    PIN_136_PERIPHERAL_FUNCTION:
+      attributes:
+        id: PIN_136_PERIPHERAL_FUNCTION
+      children:
+      - children:
+        - attributes:
+            value: GPIO
+          type: User
+        type: Values
+      type: String
+    PIN_136_PIO_FILTER:
+      attributes:
+        id: PIN_136_PIO_FILTER
+      children:
+      - children:
+        - attributes:
+            value: Debounce Filter
+          type: User
+        type: Values
+      type: String
+    PIN_136_PIO_INTERRUPT:
+      attributes:
+        id: PIN_136_PIO_INTERRUPT
+      children:
+      - children:
+        - attributes:
+            value: Low Level
+          type: User
+        type: Values
+      type: String
+    PIN_136_PU:
+      attributes:
+        id: PIN_136_PU
+      children:
+      - children:
+        - attributes:
+            value: 'True'
+          type: User
+        type: Values
+      type: String
+    PIN_142_FUNCTION_TYPE:
+      attributes:
+        id: PIN_142_FUNCTION_TYPE
+      children:
+      - children:
+        - attributes:
+            value: HEMC_CB7
+          type: User
+        type: Values
+      type: String
+    PIN_142_PERIPHERAL_FUNCTION:
+      attributes:
+        id: PIN_142_PERIPHERAL_FUNCTION
+      children:
+      - children:
+        - attributes:
+            value: A
+          type: User
+        type: Values
+      type: String
+    PIN_143_FUNCTION_TYPE:
+      attributes:
+        id: PIN_143_FUNCTION_TYPE
+      children:
+      - children:
+        - attributes:
+            value: HEMC_CB6
+          type: User
+        type: Values
+      type: String
+    PIN_143_PERIPHERAL_FUNCTION:
+      attributes:
+        id: PIN_143_PERIPHERAL_FUNCTION
+      children:
+      - children:
+        - attributes:
+            value: A
+          type: User
+        type: Values
+      type: String
+    PIN_144_FUNCTION_TYPE:
+      attributes:
+        id: PIN_144_FUNCTION_TYPE
+      children:
+      - children:
+        - attributes:
+            value: HEMC_CB5
+          type: User
+        type: Values
+      type: String
+    PIN_144_PERIPHERAL_FUNCTION:
+      attributes:
+        id: PIN_144_PERIPHERAL_FUNCTION
+      children:
+      - children:
+        - attributes:
+            value: A
+          type: User
+        type: Values
+      type: String
+    PIN_145_FUNCTION_TYPE:
+      attributes:
+        id: PIN_145_FUNCTION_TYPE
+      children:
+      - children:
+        - attributes:
+            value: HEMC_CB4
+          type: User
+        type: Values
+      type: String
+    PIN_145_PERIPHERAL_FUNCTION:
+      attributes:
+        id: PIN_145_PERIPHERAL_FUNCTION
+      children:
+      - children:
+        - attributes:
+            value: A
+          type: User
+        type: Values
+      type: String
+    PIN_146_FUNCTION_TYPE:
+      attributes:
+        id: PIN_146_FUNCTION_TYPE
+      children:
+      - children:
+        - attributes:
+            value: HEMC_CB3
+          type: User
+        type: Values
+      type: String
+    PIN_146_PERIPHERAL_FUNCTION:
+      attributes:
+        id: PIN_146_PERIPHERAL_FUNCTION
+      children:
+      - children:
+        - attributes:
+            value: A
+          type: User
+        type: Values
+      type: String
+    PIN_147_FUNCTION_TYPE:
+      attributes:
+        id: PIN_147_FUNCTION_TYPE
+      children:
+      - children:
+        - attributes:
+            value: HEMC_CB2
+          type: User
+        type: Values
+      type: String
+    PIN_147_PERIPHERAL_FUNCTION:
+      attributes:
+        id: PIN_147_PERIPHERAL_FUNCTION
+      children:
+      - children:
+        - attributes:
+            value: A
+          type: User
+        type: Values
+      type: String
+    PIN_148_FUNCTION_TYPE:
+      attributes:
+        id: PIN_148_FUNCTION_TYPE
+      children:
+      - children:
+        - attributes:
+            value: HEMC_CB1
+          type: User
+        type: Values
+      type: String
+    PIN_148_PERIPHERAL_FUNCTION:
+      attributes:
+        id: PIN_148_PERIPHERAL_FUNCTION
+      children:
+      - children:
+        - attributes:
+            value: A
+          type: User
+        type: Values
+      type: String
+    PIN_149_FUNCTION_TYPE:
+      attributes:
+        id: PIN_149_FUNCTION_TYPE
+      children:
+      - children:
+        - attributes:
+            value: HEMC_CB0
+          type: User
+        type: Values
+      type: String
+    PIN_149_PERIPHERAL_FUNCTION:
+      attributes:
+        id: PIN_149_PERIPHERAL_FUNCTION
+      children:
+      - children:
+        - attributes:
+            value: A
+          type: User
+        type: Values
+      type: String
+    PIN_150_FUNCTION_TYPE:
+      attributes:
+        id: PIN_150_FUNCTION_TYPE
+      children:
+      - children:
+        - attributes:
+            value: HEMC_RAS
+          type: User
+        type: Values
+      type: String
+    PIN_150_PERIPHERAL_FUNCTION:
+      attributes:
+        id: PIN_150_PERIPHERAL_FUNCTION
+      children:
+      - children:
+        - attributes:
+            value: A
+          type: User
+        type: Values
+      type: String
+    PIN_151_FUNCTION_TYPE:
+      attributes:
+        id: PIN_151_FUNCTION_TYPE
+      children:
+      - children:
+        - attributes:
+            value: HEMC_SDA10
+          type: User
+        type: Values
+      type: String
+    PIN_151_PERIPHERAL_FUNCTION:
+      attributes:
+        id: PIN_151_PERIPHERAL_FUNCTION
+      children:
+      - children:
+        - attributes:
+            value: A
+          type: User
+        type: Values
+      type: String
+    PIN_152_DRV:
+      attributes:
+        id: PIN_152_DRV
+      children:
+      - children:
+        - attributes:
+            value: '2'
+          type: User
+        type: Values
+      type: KeyValueSet
+    PIN_152_FUNCTION_TYPE:
+      attributes:
+        id: PIN_152_FUNCTION_TYPE
+      children:
+      - children:
+        - attributes:
+            value: HEMC_SDCK
+          type: User
+        type: Values
+      type: String
+    PIN_152_PERIPHERAL_FUNCTION:
+      attributes:
+        id: PIN_152_PERIPHERAL_FUNCTION
+      children:
+      - children:
+        - attributes:
+            value: A
+          type: User
+        type: Values
+      type: String
+    PIN_153_FUNCTION_TYPE:
+      attributes:
+        id: PIN_153_FUNCTION_TYPE
+      children:
+      - children:
+        - attributes:
+            value: HEMC_SDCKE
+          type: User
+        type: Values
+      type: String
+    PIN_153_PERIPHERAL_FUNCTION:
+      attributes:
+        id: PIN_153_PERIPHERAL_FUNCTION
+      children:
+      - children:
+        - attributes:
+            value: A
+          type: User
+        type: Values
+      type: String
+    PIN_154_FUNCTION_TYPE:
+      attributes:
+        id: PIN_154_FUNCTION_TYPE
+      children:
+      - children:
+        - attributes:
+            value: HEMC_SDNBS0
+          type: User
+        type: Values
+      type: String
+    PIN_154_PERIPHERAL_FUNCTION:
+      attributes:
+        id: PIN_154_PERIPHERAL_FUNCTION
+      children:
+      - children:
+        - attributes:
+            value: A
+          type: User
+        type: Values
+      type: String
+    PIN_155_FUNCTION_TYPE:
+      attributes:
+        id: PIN_155_FUNCTION_TYPE
+      children:
+      - children:
+        - attributes:
+            value: HEMC_SDNBS1
+          type: User
+        type: Values
+      type: String
+    PIN_155_PERIPHERAL_FUNCTION:
+      attributes:
+        id: PIN_155_PERIPHERAL_FUNCTION
+      children:
+      - children:
+        - attributes:
+            value: A
+          type: User
+        type: Values
+      type: String
+    PIN_156_FUNCTION_TYPE:
+      attributes:
+        id: PIN_156_FUNCTION_TYPE
+      children:
+      - children:
+        - attributes:
+            value: HEMC_SDNBS2
+          type: User
+        type: Values
+      type: String
+    PIN_156_PERIPHERAL_FUNCTION:
+      attributes:
+        id: PIN_156_PERIPHERAL_FUNCTION
+      children:
+      - children:
+        - attributes:
+            value: A
+          type: User
+        type: Values
+      type: String
+    PIN_157_FUNCTION_TYPE:
+      attributes:
+        id: PIN_157_FUNCTION_TYPE
+      children:
+      - children:
+        - attributes:
+            value: HEMC_SDNBS3
+          type: User
+        type: Values
+      type: String
+    PIN_157_PERIPHERAL_FUNCTION:
+      attributes:
+        id: PIN_157_PERIPHERAL_FUNCTION
+      children:
+      - children:
+        - attributes:
+            value: A
+          type: User
+        type: Values
+      type: String
+    PIN_158_FUNCTION_TYPE:
+      attributes:
+        id: PIN_158_FUNCTION_TYPE
+      children:
+      - children:
+        - attributes:
+            value: HEMC_SDNBS4
+          type: User
+        type: Values
+      type: String
+    PIN_158_PERIPHERAL_FUNCTION:
+      attributes:
+        id: PIN_158_PERIPHERAL_FUNCTION
+      children:
+      - children:
+        - attributes:
+            value: A
+          type: User
+        type: Values
+      type: String
+    PIN_159_FUNCTION_TYPE:
+      attributes:
+        id: PIN_159_FUNCTION_TYPE
+      children:
+      - children:
+        - attributes:
+            value: HEMC_SDWE
+          type: User
+        type: Values
+      type: String
+    PIN_159_PERIPHERAL_FUNCTION:
+      attributes:
+        id: PIN_159_PERIPHERAL_FUNCTION
+      children:
+      - children:
+        - attributes:
+            value: A
+          type: User
+        type: Values
+      type: String
+    PIN_162_FUNCTION_TYPE:
+      attributes:
+        id: PIN_162_FUNCTION_TYPE
+      children:
+      - children:
+        - attributes:
+            value: HEMC_CAS
+          type: User
+        type: Values
+      type: String
+    PIN_162_PERIPHERAL_FUNCTION:
+      attributes:
+        id: PIN_162_PERIPHERAL_FUNCTION
+      children:
+      - children:
+        - attributes:
+            value: A
+          type: User
+        type: Values
+      type: String
+    PIN_163_FUNCTION_TYPE:
+      attributes:
+        id: PIN_163_FUNCTION_TYPE
+      children:
+      - children:
+        - attributes:
+            value: HEMC_D0
+          type: User
+        type: Values
+      type: String
+    PIN_163_PERIPHERAL_FUNCTION:
+      attributes:
+        id: PIN_163_PERIPHERAL_FUNCTION
+      children:
+      - children:
+        - attributes:
+            value: A
+          type: User
+        type: Values
+      type: String
+    PIN_164_FUNCTION_TYPE:
+      attributes:
+        id: PIN_164_FUNCTION_TYPE
+      children:
+      - children:
+        - attributes:
+            value: HEMC_D1
+          type: User
+        type: Values
+      type: String
+    PIN_164_PERIPHERAL_FUNCTION:
+      attributes:
+        id: PIN_164_PERIPHERAL_FUNCTION
+      children:
+      - children:
+        - attributes:
+            value: A
+          type: User
+        type: Values
+      type: String
+    PIN_165_FUNCTION_TYPE:
+      attributes:
+        id: PIN_165_FUNCTION_TYPE
+      children:
+      - children:
+        - attributes:
+            value: HEMC_D2
+          type: User
+        type: Values
+      type: String
+    PIN_165_PERIPHERAL_FUNCTION:
+      attributes:
+        id: PIN_165_PERIPHERAL_FUNCTION
+      children:
+      - children:
+        - attributes:
+            value: A
+          type: User
+        type: Values
+      type: String
+    PIN_166_FUNCTION_TYPE:
+      attributes:
+        id: PIN_166_FUNCTION_TYPE
+      children:
+      - children:
+        - attributes:
+            value: HEMC_D3
+          type: User
+        type: Values
+      type: String
+    PIN_166_PERIPHERAL_FUNCTION:
+      attributes:
+        id: PIN_166_PERIPHERAL_FUNCTION
+      children:
+      - children:
+        - attributes:
+            value: A
+          type: User
+        type: Values
+      type: String
+    PIN_167_FUNCTION_TYPE:
+      attributes:
+        id: PIN_167_FUNCTION_TYPE
+      children:
+      - children:
+        - attributes:
+            value: HEMC_D4
+          type: User
+        type: Values
+      type: String
+    PIN_167_PERIPHERAL_FUNCTION:
+      attributes:
+        id: PIN_167_PERIPHERAL_FUNCTION
+      children:
+      - children:
+        - attributes:
+            value: A
+          type: User
+        type: Values
+      type: String
+    PIN_168_FUNCTION_TYPE:
+      attributes:
+        id: PIN_168_FUNCTION_TYPE
+      children:
+      - children:
+        - attributes:
+            value: HEMC_D5
+          type: User
+        type: Values
+      type: String
+    PIN_168_PERIPHERAL_FUNCTION:
+      attributes:
+        id: PIN_168_PERIPHERAL_FUNCTION
+      children:
+      - children:
+        - attributes:
+            value: A
+          type: User
+        type: Values
+      type: String
+    PIN_169_FUNCTION_TYPE:
+      attributes:
+        id: PIN_169_FUNCTION_TYPE
+      children:
+      - children:
+        - attributes:
+            value: HEMC_D6
+          type: User
+        type: Values
+      type: String
+    PIN_169_PERIPHERAL_FUNCTION:
+      attributes:
+        id: PIN_169_PERIPHERAL_FUNCTION
+      children:
+      - children:
+        - attributes:
+            value: A
+          type: User
+        type: Values
+      type: String
+    PIN_170_FUNCTION_TYPE:
+      attributes:
+        id: PIN_170_FUNCTION_TYPE
+      children:
+      - children:
+        - attributes:
+            value: HEMC_D7
+          type: User
+        type: Values
+      type: String
+    PIN_170_PERIPHERAL_FUNCTION:
+      attributes:
+        id: PIN_170_PERIPHERAL_FUNCTION
+      children:
+      - children:
+        - attributes:
+            value: A
+          type: User
+        type: Values
+      type: String
+    PIN_171_FUNCTION_TYPE:
+      attributes:
+        id: PIN_171_FUNCTION_TYPE
+      children:
+      - children:
+        - attributes:
+            value: HEMC_D8
+          type: User
+        type: Values
+      type: String
+    PIN_171_PERIPHERAL_FUNCTION:
+      attributes:
+        id: PIN_171_PERIPHERAL_FUNCTION
+      children:
+      - children:
+        - attributes:
+            value: A
+          type: User
+        type: Values
+      type: String
+    PIN_172_FUNCTION_TYPE:
+      attributes:
+        id: PIN_172_FUNCTION_TYPE
+      children:
+      - children:
+        - attributes:
+            value: HEMC_D9
+          type: User
+        type: Values
+      type: String
+    PIN_172_PERIPHERAL_FUNCTION:
+      attributes:
+        id: PIN_172_PERIPHERAL_FUNCTION
+      children:
+      - children:
+        - attributes:
+            value: A
+          type: User
+        type: Values
+      type: String
+    PIN_173_FUNCTION_TYPE:
+      attributes:
+        id: PIN_173_FUNCTION_TYPE
+      children:
+      - children:
+        - attributes:
+            value: HEMC_D10
+          type: User
+        type: Values
+      type: String
+    PIN_173_PERIPHERAL_FUNCTION:
+      attributes:
+        id: PIN_173_PERIPHERAL_FUNCTION
+      children:
+      - children:
+        - attributes:
+            value: A
+          type: User
+        type: Values
+      type: String
+    PIN_174_FUNCTION_TYPE:
+      attributes:
+        id: PIN_174_FUNCTION_TYPE
+      children:
+      - children:
+        - attributes:
+            value: HEMC_D11
+          type: User
+        type: Values
+      type: String
+    PIN_174_PERIPHERAL_FUNCTION:
+      attributes:
+        id: PIN_174_PERIPHERAL_FUNCTION
+      children:
+      - children:
+        - attributes:
+            value: A
+          type: User
+        type: Values
+      type: String
+    PIN_175_FUNCTION_TYPE:
+      attributes:
+        id: PIN_175_FUNCTION_TYPE
+      children:
+      - children:
+        - attributes:
+            value: HEMC_D12
+          type: User
+        type: Values
+      type: String
+    PIN_175_PERIPHERAL_FUNCTION:
+      attributes:
+        id: PIN_175_PERIPHERAL_FUNCTION
+      children:
+      - children:
+        - attributes:
+            value: A
+          type: User
+        type: Values
+      type: String
+    PIN_176_FUNCTION_TYPE:
+      attributes:
+        id: PIN_176_FUNCTION_TYPE
+      children:
+      - children:
+        - attributes:
+            value: HEMC_D13
+          type: User
+        type: Values
+      type: String
+    PIN_176_PERIPHERAL_FUNCTION:
+      attributes:
+        id: PIN_176_PERIPHERAL_FUNCTION
+      children:
+      - children:
+        - attributes:
+            value: A
+          type: User
+        type: Values
+      type: String
+    PIN_177_FUNCTION_TYPE:
+      attributes:
+        id: PIN_177_FUNCTION_TYPE
+      children:
+      - children:
+        - attributes:
+            value: HEMC_D14
+          type: User
+        type: Values
+      type: String
+    PIN_177_PERIPHERAL_FUNCTION:
+      attributes:
+        id: PIN_177_PERIPHERAL_FUNCTION
+      children:
+      - children:
+        - attributes:
+            value: A
+          type: User
+        type: Values
+      type: String
+    PIN_178_FUNCTION_TYPE:
+      attributes:
+        id: PIN_178_FUNCTION_TYPE
+      children:
+      - children:
+        - attributes:
+            value: HEMC_D15
+          type: User
+        type: Values
+      type: String
+    PIN_178_PERIPHERAL_FUNCTION:
+      attributes:
+        id: PIN_178_PERIPHERAL_FUNCTION
+      children:
+      - children:
+        - attributes:
+            value: A
+          type: User
+        type: Values
+      type: String
+    PIN_179_FUNCTION_TYPE:
+      attributes:
+        id: PIN_179_FUNCTION_TYPE
+      children:
+      - children:
+        - attributes:
+            value: HEMC_D16
+          type: User
+        type: Values
+      type: String
+    PIN_179_PERIPHERAL_FUNCTION:
+      attributes:
+        id: PIN_179_PERIPHERAL_FUNCTION
+      children:
+      - children:
+        - attributes:
+            value: A
+          type: User
+        type: Values
+      type: String
+    PIN_180_FUNCTION_TYPE:
+      attributes:
+        id: PIN_180_FUNCTION_TYPE
+      children:
+      - children:
+        - attributes:
+            value: HEMC_D17
+          type: User
+        type: Values
+      type: String
+    PIN_180_PERIPHERAL_FUNCTION:
+      attributes:
+        id: PIN_180_PERIPHERAL_FUNCTION
+      children:
+      - children:
+        - attributes:
+            value: A
+          type: User
+        type: Values
+      type: String
+    PIN_181_FUNCTION_TYPE:
+      attributes:
+        id: PIN_181_FUNCTION_TYPE
+      children:
+      - children:
+        - attributes:
+            value: HEMC_D18
+          type: User
+        type: Values
+      type: String
+    PIN_181_PERIPHERAL_FUNCTION:
+      attributes:
+        id: PIN_181_PERIPHERAL_FUNCTION
+      children:
+      - children:
+        - attributes:
+            value: A
+          type: User
+        type: Values
+      type: String
+    PIN_182_FUNCTION_TYPE:
+      attributes:
+        id: PIN_182_FUNCTION_TYPE
+      children:
+      - children:
+        - attributes:
+            value: HEMC_D19
+          type: User
+        type: Values
+      type: String
+    PIN_182_PERIPHERAL_FUNCTION:
+      attributes:
+        id: PIN_182_PERIPHERAL_FUNCTION
+      children:
+      - children:
+        - attributes:
+            value: A
+          type: User
+        type: Values
+      type: String
+    PIN_183_FUNCTION_TYPE:
+      attributes:
+        id: PIN_183_FUNCTION_TYPE
+      children:
+      - children:
+        - attributes:
+            value: HEMC_D20
+          type: User
+        type: Values
+      type: String
+    PIN_183_PERIPHERAL_FUNCTION:
+      attributes:
+        id: PIN_183_PERIPHERAL_FUNCTION
+      children:
+      - children:
+        - attributes:
+            value: A
+          type: User
+        type: Values
+      type: String
+    PIN_184_FUNCTION_TYPE:
+      attributes:
+        id: PIN_184_FUNCTION_TYPE
+      children:
+      - children:
+        - attributes:
+            value: HEMC_D21
+          type: User
+        type: Values
+      type: String
+    PIN_184_PERIPHERAL_FUNCTION:
+      attributes:
+        id: PIN_184_PERIPHERAL_FUNCTION
+      children:
+      - children:
+        - attributes:
+            value: A
+          type: User
+        type: Values
+      type: String
+    PIN_185_FUNCTION_TYPE:
+      attributes:
+        id: PIN_185_FUNCTION_TYPE
+      children:
+      - children:
+        - attributes:
+            value: HEMC_D22
+          type: User
+        type: Values
+      type: String
+    PIN_185_PERIPHERAL_FUNCTION:
+      attributes:
+        id: PIN_185_PERIPHERAL_FUNCTION
+      children:
+      - children:
+        - attributes:
+            value: A
+          type: User
+        type: Values
+      type: String
+    PIN_186_FUNCTION_TYPE:
+      attributes:
+        id: PIN_186_FUNCTION_TYPE
+      children:
+      - children:
+        - attributes:
+            value: HEMC_D23
+          type: User
+        type: Values
+      type: String
+    PIN_186_PERIPHERAL_FUNCTION:
+      attributes:
+        id: PIN_186_PERIPHERAL_FUNCTION
+      children:
+      - children:
+        - attributes:
+            value: A
+          type: User
+        type: Values
+      type: String
+    PIN_187_FUNCTION_TYPE:
+      attributes:
+        id: PIN_187_FUNCTION_TYPE
+      children:
+      - children:
+        - attributes:
+            value: HEMC_D24
+          type: User
+        type: Values
+      type: String
+    PIN_187_PERIPHERAL_FUNCTION:
+      attributes:
+        id: PIN_187_PERIPHERAL_FUNCTION
+      children:
+      - children:
+        - attributes:
+            value: A
+          type: User
+        type: Values
+      type: String
+    PIN_188_FUNCTION_TYPE:
+      attributes:
+        id: PIN_188_FUNCTION_TYPE
+      children:
+      - children:
+        - attributes:
+            value: HEMC_D25
+          type: User
+        type: Values
+      type: String
+    PIN_188_PERIPHERAL_FUNCTION:
+      attributes:
+        id: PIN_188_PERIPHERAL_FUNCTION
+      children:
+      - children:
+        - attributes:
+            value: A
+          type: User
+        type: Values
+      type: String
+    PIN_189_FUNCTION_TYPE:
+      attributes:
+        id: PIN_189_FUNCTION_TYPE
+      children:
+      - children:
+        - attributes:
+            value: HEMC_D26
+          type: User
+        type: Values
+      type: String
+    PIN_189_PERIPHERAL_FUNCTION:
+      attributes:
+        id: PIN_189_PERIPHERAL_FUNCTION
+      children:
+      - children:
+        - attributes:
+            value: A
+          type: User
+        type: Values
+      type: String
+    PIN_190_FUNCTION_TYPE:
+      attributes:
+        id: PIN_190_FUNCTION_TYPE
+      children:
+      - children:
+        - attributes:
+            value: HEMC_D27
+          type: User
+        type: Values
+      type: String
+    PIN_190_PERIPHERAL_FUNCTION:
+      attributes:
+        id: PIN_190_PERIPHERAL_FUNCTION
+      children:
+      - children:
+        - attributes:
+            value: A
+          type: User
+        type: Values
+      type: String
+    PIN_195_FUNCTION_TYPE:
+      attributes:
+        id: PIN_195_FUNCTION_TYPE
+      children:
+      - children:
+        - attributes:
+            value: HEMC_D28
+          type: User
+        type: Values
+      type: String
+    PIN_195_PERIPHERAL_FUNCTION:
+      attributes:
+        id: PIN_195_PERIPHERAL_FUNCTION
+      children:
+      - children:
+        - attributes:
+            value: A
+          type: User
+        type: Values
+      type: String
+    PIN_196_FUNCTION_TYPE:
+      attributes:
+        id: PIN_196_FUNCTION_TYPE
+      children:
+      - children:
+        - attributes:
+            value: HEMC_D29
+          type: User
+        type: Values
+      type: String
+    PIN_196_PERIPHERAL_FUNCTION:
+      attributes:
+        id: PIN_196_PERIPHERAL_FUNCTION
+      children:
+      - children:
+        - attributes:
+            value: A
+          type: User
+        type: Values
+      type: String
+    PIN_197_FUNCTION_TYPE:
+      attributes:
+        id: PIN_197_FUNCTION_TYPE
+      children:
+      - children:
+        - attributes:
+            value: HEMC_D30
+          type: User
+        type: Values
+      type: String
+    PIN_197_PERIPHERAL_FUNCTION:
+      attributes:
+        id: PIN_197_PERIPHERAL_FUNCTION
+      children:
+      - children:
+        - attributes:
+            value: A
+          type: User
+        type: Values
+      type: String
+    PIN_198_FUNCTION_TYPE:
+      attributes:
+        id: PIN_198_FUNCTION_TYPE
+      children:
+      - children:
+        - attributes:
+            value: HEMC_D31
+          type: User
+        type: Values
+      type: String
+    PIN_198_PERIPHERAL_FUNCTION:
+      attributes:
+        id: PIN_198_PERIPHERAL_FUNCTION
+      children:
+      - children:
+        - attributes:
+            value: A
+          type: User
+        type: Values
+      type: String
+    PIN_199_DRV:
+      attributes:
+        id: PIN_199_DRV
+      children:
+      - children:
+        - attributes:
+            value: '1'
+          type: User
+        type: Values
+      type: KeyValueSet
+    PIN_199_FUNCTION_TYPE:
+      attributes:
+        id: PIN_199_FUNCTION_TYPE
+      children:
+      - children:
+        - attributes:
+            value: HEMC_A0
+          type: User
+        type: Values
+      type: String
+    PIN_199_PERIPHERAL_FUNCTION:
+      attributes:
+        id: PIN_199_PERIPHERAL_FUNCTION
+      children:
+      - children:
+        - attributes:
+            value: A
+          type: User
+        type: Values
+      type: String
+    PIN_200_DRV:
+      attributes:
+        id: PIN_200_DRV
+      children:
+      - children:
+        - attributes:
+            value: '1'
+          type: User
+        type: Values
+      type: KeyValueSet
+    PIN_200_FUNCTION_TYPE:
+      attributes:
+        id: PIN_200_FUNCTION_TYPE
+      children:
+      - children:
+        - attributes:
+            value: HEMC_A1
+          type: User
+        type: Values
+      type: String
+    PIN_200_PERIPHERAL_FUNCTION:
+      attributes:
+        id: PIN_200_PERIPHERAL_FUNCTION
+      children:
+      - children:
+        - attributes:
+            value: A
+          type: User
+        type: Values
+      type: String
+    PIN_201_DRV:
+      attributes:
+        id: PIN_201_DRV
+      children:
+      - children:
+        - attributes:
+            value: '1'
+          type: User
+        type: Values
+      type: KeyValueSet
+    PIN_201_FUNCTION_TYPE:
+      attributes:
+        id: PIN_201_FUNCTION_TYPE
+      children:
+      - children:
+        - attributes:
+            value: HEMC_A2
+          type: User
+        type: Values
+      type: String
+    PIN_201_PERIPHERAL_FUNCTION:
+      attributes:
+        id: PIN_201_PERIPHERAL_FUNCTION
+      children:
+      - children:
+        - attributes:
+            value: A
+          type: User
+        type: Values
+      type: String
+    PIN_202_DRV:
+      attributes:
+        id: PIN_202_DRV
+      children:
+      - children:
+        - attributes:
+            value: '1'
+          type: User
+        type: Values
+      type: KeyValueSet
+    PIN_202_FUNCTION_TYPE:
+      attributes:
+        id: PIN_202_FUNCTION_TYPE
+      children:
+      - children:
+        - attributes:
+            value: HEMC_A3
+          type: User
+        type: Values
+      type: String
+    PIN_202_PERIPHERAL_FUNCTION:
+      attributes:
+        id: PIN_202_PERIPHERAL_FUNCTION
+      children:
+      - children:
+        - attributes:
+            value: A
+          type: User
+        type: Values
+      type: String
+    PIN_203_DRV:
+      attributes:
+        id: PIN_203_DRV
+      children:
+      - children:
+        - attributes:
+            value: '1'
+          type: User
+        type: Values
+      type: KeyValueSet
+    PIN_203_FUNCTION_TYPE:
+      attributes:
+        id: PIN_203_FUNCTION_TYPE
+      children:
+      - children:
+        - attributes:
+            value: HEMC_A4
+          type: User
+        type: Values
+      type: String
+    PIN_203_PERIPHERAL_FUNCTION:
+      attributes:
+        id: PIN_203_PERIPHERAL_FUNCTION
+      children:
+      - children:
+        - attributes:
+            value: A
+          type: User
+        type: Values
+      type: String
+    PIN_204_DRV:
+      attributes:
+        id: PIN_204_DRV
+      children:
+      - children:
+        - attributes:
+            value: '1'
+          type: User
+        type: Values
+      type: KeyValueSet
+    PIN_204_FUNCTION_TYPE:
+      attributes:
+        id: PIN_204_FUNCTION_TYPE
+      children:
+      - children:
+        - attributes:
+            value: HEMC_A5
+          type: User
+        type: Values
+      type: String
+    PIN_204_PERIPHERAL_FUNCTION:
+      attributes:
+        id: PIN_204_PERIPHERAL_FUNCTION
+      children:
+      - children:
+        - attributes:
+            value: A
+          type: User
+        type: Values
+      type: String
+    PIN_205_DRV:
+      attributes:
+        id: PIN_205_DRV
+      children:
+      - children:
+        - attributes:
+            value: '1'
+          type: User
+        type: Values
+      type: KeyValueSet
+    PIN_205_FUNCTION_TYPE:
+      attributes:
+        id: PIN_205_FUNCTION_TYPE
+      children:
+      - children:
+        - attributes:
+            value: HEMC_A6
+          type: User
+        type: Values
+      type: String
+    PIN_205_PERIPHERAL_FUNCTION:
+      attributes:
+        id: PIN_205_PERIPHERAL_FUNCTION
+      children:
+      - children:
+        - attributes:
+            value: A
+          type: User
+        type: Values
+      type: String
+    PIN_206_DRV:
+      attributes:
+        id: PIN_206_DRV
+      children:
+      - children:
+        - attributes:
+            value: '1'
+          type: User
+        type: Values
+      type: KeyValueSet
+    PIN_206_FUNCTION_TYPE:
+      attributes:
+        id: PIN_206_FUNCTION_TYPE
+      children:
+      - children:
+        - attributes:
+            value: HEMC_A7
+          type: User
+        type: Values
+      type: String
+    PIN_206_PERIPHERAL_FUNCTION:
+      attributes:
+        id: PIN_206_PERIPHERAL_FUNCTION
+      children:
+      - children:
+        - attributes:
+            value: A
+          type: User
+        type: Values
+      type: String
+    PIN_207_DRV:
+      attributes:
+        id: PIN_207_DRV
+      children:
+      - children:
+        - attributes:
+            value: '1'
+          type: User
+        type: Values
+      type: KeyValueSet
+    PIN_207_FUNCTION_TYPE:
+      attributes:
+        id: PIN_207_FUNCTION_TYPE
+      children:
+      - children:
+        - attributes:
+            value: HEMC_A8
+          type: User
+        type: Values
+      type: String
+    PIN_207_PERIPHERAL_FUNCTION:
+      attributes:
+        id: PIN_207_PERIPHERAL_FUNCTION
+      children:
+      - children:
+        - attributes:
+            value: A
+          type: User
+        type: Values
+      type: String
+    PIN_208_DRV:
+      attributes:
+        id: PIN_208_DRV
+      children:
+      - children:
+        - attributes:
+            value: '1'
+          type: User
+        type: Values
+      type: KeyValueSet
+    PIN_208_FUNCTION_TYPE:
+      attributes:
+        id: PIN_208_FUNCTION_TYPE
+      children:
+      - children:
+        - attributes:
+            value: HEMC_A9
+          type: User
+        type: Values
+      type: String
+    PIN_208_PERIPHERAL_FUNCTION:
+      attributes:
+        id: PIN_208_PERIPHERAL_FUNCTION
+      children:
+      - children:
+        - attributes:
+            value: A
+          type: User
+        type: Values
+      type: String
+    PIN_209_DRV:
+      attributes:
+        id: PIN_209_DRV
+      children:
+      - children:
+        - attributes:
+            value: '1'
+          type: User
+        type: Values
+      type: KeyValueSet
+    PIN_209_FUNCTION_TYPE:
+      attributes:
+        id: PIN_209_FUNCTION_TYPE
+      children:
+      - children:
+        - attributes:
+            value: HEMC_A10
+          type: User
+        type: Values
+      type: String
+    PIN_209_PERIPHERAL_FUNCTION:
+      attributes:
+        id: PIN_209_PERIPHERAL_FUNCTION
+      children:
+      - children:
+        - attributes:
+            value: A
+          type: User
+        type: Values
+      type: String
+    PIN_210_DRV:
+      attributes:
+        id: PIN_210_DRV
+      children:
+      - children:
+        - attributes:
+            value: '1'
+          type: User
+        type: Values
+      type: KeyValueSet
+    PIN_210_FUNCTION_TYPE:
+      attributes:
+        id: PIN_210_FUNCTION_TYPE
+      children:
+      - children:
+        - attributes:
+            value: HEMC_A11
+          type: User
+        type: Values
+      type: String
+    PIN_210_PERIPHERAL_FUNCTION:
+      attributes:
+        id: PIN_210_PERIPHERAL_FUNCTION
+      children:
+      - children:
+        - attributes:
+            value: A
+          type: User
+        type: Values
+      type: String
+    PIN_211_DRV:
+      attributes:
+        id: PIN_211_DRV
+      children:
+      - children:
+        - attributes:
+            value: '1'
+          type: User
+        type: Values
+      type: KeyValueSet
+    PIN_211_FUNCTION_TYPE:
+      attributes:
+        id: PIN_211_FUNCTION_TYPE
+      children:
+      - children:
+        - attributes:
+            value: HEMC_A12
+          type: User
+        type: Values
+      type: String
+    PIN_211_PERIPHERAL_FUNCTION:
+      attributes:
+        id: PIN_211_PERIPHERAL_FUNCTION
+      children:
+      - children:
+        - attributes:
+            value: A
+          type: User
+        type: Values
+      type: String
+    PIN_212_DRV:
+      attributes:
+        id: PIN_212_DRV
+      children:
+      - children:
+        - attributes:
+            value: '1'
+          type: User
+        type: Values
+      type: KeyValueSet
+    PIN_212_FUNCTION_TYPE:
+      attributes:
+        id: PIN_212_FUNCTION_TYPE
+      children:
+      - children:
+        - attributes:
+            value: HEMC_A13
+          type: User
+        type: Values
+      type: String
+    PIN_212_PERIPHERAL_FUNCTION:
+      attributes:
+        id: PIN_212_PERIPHERAL_FUNCTION
+      children:
+      - children:
+        - attributes:
+            value: A
+          type: User
+        type: Values
+      type: String
+    PIN_213_DRV:
+      attributes:
+        id: PIN_213_DRV
+      children:
+      - children:
+        - attributes:
+            value: '1'
+          type: User
+        type: Values
+      type: KeyValueSet
+    PIN_213_FUNCTION_TYPE:
+      attributes:
+        id: PIN_213_FUNCTION_TYPE
+      children:
+      - children:
+        - attributes:
+            value: HEMC_A14
+          type: User
+        type: Values
+      type: String
+    PIN_213_PERIPHERAL_FUNCTION:
+      attributes:
+        id: PIN_213_PERIPHERAL_FUNCTION
+      children:
+      - children:
+        - attributes:
+            value: A
+          type: User
+        type: Values
+      type: String
+    PIN_214_DRV:
+      attributes:
+        id: PIN_214_DRV
+      children:
+      - children:
+        - attributes:
+            value: '1'
+          type: User
+        type: Values
+      type: KeyValueSet
+    PIN_214_FUNCTION_TYPE:
+      attributes:
+        id: PIN_214_FUNCTION_TYPE
+      children:
+      - children:
+        - attributes:
+            value: HEMC_A15/BA0
+          type: User
+        type: Values
+      type: String
+    PIN_214_PERIPHERAL_FUNCTION:
+      attributes:
+        id: PIN_214_PERIPHERAL_FUNCTION
+      children:
+      - children:
+        - attributes:
+            value: A
+          type: User
+        type: Values
+      type: String
+    PIN_215_DRV:
+      attributes:
+        id: PIN_215_DRV
+      children:
+      - children:
+        - attributes:
+            value: '1'
+          type: User
+        type: Values
+      type: KeyValueSet
+    PIN_215_FUNCTION_TYPE:
+      attributes:
+        id: PIN_215_FUNCTION_TYPE
+      children:
+      - children:
+        - attributes:
+            value: HEMC_A16/BA1
+          type: User
+        type: Values
+      type: String
+    PIN_215_PERIPHERAL_FUNCTION:
+      attributes:
+        id: PIN_215_PERIPHERAL_FUNCTION
+      children:
+      - children:
+        - attributes:
+            value: A
+          type: User
+        type: Values
+      type: String
+    PIN_216_DRV:
+      attributes:
+        id: PIN_216_DRV
+      children:
+      - children:
+        - attributes:
+            value: '1'
+          type: User
+        type: Values
+      type: KeyValueSet
+    PIN_216_FUNCTION_TYPE:
+      attributes:
+        id: PIN_216_FUNCTION_TYPE
+      children:
+      - children:
+        - attributes:
+            value: HEMC_A17
+          type: User
+        type: Values
+      type: String
+    PIN_216_PERIPHERAL_FUNCTION:
+      attributes:
+        id: PIN_216_PERIPHERAL_FUNCTION
+      children:
+      - children:
+        - attributes:
+            value: A
+          type: User
+        type: Values
+      type: String
+    PIN_217_DRV:
+      attributes:
+        id: PIN_217_DRV
+      children:
+      - children:
+        - attributes:
+            value: '1'
+          type: User
+        type: Values
+      type: KeyValueSet
+    PIN_217_FUNCTION_TYPE:
+      attributes:
+        id: PIN_217_FUNCTION_TYPE
+      children:
+      - children:
+        - attributes:
+            value: HEMC_A18
+          type: User
+        type: Values
+      type: String
+    PIN_217_PERIPHERAL_FUNCTION:
+      attributes:
+        id: PIN_217_PERIPHERAL_FUNCTION
+      children:
+      - children:
+        - attributes:
+            value: A
+          type: User
+        type: Values
+      type: String
+    PIN_218_DRV:
+      attributes:
+        id: PIN_218_DRV
+      children:
+      - children:
+        - attributes:
+            value: '1'
+          type: User
+        type: Values
+      type: KeyValueSet
+    PIN_218_FUNCTION_TYPE:
+      attributes:
+        id: PIN_218_FUNCTION_TYPE
+      children:
+      - children:
+        - attributes:
+            value: HEMC_A19
+          type: User
+        type: Values
+      type: String
+    PIN_218_PERIPHERAL_FUNCTION:
+      attributes:
+        id: PIN_218_PERIPHERAL_FUNCTION
+      children:
+      - children:
+        - attributes:
+            value: A
+          type: User
+        type: Values
+      type: String
+    PIN_219_DRV:
+      attributes:
+        id: PIN_219_DRV
+      children:
+      - children:
+        - attributes:
+            value: '1'
+          type: User
+        type: Values
+      type: KeyValueSet
+    PIN_219_FUNCTION_TYPE:
+      attributes:
+        id: PIN_219_FUNCTION_TYPE
+      children:
+      - children:
+        - attributes:
+            value: HEMC_A20
+          type: User
+        type: Values
+      type: String
+    PIN_219_PERIPHERAL_FUNCTION:
+      attributes:
+        id: PIN_219_PERIPHERAL_FUNCTION
+      children:
+      - children:
+        - attributes:
+            value: A
+          type: User
+        type: Values
+      type: String
+    PIN_220_DRV:
+      attributes:
+        id: PIN_220_DRV
+      children:
+      - children:
+        - attributes:
+            value: '1'
+          type: User
+        type: Values
+      type: KeyValueSet
+    PIN_220_FUNCTION_TYPE:
+      attributes:
+        id: PIN_220_FUNCTION_TYPE
+      children:
+      - children:
+        - attributes:
+            value: HEMC_A21
+          type: User
+        type: Values
+      type: String
+    PIN_220_PERIPHERAL_FUNCTION:
+      attributes:
+        id: PIN_220_PERIPHERAL_FUNCTION
+      children:
+      - children:
+        - attributes:
+            value: A
+          type: User
+        type: Values
+      type: String
+    PIN_221_DRV:
+      attributes:
+        id: PIN_221_DRV
+      children:
+      - children:
+        - attributes:
+            value: '1'
+          type: User
+        type: Values
+      type: KeyValueSet
+    PIN_221_FUNCTION_TYPE:
+      attributes:
+        id: PIN_221_FUNCTION_TYPE
+      children:
+      - children:
+        - attributes:
+            value: HEMC_A22
+          type: User
+        type: Values
+      type: String
+    PIN_221_PERIPHERAL_FUNCTION:
+      attributes:
+        id: PIN_221_PERIPHERAL_FUNCTION
+      children:
+      - children:
+        - attributes:
+            value: A
+          type: User
+        type: Values
+      type: String
+    PIN_222_DRV:
+      attributes:
+        id: PIN_222_DRV
+      children:
+      - children:
+        - attributes:
+            value: '1'
+          type: User
+        type: Values
+      type: KeyValueSet
+    PIN_222_FUNCTION_TYPE:
+      attributes:
+        id: PIN_222_FUNCTION_TYPE
+      children:
+      - children:
+        - attributes:
+            value: HEMC_A23
+          type: User
+        type: Values
+      type: String
+    PIN_222_PERIPHERAL_FUNCTION:
+      attributes:
+        id: PIN_222_PERIPHERAL_FUNCTION
+      children:
+      - children:
+        - attributes:
+            value: A
+          type: User
+        type: Values
+      type: String
+    PIN_237_FUNCTION_TYPE:
+      attributes:
+        id: PIN_237_FUNCTION_TYPE
+      children:
+      - children:
+        - attributes:
+            value: HEMC_NCS4
+          type: User
+        type: Values
+      type: String
+    PIN_237_PERIPHERAL_FUNCTION:
+      attributes:
+        id: PIN_237_PERIPHERAL_FUNCTION
+      children:
+      - children:
+        - attributes:
+            value: A
+          type: User
+        type: Values
+      type: String
+    PIN_3_FUNCTION_TYPE:
+      attributes:
+        id: PIN_3_FUNCTION_TYPE
+      children:
+      - children:
+        - attributes:
+            value: FLEXCOM1_IO1
+          type: User
+        type: Values
+      type: String
+    PIN_3_PERIPHERAL_FUNCTION:
+      attributes:
+        id: PIN_3_PERIPHERAL_FUNCTION
+      children:
+      - children:
+        - attributes:
+            value: A
+          type: User
+        type: Values
+      type: String
+    PIN_4_FUNCTION_TYPE:
+      attributes:
+        id: PIN_4_FUNCTION_TYPE
+      children:
+      - children:
+        - attributes:
+            value: FLEXCOM1_IO0
+          type: User
+        type: Values
+      type: String
+    PIN_4_PERIPHERAL_FUNCTION:
+      attributes:
+        id: PIN_4_PERIPHERAL_FUNCTION
+      children:
+      - children:
+        - attributes:
+            value: A
+          type: User
+        type: Values
+      type: String
+    PIOC_INTERRUPT_ENABLE:
+      attributes:
+        id: PIOC_INTERRUPT_ENABLE
+      children:
+      - children:
+        - attributes:
+            id: core
+            value: 'true'
+          type: Dynamic
+        type: Values
+      type: Boolean
+    PIOC_INTERRUPT_ENABLE_UPDATE:
+      attributes:
+        id: PIOC_INTERRUPT_ENABLE_UPDATE
+      children:
+      - children:
+        - attributes:
+            id: core
+            value: 'false'
+          type: Dynamic
+        type: Values
+      type: Boolean
+    PIOC_INTERRUPT_HANDLER:
+      attributes:
+        id: PIOC_INTERRUPT_HANDLER
+      children:
+      - children:
+        - attributes:
+            id: core
+            value: PIOC_InterruptHandler
+          type: Dynamic
+        type: Values
+      type: String
+    PIOC_INTERRUPT_HANDLER_LOCK:
+      attributes:
+        id: PIOC_INTERRUPT_HANDLER_LOCK
+      children:
+      - children:
+        - attributes:
+            id: core
+            value: 'true'
+          type: Dynamic
+        type: Values
+      type: Boolean
+    PIO_CLOCK_ENABLE:
+      attributes:
+        id: PIO_CLOCK_ENABLE
+      children:
+      - children:
+        - attributes:
+            id: core
+            value: 'true'
+          type: Dynamic
+        type: Values
+      type: Boolean
+    PIO_CLOCK_FREQUENCY:
+      attributes:
+        id: PIO_CLOCK_FREQUENCY
+      children:
+      - children:
+        - attributes:
+            id: core
+            value: '50000000'
+          type: Dynamic
+        type: Values
+      type: Integer
+    PORT_C_CFGR_Value29:
+      attributes:
+        id: PORT_C_CFGR_Value29
+      children:
+      - children:
+        - attributes:
+            id: core
+            value: '0x3003200'
+          type: Dynamic
+        type: Values
+      type: String
+    PORT_C_CFGR_Value30:
+      attributes:
+        id: PORT_C_CFGR_Value30
+      children:
+      - children:
+        - attributes:
+            id: core
+            value: '0x3003200'
+          type: Dynamic
+        type: Values
+      type: String
+    PORT_C_CFGR_Value31:
+      attributes:
+        id: PORT_C_CFGR_Value31
+      children:
+      - children:
+        - attributes:
+            id: core
+            value: '0x3003200'
+          type: Dynamic
+        type: Values
+      type: String
+    PORT_C_INTERRUPT_USED:
+      attributes:
+        id: PORT_C_INTERRUPT_USED
+      children:
+      - children:
+        - attributes:
+            id: core
+            value: 'true'
+          type: Dynamic
+        type: Values
+      type: Boolean
+    PORT_C_MSKR_ValueA:
+      attributes:
+        id: PORT_C_MSKR_ValueA
+      children:
+      - children:
+        - attributes:
+            id: core
+            value: 0x0L
+          type: Dynamic
+        type: Values
+      type: String
+    PORT_C_MSKR_ValueB:
+      attributes:
+        id: PORT_C_MSKR_ValueB
+      children:
+      - children:
+        - attributes:
+            id: core
+            value: 0x0L
+          type: Dynamic
+        type: Values
+      type: String
+    PORT_C_MSKR_ValueC:
+      attributes:
+        id: PORT_C_MSKR_ValueC
+      children:
+      - children:
+        - attributes:
+            id: core
+            value: 0x0L
+          type: Dynamic
+        type: Values
+      type: String
+    PORT_C_MSKR_ValueD:
+      attributes:
+        id: PORT_C_MSKR_ValueD
+      children:
+      - children:
+        - attributes:
+            id: core
+            value: 0x0L
+          type: Dynamic
+        type: Values
+      type: String
+    PORT_C_MSKR_ValueE:
+      attributes:
+        id: PORT_C_MSKR_ValueE
+      children:
+      - children:
+        - attributes:
+            id: core
+            value: 0x0L
+          type: Dynamic
+        type: Values
+      type: String
+    PORT_C_MSKR_ValueF:
+      attributes:
+        id: PORT_C_MSKR_ValueF
+      children:
+      - children:
+        - attributes:
+            id: core
+            value: 0x0L
+          type: Dynamic
+        type: Values
+      type: String
+    PORT_C_MSKR_ValueG:
+      attributes:
+        id: PORT_C_MSKR_ValueG
+      children:
+      - children:
+        - attributes:
+            id: core
+            value: 0x0L
+          type: Dynamic
+        type: Values
+      type: String
+    PORT_C_MSKR_ValueGPIO:
+      attributes:
+        id: PORT_C_MSKR_ValueGPIO
+      children:
+      - children:
+        - attributes:
+            id: core
+            value: 0xe0000000L
+          type: Dynamic
+        type: Values
+      type: String
+    PORT_D_MSKR_ValueA:
+      attributes:
+        id: PORT_D_MSKR_ValueA
+      children:
+      - children:
+        - attributes:
+            id: core
+            value: 0xffffffffL
+          type: Dynamic
+        type: Values
+      type: String
+    PORT_D_MSKR_ValueB:
+      attributes:
+        id: PORT_D_MSKR_ValueB
+      children:
+      - children:
+        - attributes:
+            id: core
+            value: 0x0L
+          type: Dynamic
+        type: Values
+      type: String
+    PORT_D_MSKR_ValueC:
+      attributes:
+        id: PORT_D_MSKR_ValueC
+      children:
+      - children:
+        - attributes:
+            id: core
+            value: 0x0L
+          type: Dynamic
+        type: Values
+      type: String
+    PORT_D_MSKR_ValueD:
+      attributes:
+        id: PORT_D_MSKR_ValueD
+      children:
+      - children:
+        - attributes:
+            id: core
+            value: 0x0L
+          type: Dynamic
+        type: Values
+      type: String
+    PORT_D_MSKR_ValueE:
+      attributes:
+        id: PORT_D_MSKR_ValueE
+      children:
+      - children:
+        - attributes:
+            id: core
+            value: 0x0L
+          type: Dynamic
+        type: Values
+      type: String
+    PORT_D_MSKR_ValueF:
+      attributes:
+        id: PORT_D_MSKR_ValueF
+      children:
+      - children:
+        - attributes:
+            id: core
+            value: 0x0L
+          type: Dynamic
+        type: Values
+      type: String
+    PORT_D_MSKR_ValueG:
+      attributes:
+        id: PORT_D_MSKR_ValueG
+      children:
+      - children:
+        - attributes:
+            id: core
+            value: 0x0L
+          type: Dynamic
+        type: Values
+      type: String
+    PORT_D_MSKR_ValueGPIO:
+      attributes:
+        id: PORT_D_MSKR_ValueGPIO
+      children:
+      - children:
+        - attributes:
+            id: core
+            value: 0x0L
+          type: Dynamic
+        type: Values
+      type: String
+    PORT_E_MSKR_ValueA:
+      attributes:
+        id: PORT_E_MSKR_ValueA
+      children:
+      - children:
+        - attributes:
+            id: core
+            value: '0xff'
+          type: Dynamic
+        type: Values
+      type: String
+    PORT_E_MSKR_ValueB:
+      attributes:
+        id: PORT_E_MSKR_ValueB
+      children:
+      - children:
+        - attributes:
+            id: core
+            value: '0x0'
+          type: Dynamic
+        type: Values
+      type: String
+    PORT_E_MSKR_ValueC:
+      attributes:
+        id: PORT_E_MSKR_ValueC
+      children:
+      - children:
+        - attributes:
+            id: core
+            value: '0x0'
+          type: Dynamic
+        type: Values
+      type: String
+    PORT_E_MSKR_ValueD:
+      attributes:
+        id: PORT_E_MSKR_ValueD
+      children:
+      - children:
+        - attributes:
+            id: core
+            value: '0x0'
+          type: Dynamic
+        type: Values
+      type: String
+    PORT_E_MSKR_ValueE:
+      attributes:
+        id: PORT_E_MSKR_ValueE
+      children:
+      - children:
+        - attributes:
+            id: core
+            value: '0x0'
+          type: Dynamic
+        type: Values
+      type: String
+    PORT_E_MSKR_ValueF:
+      attributes:
+        id: PORT_E_MSKR_ValueF
+      children:
+      - children:
+        - attributes:
+            id: core
+            value: '0x0'
+          type: Dynamic
+        type: Values
+      type: String
+    PORT_E_MSKR_ValueG:
+      attributes:
+        id: PORT_E_MSKR_ValueG
+      children:
+      - children:
+        - attributes:
+            id: core
+            value: '0x0'
+          type: Dynamic
+        type: Values
+      type: String
+    PORT_E_MSKR_ValueGPIO:
+      attributes:
+        id: PORT_E_MSKR_ValueGPIO
+      children:
+      - children:
+        - attributes:
+            id: core
+            value: '0x0'
+          type: Dynamic
+        type: Values
+      type: String
+    PORT_F_CFGR_Value2:
+      attributes:
+        id: PORT_F_CFGR_Value2
+      children:
+      - children:
+        - attributes:
+            id: core
+            value: '0x20000'
+          type: Dynamic
+        type: Values
+      type: String
+    PORT_F_MSKR_ValueA:
+      attributes:
+        id: PORT_F_MSKR_ValueA
+      children:
+      - children:
+        - attributes:
+            id: core
+            value: '0x600087ff'
+          type: Dynamic
+        type: Values
+      type: String
+    PORT_F_MSKR_ValueB:
+      attributes:
+        id: PORT_F_MSKR_ValueB
+      children:
+      - children:
+        - attributes:
+            id: core
+            value: '0x0'
+          type: Dynamic
+        type: Values
+      type: String
+    PORT_F_MSKR_ValueC:
+      attributes:
+        id: PORT_F_MSKR_ValueC
+      children:
+      - children:
+        - attributes:
+            id: core
+            value: '0x0'
+          type: Dynamic
+        type: Values
+      type: String
+    PORT_F_MSKR_ValueD:
+      attributes:
+        id: PORT_F_MSKR_ValueD
+      children:
+      - children:
+        - attributes:
+            id: core
+            value: '0x0'
+          type: Dynamic
+        type: Values
+      type: String
+    PORT_F_MSKR_ValueE:
+      attributes:
+        id: PORT_F_MSKR_ValueE
+      children:
+      - children:
+        - attributes:
+            id: core
+            value: '0x0'
+          type: Dynamic
+        type: Values
+      type: String
+    PORT_F_MSKR_ValueF:
+      attributes:
+        id: PORT_F_MSKR_ValueF
+      children:
+      - children:
+        - attributes:
+            id: core
+            value: '0x0'
+          type: Dynamic
+        type: Values
+      type: String
+    PORT_F_MSKR_ValueG:
+      attributes:
+        id: PORT_F_MSKR_ValueG
+      children:
+      - children:
+        - attributes:
+            id: core
+            value: '0x0'
+          type: Dynamic
+        type: Values
+      type: String
+    PORT_F_MSKR_ValueGPIO:
+      attributes:
+        id: PORT_F_MSKR_ValueGPIO
+      children:
+      - children:
+        - attributes:
+            id: core
+            value: '0x0'
+          type: Dynamic
+        type: Values
+      type: String
+    PORT_G_CFGR_Value0:
+      attributes:
+        id: PORT_G_CFGR_Value0
+      children:
+      - children:
+        - attributes:
+            id: core
+            value: '0x10000'
+          type: Dynamic
+        type: Values
+      type: String
+    PORT_G_CFGR_Value1:
+      attributes:
+        id: PORT_G_CFGR_Value1
+      children:
+      - children:
+        - attributes:
+            id: core
+            value: '0x10000'
+          type: Dynamic
+        type: Values
+      type: String
+    PORT_G_CFGR_Value10:
+      attributes:
+        id: PORT_G_CFGR_Value10
+      children:
+      - children:
+        - attributes:
+            id: core
+            value: '0x10000'
+          type: Dynamic
+        type: Values
+      type: String
+    PORT_G_CFGR_Value11:
+      attributes:
+        id: PORT_G_CFGR_Value11
+      children:
+      - children:
+        - attributes:
+            id: core
+            value: '0x10000'
+          type: Dynamic
+        type: Values
+      type: String
+    PORT_G_CFGR_Value12:
+      attributes:
+        id: PORT_G_CFGR_Value12
+      children:
+      - children:
+        - attributes:
+            id: core
+            value: '0x10000'
+          type: Dynamic
+        type: Values
+      type: String
+    PORT_G_CFGR_Value13:
+      attributes:
+        id: PORT_G_CFGR_Value13
+      children:
+      - children:
+        - attributes:
+            id: core
+            value: '0x10000'
+          type: Dynamic
+        type: Values
+      type: String
+    PORT_G_CFGR_Value14:
+      attributes:
+        id: PORT_G_CFGR_Value14
+      children:
+      - children:
+        - attributes:
+            id: core
+            value: '0x10000'
+          type: Dynamic
+        type: Values
+      type: String
+    PORT_G_CFGR_Value15:
+      attributes:
+        id: PORT_G_CFGR_Value15
+      children:
+      - children:
+        - attributes:
+            id: core
+            value: '0x10000'
+          type: Dynamic
+        type: Values
+      type: String
+    PORT_G_CFGR_Value16:
+      attributes:
+        id: PORT_G_CFGR_Value16
+      children:
+      - children:
+        - attributes:
+            id: core
+            value: '0x10000'
+          type: Dynamic
+        type: Values
+      type: String
+    PORT_G_CFGR_Value17:
+      attributes:
+        id: PORT_G_CFGR_Value17
+      children:
+      - children:
+        - attributes:
+            id: core
+            value: '0x10000'
+          type: Dynamic
+        type: Values
+      type: String
+    PORT_G_CFGR_Value18:
+      attributes:
+        id: PORT_G_CFGR_Value18
+      children:
+      - children:
+        - attributes:
+            id: core
+            value: '0x10000'
+          type: Dynamic
+        type: Values
+      type: String
+    PORT_G_CFGR_Value19:
+      attributes:
+        id: PORT_G_CFGR_Value19
+      children:
+      - children:
+        - attributes:
+            id: core
+            value: '0x10000'
+          type: Dynamic
+        type: Values
+      type: String
+    PORT_G_CFGR_Value2:
+      attributes:
+        id: PORT_G_CFGR_Value2
+      children:
+      - children:
+        - attributes:
+            id: core
+            value: '0x10000'
+          type: Dynamic
+        type: Values
+      type: String
+    PORT_G_CFGR_Value20:
+      attributes:
+        id: PORT_G_CFGR_Value20
+      children:
+      - children:
+        - attributes:
+            id: core
+            value: '0x10000'
+          type: Dynamic
+        type: Values
+      type: String
+    PORT_G_CFGR_Value21:
+      attributes:
+        id: PORT_G_CFGR_Value21
+      children:
+      - children:
+        - attributes:
+            id: core
+            value: '0x10000'
+          type: Dynamic
+        type: Values
+      type: String
+    PORT_G_CFGR_Value22:
+      attributes:
+        id: PORT_G_CFGR_Value22
+      children:
+      - children:
+        - attributes:
+            id: core
+            value: '0x10000'
+          type: Dynamic
+        type: Values
+      type: String
+    PORT_G_CFGR_Value23:
+      attributes:
+        id: PORT_G_CFGR_Value23
+      children:
+      - children:
+        - attributes:
+            id: core
+            value: '0x10000'
+          type: Dynamic
+        type: Values
+      type: String
+    PORT_G_CFGR_Value3:
+      attributes:
+        id: PORT_G_CFGR_Value3
+      children:
+      - children:
+        - attributes:
+            id: core
+            value: '0x10000'
+          type: Dynamic
+        type: Values
+      type: String
+    PORT_G_CFGR_Value4:
+      attributes:
+        id: PORT_G_CFGR_Value4
+      children:
+      - children:
+        - attributes:
+            id: core
+            value: '0x10000'
+          type: Dynamic
+        type: Values
+      type: String
+    PORT_G_CFGR_Value5:
+      attributes:
+        id: PORT_G_CFGR_Value5
+      children:
+      - children:
+        - attributes:
+            id: core
+            value: '0x10000'
+          type: Dynamic
+        type: Values
+      type: String
+    PORT_G_CFGR_Value6:
+      attributes:
+        id: PORT_G_CFGR_Value6
+      children:
+      - children:
+        - attributes:
+            id: core
+            value: '0x10000'
+          type: Dynamic
+        type: Values
+      type: String
+    PORT_G_CFGR_Value7:
+      attributes:
+        id: PORT_G_CFGR_Value7
+      children:
+      - children:
+        - attributes:
+            id: core
+            value: '0x10000'
+          type: Dynamic
+        type: Values
+      type: String
+    PORT_G_CFGR_Value8:
+      attributes:
+        id: PORT_G_CFGR_Value8
+      children:
+      - children:
+        - attributes:
+            id: core
+            value: '0x10000'
+          type: Dynamic
+        type: Values
+      type: String
+    PORT_G_CFGR_Value9:
+      attributes:
+        id: PORT_G_CFGR_Value9
+      children:
+      - children:
+        - attributes:
+            id: core
+            value: '0x10000'
+          type: Dynamic
+        type: Values
+      type: String
+    PORT_G_MSKR_ValueA:
+      attributes:
+        id: PORT_G_MSKR_ValueA
+      children:
+      - children:
+        - attributes:
+            id: core
+            value: '0xffffff'
+          type: Dynamic
+        type: Values
+      type: String
+    PORT_G_MSKR_ValueB:
+      attributes:
+        id: PORT_G_MSKR_ValueB
+      children:
+      - children:
+        - attributes:
+            id: core
+            value: '0x0'
+          type: Dynamic
+        type: Values
+      type: String
+    PORT_G_MSKR_ValueC:
+      attributes:
+        id: PORT_G_MSKR_ValueC
+      children:
+      - children:
+        - attributes:
+            id: core
+            value: '0x0'
+          type: Dynamic
+        type: Values
+      type: String
+    PORT_G_MSKR_ValueD:
+      attributes:
+        id: PORT_G_MSKR_ValueD
+      children:
+      - children:
+        - attributes:
+            id: core
+            value: '0x0'
+          type: Dynamic
+        type: Values
+      type: String
+    PORT_G_MSKR_ValueE:
+      attributes:
+        id: PORT_G_MSKR_ValueE
+      children:
+      - children:
+        - attributes:
+            id: core
+            value: '0x0'
+          type: Dynamic
+        type: Values
+      type: String
+    PORT_G_MSKR_ValueF:
+      attributes:
+        id: PORT_G_MSKR_ValueF
+      children:
+      - children:
+        - attributes:
+            id: core
+            value: '0x0'
+          type: Dynamic
+        type: Values
+      type: String
+    PORT_G_MSKR_ValueG:
+      attributes:
+        id: PORT_G_MSKR_ValueG
+      children:
+      - children:
+        - attributes:
+            id: core
+            value: '0x0'
+          type: Dynamic
+        type: Values
+      type: String
+    PORT_G_MSKR_ValueGPIO:
+      attributes:
+        id: PORT_G_MSKR_ValueGPIO
+      children:
+      - children:
+        - attributes:
+            id: core
+            value: '0x0'
+          type: Dynamic
+        type: Values
+      type: String
+    SYSTICK_CLOCK_FREQUENCY:
+      attributes:
+        id: SYSTICK_CLOCK_FREQUENCY
+      children:
+      - children:
+        - attributes:
+            id: core
+            value: '50000000'
+          type: Dynamic
+        type: Values
+      type: Integer
+    SYSTICK_PERIOD:
+      attributes:
+        id: SYSTICK_PERIOD
+      children:
+      - children:
+        - attributes:
+            id: core
+            value: '0x186A0'
+          type: Dynamic
+        type: Values
+      type: String
+    SYSTICK_PERIOD_US:
+      attributes:
+        id: SYSTICK_PERIOD_US
+      children:
+      - children:
+        - attributes:
+            id: core
+            value: '1000'
+          type: Dynamic
+        type: Values
+      type: Integer
+    TC0_CH0_CLOCK_FREQUENCY:
+      attributes:
+        id: TC0_CH0_CLOCK_FREQUENCY
+      children:
+      - children:
+        - attributes:
+            id: core
+            value: '0'
+          type: Dynamic
+        type: Values
+      type: Integer
+    TC0_CH0_INTERRUPT_ENABLE_UPDATE:
+      attributes:
+        id: TC0_CH0_INTERRUPT_ENABLE_UPDATE
+      children:
+      - children:
+        - attributes:
+            id: core
+            value: 'true'
+          type: Dynamic
+        type: Values
+      type: Boolean
+    TC0_CH1_CLOCK_FREQUENCY:
+      attributes:
+        id: TC0_CH1_CLOCK_FREQUENCY
+      children:
+      - children:
+        - attributes:
+            id: core
+            value: '0'
+          type: Dynamic
+        type: Values
+      type: Integer
+    TC0_CH1_INTERRUPT_ENABLE_UPDATE:
+      attributes:
+        id: TC0_CH1_INTERRUPT_ENABLE_UPDATE
+      children:
+      - children:
+        - attributes:
+            id: core
+            value: 'true'
+          type: Dynamic
+        type: Values
+      type: Boolean
+    TC0_CH2_CLOCK_FREQUENCY:
+      attributes:
+        id: TC0_CH2_CLOCK_FREQUENCY
+      children:
+      - children:
+        - attributes:
+            id: core
+            value: '0'
+          type: Dynamic
+        type: Values
+      type: Integer
+    TC0_CH2_INTERRUPT_ENABLE_UPDATE:
+      attributes:
+        id: TC0_CH2_INTERRUPT_ENABLE_UPDATE
+      children:
+      - children:
+        - attributes:
+            id: core
+            value: 'true'
+          type: Dynamic
+        type: Values
+      type: Boolean
+    TC0_CH3_CLOCK_FREQUENCY:
+      attributes:
+        id: TC0_CH3_CLOCK_FREQUENCY
+      children:
+      - children:
+        - attributes:
+            id: core
+            value: '0'
+          type: Dynamic
+        type: Values
+      type: Integer
+    TC1_CH0_CLOCK_FREQUENCY:
+      attributes:
+        id: TC1_CH0_CLOCK_FREQUENCY
+      children:
+      - children:
+        - attributes:
+            id: core
+            value: '0'
+          type: Dynamic
+        type: Values
+      type: Integer
+    TC1_CH1_CLOCK_FREQUENCY:
+      attributes:
+        id: TC1_CH1_CLOCK_FREQUENCY
+      children:
+      - children:
+        - attributes:
+            id: core
+            value: '0'
+          type: Dynamic
+        type: Values
+      type: Integer
+    TC1_CH2_CLOCK_FREQUENCY:
+      attributes:
+        id: TC1_CH2_CLOCK_FREQUENCY
+      children:
+      - children:
+        - attributes:
+            id: core
+            value: '0'
+          type: Dynamic
+        type: Values
+      type: Integer
+    TC1_CH3_CLOCK_FREQUENCY:
+      attributes:
+        id: TC1_CH3_CLOCK_FREQUENCY
+      children:
+      - children:
+        - attributes:
+            id: core
+            value: '0'
+          type: Dynamic
+        type: Values
+      type: Integer
+    TC2_CH0_CLOCK_FREQUENCY:
+      attributes:
+        id: TC2_CH0_CLOCK_FREQUENCY
+      children:
+      - children:
+        - attributes:
+            id: core
+            value: '0'
+          type: Dynamic
+        type: Values
+      type: Integer
+    TC2_CH1_CLOCK_FREQUENCY:
+      attributes:
+        id: TC2_CH1_CLOCK_FREQUENCY
+      children:
+      - children:
+        - attributes:
+            id: core
+            value: '0'
+          type: Dynamic
+        type: Values
+      type: Integer
+    TC2_CH2_CLOCK_FREQUENCY:
+      attributes:
+        id: TC2_CH2_CLOCK_FREQUENCY
+      children:
+      - children:
+        - attributes:
+            id: core
+            value: '0'
+          type: Dynamic
+        type: Values
+      type: Integer
+    TC2_CH3_CLOCK_FREQUENCY:
+      attributes:
+        id: TC2_CH3_CLOCK_FREQUENCY
+      children:
+      - children:
+        - attributes:
+            id: core
+            value: '0'
+          type: Dynamic
+        type: Values
+      type: Integer
+    TC3_CH0_CLOCK_FREQUENCY:
+      attributes:
+        id: TC3_CH0_CLOCK_FREQUENCY
+      children:
+      - children:
+        - attributes:
+            id: core
+            value: '0'
+          type: Dynamic
+        type: Values
+      type: Integer
+    TC3_CH1_CLOCK_FREQUENCY:
+      attributes:
+        id: TC3_CH1_CLOCK_FREQUENCY
+      children:
+      - children:
+        - attributes:
+            id: core
+            value: '0'
+          type: Dynamic
+        type: Values
+      type: Integer
+    TC3_CH2_CLOCK_FREQUENCY:
+      attributes:
+        id: TC3_CH2_CLOCK_FREQUENCY
+      children:
+      - children:
+        - attributes:
+            id: core
+            value: '0'
+          type: Dynamic
+        type: Values
+      type: Integer
+    TC3_CH3_CLOCK_FREQUENCY:
+      attributes:
+        id: TC3_CH3_CLOCK_FREQUENCY
+      children:
+      - children:
+        - attributes:
+            id: core
+            value: '0'
+          type: Dynamic
+        type: Values
+      type: Integer
+    TCMECC_INTFIX_INTERRUPT_ENABLE:
+      attributes:
+        id: TCMECC_INTFIX_INTERRUPT_ENABLE
+      children:
+      - children:
+        - attributes:
+            id: tcmecc
+            value: 'true'
+          type: Dynamic
+        type: Values
+      type: Boolean
+    TCMECC_INTFIX_INTERRUPT_ENABLE_UPDATE:
+      attributes:
+        id: TCMECC_INTFIX_INTERRUPT_ENABLE_UPDATE
+      children:
+      - children:
+        - attributes:
+            id: core
+            value: 'false'
+          type: Dynamic
+        type: Values
+      type: Boolean
+    TCMECC_INTFIX_INTERRUPT_HANDLER:
+      attributes:
+        id: TCMECC_INTFIX_INTERRUPT_HANDLER
+      children:
+      - children:
+        - attributes:
+            id: tcmecc
+            value: TCMECC_INTFIX_InterruptHandler
+          type: Dynamic
+        type: Values
+      type: String
+    TCMECC_INTFIX_INTERRUPT_HANDLER_LOCK:
+      attributes:
+        id: TCMECC_INTFIX_INTERRUPT_HANDLER_LOCK
+      children:
+      - children:
+        - attributes:
+            id: tcmecc
+            value: 'true'
+          type: Dynamic
+        type: Values
+      type: Boolean
+    TCMECC_INTNOFIX_INTERRUPT_ENABLE:
+      attributes:
+        id: TCMECC_INTNOFIX_INTERRUPT_ENABLE
+      children:
+      - children:
+        - attributes:
+            id: tcmecc
+            value: 'true'
+          type: Dynamic
+        type: Values
+      type: Boolean
+    TCMECC_INTNOFIX_INTERRUPT_ENABLE_UPDATE:
+      attributes:
+        id: TCMECC_INTNOFIX_INTERRUPT_ENABLE_UPDATE
+      children:
+      - children:
+        - attributes:
+            id: core
+            value: 'false'
+          type: Dynamic
+        type: Values
+      type: Boolean
+    TCMECC_INTNOFIX_INTERRUPT_HANDLER:
+      attributes:
+        id: TCMECC_INTNOFIX_INTERRUPT_HANDLER
+      children:
+      - children:
+        - attributes:
+            id: tcmecc
+            value: TCMECC_INTNOFIX_InterruptHandler
+          type: Dynamic
+        type: Values
+      type: String
+    TCMECC_INTNOFIX_INTERRUPT_HANDLER_LOCK:
+      attributes:
+        id: TCMECC_INTNOFIX_INTERRUPT_HANDLER_LOCK
+      children:
+      - children:
+        - attributes:
+            id: tcmecc
+            value: 'true'
+          type: Dynamic
+        type: Values
+      type: Boolean
+    WDT_INTERRUPT_ENABLE:
+      attributes:
+        id: WDT_INTERRUPT_ENABLE
+      children:
+      - children:
+        - attributes:
+            id: core
+            value: 'false'
+          type: Dynamic
+        type: Values
+      type: Boolean
+    WDT_INTERRUPT_ENABLE_UPDATE:
+      attributes:
+        id: WDT_INTERRUPT_ENABLE_UPDATE
+      children:
+      - children:
+        - attributes:
+            id: core
+            value: 'true'
+          type: Dynamic
+        type: Values
+      type: Boolean
+    WDT_INTERRUPT_HANDLER:
+      attributes:
+        id: WDT_INTERRUPT_HANDLER
+      children:
+      - children:
+        - attributes:
+            id: core
+            value: WDT_Handler
+          type: Dynamic
+        type: Values
+      type: String
+    WDT_INTERRUPT_HANDLER_LOCK:
+      attributes:
+        id: WDT_INTERRUPT_HANDLER_LOCK
+      children:
+      - children:
+        - attributes:
+            id: core
+            value: 'false'
+          type: Dynamic
+        type: Values
+      type: Boolean
+  userData:
+    children:
+    - attributes:
+        canvasHeight: '247'
+        canvasWidth: '438'
+      type: GraphSettings
+    - children:
+      - attributes:
+          id: profile0
+          name: Main
+        type: Profile
+      type: PowerProfiles
+    type: UserData

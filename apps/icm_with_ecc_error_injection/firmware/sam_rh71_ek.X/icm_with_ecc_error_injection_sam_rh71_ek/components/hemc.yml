@@ -1,0 +1,731 @@
+configVersion: 1.0.0
+componentName: hemc
+coreVersion: 5.8.2
+device: ATSAMRH71F20C
+library: []
+dependency:
+- dependencyPackage: class com.microchip.mcc.harmony.HarmonyModule
+  name: hemc
+  type: module
+  version: ''
+- dependencyPackage: ''
+  name: csp
+  type: package
+  version: v3.23.0
+customDataClassName: com.microchip.utils_mh3.utils.persistence.CustomModuleData
+data:
+  attachments: {}
+  elementPosition:
+    attributes:
+      id: __ROOTVIEW
+    children:
+    - children:
+      - attributes:
+          id: hemc
+          x: '20'
+          y: '223'
+        type: ElementPosition
+      type: ElementPositions
+    type: ComponentGraph
+  symbols:
+    CS_0_COMMENT:
+      attributes:
+        id: CS_0_COMMENT
+      children:
+      - children:
+        - attributes:
+            id: hemc
+            value: 'false'
+          type: Dynamic
+        type: Values
+      type: Boolean
+    CS_0_END_ADDRESS:
+      attributes:
+        id: CS_0_END_ADDRESS
+      children:
+      - children:
+        - attributes:
+            id: hemc
+            value: '0x60ffffff'
+          type: Dynamic
+        - attributes:
+            value: '0x60000000'
+          type: User
+        type: Values
+      type: String
+    CS_0_MEMORY_BANK_SIZE:
+      attributes:
+        id: CS_0_MEMORY_BANK_SIZE
+      children:
+      - children:
+        - attributes:
+            value: '17'
+          type: User
+        type: Values
+      type: KeyValueSet
+    CS_0_MEMORY_BASE:
+      attributes:
+        id: CS_0_MEMORY_BASE
+      children:
+      - children:
+        - attributes:
+            id: hemc
+            value: '262143'
+          type: Dynamic
+        - attributes:
+            value: '262143'
+          type: User
+        type: Values
+      type: Hex
+    CS_0_RAM_CHECK_BIT_INIT:
+      attributes:
+        id: CS_0_RAM_CHECK_BIT_INIT
+      children:
+      - children:
+        - attributes:
+            value: 'false'
+          type: User
+        type: Values
+      type: Boolean
+    CS_0_RAM_CHECK_BIT_INIT_SIZE:
+      attributes:
+        id: CS_0_RAM_CHECK_BIT_INIT_SIZE
+      children:
+      - children:
+        - attributes:
+            id: hemc
+            value: '0'
+          type: Dynamic
+        - attributes:
+            value: '1048576'
+          type: User
+        type: Values
+      type: Hex
+    CS_0_START_ADDRESS:
+      attributes:
+        id: CS_0_START_ADDRESS
+      children:
+      - children:
+        - attributes:
+            value: '0x60000000'
+          type: User
+        type: Values
+      type: String
+    CS_0_WRITE_ECC_CONF:
+      attributes:
+        id: CS_0_WRITE_ECC_CONF
+      children:
+      - children:
+        - attributes:
+            value: 'false'
+          type: User
+        type: Values
+      type: Boolean
+    CS_1_COMMENT:
+      attributes:
+        id: CS_1_COMMENT
+      children:
+      - children:
+        - attributes:
+            id: hemc
+            value: 'false'
+          type: Dynamic
+        type: Values
+      type: Boolean
+    CS_1_END_ADDRESS:
+      attributes:
+        id: CS_1_END_ADDRESS
+      children:
+      - children:
+        - attributes:
+            id: hemc
+            value: '0x607fffff'
+          type: Dynamic
+        - attributes:
+            value: '0x60000000'
+          type: User
+        type: Values
+      type: String
+    CS_1_MEMORY_BANK_SIZE:
+      attributes:
+        id: CS_1_MEMORY_BANK_SIZE
+      children:
+      - children:
+        - attributes:
+            value: '17'
+          type: User
+        type: Values
+      type: KeyValueSet
+    CS_1_MEMORY_BASE:
+      attributes:
+        id: CS_1_MEMORY_BASE
+      children:
+      - children:
+        - attributes:
+            id: hemc
+            value: '262143'
+          type: Dynamic
+        - attributes:
+            value: '262143'
+          type: User
+        type: Values
+      type: Hex
+    CS_1_RAM_CHECK_BIT_INIT_SIZE:
+      attributes:
+        id: CS_1_RAM_CHECK_BIT_INIT_SIZE
+      children:
+      - children:
+        - attributes:
+            id: hemc
+            value: '0'
+          type: Dynamic
+        type: Values
+      type: Hex
+    CS_1_START_ADDRESS:
+      attributes:
+        id: CS_1_START_ADDRESS
+      children:
+      - children:
+        - attributes:
+            value: '0x60000000'
+          type: User
+        type: Values
+      type: String
+    CS_2_END_ADDRESS:
+      attributes:
+        id: CS_2_END_ADDRESS
+      children:
+      - children:
+        - attributes:
+            value: '0x60000000'
+          type: User
+        type: Values
+      type: String
+    CS_2_MEMORY_BANK_SIZE:
+      attributes:
+        id: CS_2_MEMORY_BANK_SIZE
+      children:
+      - children:
+        - attributes:
+            value: '17'
+          type: User
+        type: Values
+      type: KeyValueSet
+    CS_2_MEMORY_BASE:
+      attributes:
+        id: CS_2_MEMORY_BASE
+      children:
+      - children:
+        - attributes:
+            id: hemc
+            value: '262143'
+          type: Dynamic
+        - attributes:
+            value: '262143'
+          type: User
+        type: Values
+      type: Hex
+    CS_2_RAM_CHECK_BIT_INIT:
+      attributes:
+        id: CS_2_RAM_CHECK_BIT_INIT
+      children:
+      - children:
+        - attributes:
+            value: 'false'
+          type: User
+        type: Values
+      type: Boolean
+    CS_2_RAM_CHECK_BIT_INIT_SIZE:
+      attributes:
+        id: CS_2_RAM_CHECK_BIT_INIT_SIZE
+      children:
+      - children:
+        - attributes:
+            id: hemc
+            value: '0'
+          type: Dynamic
+        type: Values
+      type: Hex
+    CS_2_START_ADDRESS:
+      attributes:
+        id: CS_2_START_ADDRESS
+      children:
+      - children:
+        - attributes:
+            value: '0x60000000'
+          type: User
+        type: Values
+      type: String
+    CS_3_END_ADDRESS:
+      attributes:
+        id: CS_3_END_ADDRESS
+      children:
+      - children:
+        - attributes:
+            value: '0x60000000'
+          type: User
+        type: Values
+      type: String
+    CS_3_MEMORY_BASE:
+      attributes:
+        id: CS_3_MEMORY_BASE
+      children:
+      - children:
+        - attributes:
+            id: hemc
+            value: '262143'
+          type: Dynamic
+        - attributes:
+            value: '262143'
+          type: User
+        type: Values
+      type: Hex
+    CS_3_START_ADDRESS:
+      attributes:
+        id: CS_3_START_ADDRESS
+      children:
+      - children:
+        - attributes:
+            value: '0x60000000'
+          type: User
+        type: Values
+      type: String
+    CS_4_COMMENT:
+      attributes:
+        id: CS_4_COMMENT
+      children:
+      - children:
+        - attributes:
+            id: hemc
+            value: 'false'
+          type: Dynamic
+        type: Values
+      type: Boolean
+    CS_4_END_ADDRESS:
+      attributes:
+        id: CS_4_END_ADDRESS
+      children:
+      - children:
+        - attributes:
+            id: hemc
+            value: '0x65ffffff'
+          type: Dynamic
+        - attributes:
+            value: '0x62000000'
+          type: User
+        type: Values
+      type: String
+    CS_4_HECC_BCH_ENABLE:
+      attributes:
+        id: CS_4_HECC_BCH_ENABLE
+      children:
+      - children:
+        - attributes:
+            value: 'false'
+          type: User
+        type: Values
+      type: Boolean
+    CS_4_HECC_ENABLE:
+      attributes:
+        id: CS_4_HECC_ENABLE
+      children:
+      - children:
+        - attributes:
+            value: 'true'
+          type: User
+        type: Values
+      type: Boolean
+    CS_4_MEMORY_BANK_SIZE:
+      attributes:
+        id: CS_4_MEMORY_BANK_SIZE
+      children:
+      - children:
+        - attributes:
+            value: '12'
+          type: User
+        type: Values
+      type: KeyValueSet
+    CS_4_MEMORY_BASE:
+      attributes:
+        id: CS_4_MEMORY_BASE
+      children:
+      - children:
+        - attributes:
+            id: hemc
+            value: '4096'
+          type: Dynamic
+        - attributes:
+            value: '4096'
+          type: User
+        type: Values
+      type: Hex
+    CS_4_MEMORY_TYPE:
+      attributes:
+        id: CS_4_MEMORY_TYPE
+      children:
+      - children:
+        - attributes:
+            value: '1'
+          type: User
+        type: Values
+      type: KeyValueSet
+    CS_4_RAM_CHECK_BIT_INIT:
+      attributes:
+        id: CS_4_RAM_CHECK_BIT_INIT
+      children:
+      - children:
+        - attributes:
+            value: 'true'
+          type: User
+        type: Values
+      type: Boolean
+    CS_4_RAM_CHECK_BIT_INIT_SIZE:
+      attributes:
+        id: CS_4_RAM_CHECK_BIT_INIT_SIZE
+      children:
+      - children:
+        - attributes:
+            id: visible
+          children:
+          - type: Value
+            value: 'true'
+          type: Boolean
+        type: Attributes
+      - children:
+        - attributes:
+            id: hemc
+            value: '33554432'
+          type: Dynamic
+        - attributes:
+            value: '1048576'
+          type: User
+        type: Values
+      type: Hex
+    CS_4_START_ADDRESS:
+      attributes:
+        id: CS_4_START_ADDRESS
+      children:
+      - children:
+        - attributes:
+            value: '0x64000000'
+          type: User
+        type: Values
+      type: String
+    CS_5_END_ADDRESS:
+      attributes:
+        id: CS_5_END_ADDRESS
+      children:
+      - children:
+        - attributes:
+            value: '0x62000000'
+          type: User
+        type: Values
+      type: String
+    CS_5_MEMORY_BASE:
+      attributes:
+        id: CS_5_MEMORY_BASE
+      children:
+      - children:
+        - attributes:
+            id: hemc
+            value: '262143'
+          type: Dynamic
+        - attributes:
+            value: '262143'
+          type: User
+        type: Values
+      type: Hex
+    CS_5_START_ADDRESS:
+      attributes:
+        id: CS_5_START_ADDRESS
+      children:
+      - children:
+        - attributes:
+            value: '0x62000000'
+          type: User
+        type: Values
+      type: String
+    HECC_INJECTION_TEST_MODE:
+      attributes:
+        id: HECC_INJECTION_TEST_MODE
+      children:
+      - children:
+        - attributes:
+            value: 'true'
+          type: User
+        type: Values
+      type: Boolean
+    HECC_INTERRUPT_MODE:
+      attributes:
+        id: HECC_INTERRUPT_MODE
+      children:
+      - children:
+        - attributes:
+            value: 'true'
+          type: User
+        type: Values
+      type: Boolean
+    HSDRAMC_CR__NB:
+      attributes:
+        id: HSDRAMC_CR__NB
+      children:
+      - children:
+        - attributes:
+            id: hemc
+            value: '1'
+          type: Dynamic
+        type: Values
+      type: KeyValueSet
+    HSDRAMC_CR__NC:
+      attributes:
+        id: HSDRAMC_CR__NC
+      children:
+      - children:
+        - attributes:
+            id: hemc
+            value: '1'
+          type: Dynamic
+        type: Values
+      type: KeyValueSet
+    HSDRAMC_CR__NR:
+      attributes:
+        id: HSDRAMC_CR__NR
+      children:
+      - children:
+        - attributes:
+            id: hemc
+            value: '2'
+          type: Dynamic
+        type: Values
+      type: KeyValueSet
+    HSDRAMC_TR_COUNT:
+      attributes:
+        id: HSDRAMC_TR_COUNT
+      children:
+      - children:
+        - attributes:
+            id: hemc
+            value: '195'
+          type: Dynamic
+        type: Values
+      type: Integer
+    HSMC_DATA_BUS_CS0:
+      attributes:
+        id: HSMC_DATA_BUS_CS0
+      children:
+      - children:
+        - attributes:
+            id: hemc
+            value: '2'
+          type: Dynamic
+        type: Values
+      type: KeyValueSet
+    HSMC_DATA_BUS_CS1:
+      attributes:
+        id: HSMC_DATA_BUS_CS1
+      children:
+      - children:
+        - attributes:
+            id: hemc
+            value: '2'
+          type: Dynamic
+        type: Values
+      type: KeyValueSet
+    HSMC_DATA_BUS_CS2:
+      attributes:
+        id: HSMC_DATA_BUS_CS2
+      children:
+      - children:
+        - attributes:
+            id: hemc
+            value: '2'
+          type: Dynamic
+        type: Values
+      type: KeyValueSet
+    HSMC_DATA_BUS_CS3:
+      attributes:
+        id: HSMC_DATA_BUS_CS3
+      children:
+      - children:
+        - attributes:
+            id: hemc
+            value: '2'
+          type: Dynamic
+        type: Values
+      type: KeyValueSet
+    HSMC_DATA_BUS_CS4:
+      attributes:
+        id: HSMC_DATA_BUS_CS4
+      children:
+      - children:
+        - attributes:
+            id: hemc
+            value: '2'
+          type: Dynamic
+        type: Values
+      type: KeyValueSet
+    HSMC_DATA_BUS_CS5:
+      attributes:
+        id: HSMC_DATA_BUS_CS5
+      children:
+      - children:
+        - attributes:
+            id: hemc
+            value: '2'
+          type: Dynamic
+        type: Values
+      type: KeyValueSet
+    HSMC_NWAIT_MODE_CS0:
+      attributes:
+        id: HSMC_NWAIT_MODE_CS0
+      children:
+      - children:
+        - attributes:
+            id: hemc
+            value: '0'
+          type: Dynamic
+        type: Values
+      type: KeyValueSet
+    HSMC_NWAIT_MODE_CS1:
+      attributes:
+        id: HSMC_NWAIT_MODE_CS1
+      children:
+      - children:
+        - attributes:
+            id: hemc
+            value: '0'
+          type: Dynamic
+        type: Values
+      type: KeyValueSet
+    HSMC_NWAIT_MODE_CS2:
+      attributes:
+        id: HSMC_NWAIT_MODE_CS2
+      children:
+      - children:
+        - attributes:
+            id: hemc
+            value: '0'
+          type: Dynamic
+        type: Values
+      type: KeyValueSet
+    HSMC_NWAIT_MODE_CS3:
+      attributes:
+        id: HSMC_NWAIT_MODE_CS3
+      children:
+      - children:
+        - attributes:
+            id: hemc
+            value: '0'
+          type: Dynamic
+        type: Values
+      type: KeyValueSet
+    HSMC_NWAIT_MODE_CS4:
+      attributes:
+        id: HSMC_NWAIT_MODE_CS4
+      children:
+      - children:
+        - attributes:
+            id: hemc
+            value: '0'
+          type: Dynamic
+        type: Values
+      type: KeyValueSet
+    HSMC_NWAIT_MODE_CS5:
+      attributes:
+        id: HSMC_NWAIT_MODE_CS5
+      children:
+      - children:
+        - attributes:
+            id: hemc
+            value: '0'
+          type: Dynamic
+        type: Values
+      type: KeyValueSet
+    SDRAMC_START_ADDRESS:
+      attributes:
+        id: SDRAMC_START_ADDRESS
+      children:
+      - children:
+        - attributes:
+            value: '1677721600'
+          type: User
+        type: Values
+      type: Hex
+    USE_HSDRAM:
+      attributes:
+        id: USE_HSDRAM
+      children:
+      - children:
+        - attributes:
+            id: hemc
+            value: 'true'
+          type: Dynamic
+        type: Values
+      type: Boolean
+    USE_HSMC_0:
+      attributes:
+        id: USE_HSMC_0
+      children:
+      - children:
+        - attributes:
+            id: hemc
+            value: 'true'
+          type: Dynamic
+        type: Values
+      type: Boolean
+    USE_HSMC_1:
+      attributes:
+        id: USE_HSMC_1
+      children:
+      - children:
+        - attributes:
+            id: hemc
+            value: 'true'
+          type: Dynamic
+        type: Values
+      type: Boolean
+    USE_HSMC_2:
+      attributes:
+        id: USE_HSMC_2
+      children:
+      - children:
+        - attributes:
+            id: hemc
+            value: 'true'
+          type: Dynamic
+        type: Values
+      type: Boolean
+    USE_HSMC_3:
+      attributes:
+        id: USE_HSMC_3
+      children:
+      - children:
+        - attributes:
+            id: hemc
+            value: 'true'
+          type: Dynamic
+        type: Values
+      type: Boolean
+    USE_HSMC_4:
+      attributes:
+        id: USE_HSMC_4
+      children:
+      - children:
+        - attributes:
+            id: hemc
+            value: 'false'
+          type: Dynamic
+        type: Values
+      type: Boolean
+    USE_HSMC_5:
+      attributes:
+        id: USE_HSMC_5
+      children:
+      - children:
+        - attributes:
+            id: hemc
+            value: 'true'
+          type: Dynamic
+        type: Values
+      type: Boolean
+  userData: {}

@@ -1,0 +1,327 @@
+configVersion: 1.0.0
+componentName: icm
+coreVersion: 5.8.2
+device: ATSAMRH71F20C
+library: []
+dependency:
+- dependencyPackage: class com.microchip.mcc.harmony.HarmonyModule
+  name: icm
+  type: module
+  version: ''
+- dependencyPackage: ''
+  name: aerospace
+  type: package
+  version: v3.5.1
+customDataClassName: com.microchip.utils_mh3.utils.persistence.CustomModuleData
+data:
+  attachments: {}
+  elementPosition:
+    attributes:
+      id: __ROOTVIEW
+    children:
+    - children:
+      - attributes:
+          id: icm
+          x: '20'
+          y: '159'
+        type: ElementPosition
+      type: ElementPositions
+    type: ComponentGraph
+  symbols:
+    ICM_REGION_DESC0_ALGO:
+      attributes:
+        id: ICM_REGION_DESC0_ALGO
+      children:
+      - children:
+        - attributes:
+            id: icm
+            value: '0'
+          type: Dynamic
+        type: Values
+      type: KeyValueSet
+    ICM_REGION_DESC0_CDWBN:
+      attributes:
+        id: ICM_REGION_DESC0_CDWBN
+      children:
+      - children:
+        - attributes:
+            id: icm
+            value: '0'
+          type: Dynamic
+        type: Values
+      type: KeyValueSet
+    ICM_REGION_DESC0_PROCDLY:
+      attributes:
+        id: ICM_REGION_DESC0_PROCDLY
+      children:
+      - children:
+        - attributes:
+            id: icm
+            value: '0'
+          type: Dynamic
+        type: Values
+      type: KeyValueSet
+    ICM_REGION_DESC0_SIZE:
+      attributes:
+        id: ICM_REGION_DESC0_SIZE
+      children:
+      - children:
+        - attributes:
+            value: '10048'
+          type: User
+        type: Values
+      type: Integer
+    ICM_REGION_DESC0_SIZE_REG:
+      attributes:
+        id: ICM_REGION_DESC0_SIZE_REG
+      children:
+      - children:
+        - attributes:
+            id: icm
+            value: '156'
+          type: Dynamic
+        type: Values
+      type: Integer
+    ICM_REGION_DESC0_TYPE:
+      attributes:
+        id: ICM_REGION_DESC0_TYPE
+      children:
+      - children:
+        - attributes:
+            value: '65536'
+          type: User
+        type: Values
+      type: Hex
+    ICM_REGION_DESC1_ALGO:
+      attributes:
+        id: ICM_REGION_DESC1_ALGO
+      children:
+      - children:
+        - attributes:
+            id: icm
+            value: '0'
+          type: Dynamic
+        type: Values
+      type: KeyValueSet
+    ICM_REGION_DESC1_CDWBN:
+      attributes:
+        id: ICM_REGION_DESC1_CDWBN
+      children:
+      - children:
+        - attributes:
+            id: icm
+            value: '0'
+          type: Dynamic
+        type: Values
+      type: KeyValueSet
+    ICM_REGION_DESC1_PROCDLY:
+      attributes:
+        id: ICM_REGION_DESC1_PROCDLY
+      children:
+      - children:
+        - attributes:
+            id: icm
+            value: '0'
+          type: Dynamic
+        type: Values
+      type: KeyValueSet
+    ICM_REGION_DESC1_SIZE:
+      attributes:
+        id: ICM_REGION_DESC1_SIZE
+      children:
+      - children:
+        - attributes:
+            value: '10048'
+          type: User
+        type: Values
+      type: Integer
+    ICM_REGION_DESC1_SIZE_REG:
+      attributes:
+        id: ICM_REGION_DESC1_SIZE_REG
+      children:
+      - children:
+        - attributes:
+            id: icm
+            value: '156'
+          type: Dynamic
+        type: Values
+      type: Integer
+    ICM_REGION_DESC1_TYPE:
+      attributes:
+        id: ICM_REGION_DESC1_TYPE
+      children:
+      - children:
+        - attributes:
+            value: '536870912'
+          type: User
+        type: Values
+      type: Hex
+    ICM_REGION_DESC2_ALGO:
+      attributes:
+        id: ICM_REGION_DESC2_ALGO
+      children:
+      - children:
+        - attributes:
+            id: icm
+            value: '0'
+          type: Dynamic
+        type: Values
+      type: KeyValueSet
+    ICM_REGION_DESC2_CDWBN:
+      attributes:
+        id: ICM_REGION_DESC2_CDWBN
+      children:
+      - children:
+        - attributes:
+            id: icm
+            value: '0'
+          type: Dynamic
+        type: Values
+      type: KeyValueSet
+    ICM_REGION_DESC2_PROCDLY:
+      attributes:
+        id: ICM_REGION_DESC2_PROCDLY
+      children:
+      - children:
+        - attributes:
+            id: icm
+            value: '0'
+          type: Dynamic
+        type: Values
+      type: KeyValueSet
+    ICM_REGION_DESC2_SIZE:
+      attributes:
+        id: ICM_REGION_DESC2_SIZE
+      children:
+      - children:
+        - attributes:
+            value: '10048'
+          type: User
+        type: Values
+      type: Integer
+    ICM_REGION_DESC2_SIZE_REG:
+      attributes:
+        id: ICM_REGION_DESC2_SIZE_REG
+      children:
+      - children:
+        - attributes:
+            id: icm
+            value: '156'
+          type: Dynamic
+        type: Values
+      type: Integer
+    ICM_REGION_DESC2_TYPE:
+      attributes:
+        id: ICM_REGION_DESC2_TYPE
+      children:
+      - children:
+        - attributes:
+            value: '554369024'
+          type: User
+        type: Values
+      type: Hex
+    ICM_REGION_DESC3_ALGO:
+      attributes:
+        id: ICM_REGION_DESC3_ALGO
+      children:
+      - children:
+        - attributes:
+            id: icm
+            value: '0'
+          type: Dynamic
+        type: Values
+      type: KeyValueSet
+    ICM_REGION_DESC3_CDWBN:
+      attributes:
+        id: ICM_REGION_DESC3_CDWBN
+      children:
+      - children:
+        - attributes:
+            id: icm
+            value: '0'
+          type: Dynamic
+        type: Values
+      type: KeyValueSet
+    ICM_REGION_DESC3_PROCDLY:
+      attributes:
+        id: ICM_REGION_DESC3_PROCDLY
+      children:
+      - children:
+        - attributes:
+            id: icm
+            value: '0'
+          type: Dynamic
+        type: Values
+      type: KeyValueSet
+    ICM_REGION_DESC3_SIZE:
+      attributes:
+        id: ICM_REGION_DESC3_SIZE
+      children:
+      - children:
+        - attributes:
+            value: '10048'
+          type: User
+        type: Values
+      type: Integer
+    ICM_REGION_DESC3_SIZE_REG:
+      attributes:
+        id: ICM_REGION_DESC3_SIZE_REG
+      children:
+      - children:
+        - attributes:
+            id: icm
+            value: '156'
+          type: Dynamic
+        type: Values
+      type: Integer
+    ICM_REGION_DESC3_TYPE:
+      attributes:
+        id: ICM_REGION_DESC3_TYPE
+      children:
+      - children:
+        - attributes:
+            value: '1677721600'
+          type: User
+        type: Values
+      type: Hex
+    ICM_REGION_DESC3_WRAP:
+      attributes:
+        id: ICM_REGION_DESC3_WRAP
+      children:
+      - children:
+        - attributes:
+            value: 'true'
+          type: User
+        type: Values
+      type: Boolean
+    INTERRUPT_MODE:
+      attributes:
+        id: INTERRUPT_MODE
+      children:
+      - children:
+        - attributes:
+            value: 'true'
+          type: User
+        type: Values
+      type: Boolean
+    REGION_DESC_NUM:
+      attributes:
+        id: REGION_DESC_NUM
+      children:
+      - children:
+        - attributes:
+            value: '4'
+          type: User
+        type: Values
+      type: Integer
+    SLBDIS:
+      attributes:
+        id: SLBDIS
+      children:
+      - children:
+        - attributes:
+            value: 'true'
+          type: User
+        type: Values
+      type: Boolean
+  userData: {}

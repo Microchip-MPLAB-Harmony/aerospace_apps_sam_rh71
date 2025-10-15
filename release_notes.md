@@ -3,6 +3,37 @@
 
 # Microchip MPLAB® Harmony 3 Aerospace Application examples for SAMRH71 Release Notes
 
+## Harmony 3 Aerospace application examples for SAMRH71 family v3.2.1
+
+### Development kit and demo application support
+
+Following table provides number of peripheral library examples available for different development kits.
+
+| Development Kits  | MPLABx applications |
+|:-----------------:|:-------------------:|
+| SAM RH71 Evaluation Kit | 8 |
+
+### New Features
+
+- Applications updated and regenerated with modules CSP v3.23.0
+- Remove -Wall an -Werror options that are set by default in applications.
+
+### Known Issues
+
+- None
+
+### Development Tools
+
+- [MPLAB® X IDE v6.25](https://www.microchip.com/mplab/mplab-x-ide)
+- MPLAB® X IDE plug-ins:
+  - MPLAB® Code Configurator 5.6.2 or higher
+- [MPLAB® XC32 C/C++ Compiler v5.00](https://www.microchip.com/mplab/compilers)
+
+### Dependent Components
+
+* [CSP v3.23.0](https://github.com/Microchip-MPLAB-Harmony/csp/releases/tag/v3.23.0)
+* [Aerospace v3.5.1](https://github.com/Microchip-MPLAB-Harmony/aerospace/releases/tag/v3.5.1)
+
 ## Harmony 3 Aerospace application examples for SAMRH71 family v3.2.0
 
 ### Development kit and demo application support

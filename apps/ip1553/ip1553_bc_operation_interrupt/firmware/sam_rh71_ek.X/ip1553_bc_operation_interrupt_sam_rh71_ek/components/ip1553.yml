@@ -1,0 +1,63 @@
+configVersion: 1.0.0
+componentName: ip1553
+coreVersion: 5.8.2
+device: ATSAMRH71F20C
+library: []
+dependency:
+- dependencyPackage: class com.microchip.mcc.harmony.HarmonyModule
+  name: ip1553
+  type: module
+  version: ''
+- dependencyPackage: ''
+  name: aerospace
+  type: package
+  version: v3.5.1
+customDataClassName: com.microchip.utils_mh3.utils.persistence.CustomModuleData
+data:
+  attachments: {}
+  elementPosition:
+    attributes:
+      id: __ROOTVIEW
+    children:
+    - children:
+      - attributes:
+          id: ip1553
+          x: '388'
+          y: '89'
+        type: ElementPosition
+      type: ElementPositions
+    type: ComponentGraph
+  symbols:
+    INTERRUPT_MODE:
+      attributes:
+        id: INTERRUPT_MODE
+      children:
+      - children:
+        - attributes:
+            value: 'true'
+          type: User
+        type: Values
+      type: Boolean
+    IP1553_CLOCK_FREQ:
+      attributes:
+        id: IP1553_CLOCK_FREQ
+      children:
+      - children:
+        - attributes:
+            id: ip1553
+            value: '12000000'
+          type: Dynamic
+        type: Values
+      type: Integer
+    IP1553_MODE:
+      attributes:
+        id: IP1553_MODE
+      children:
+      - children:
+        - attributes:
+            id: ip1553
+            value: '1'
+          type: Dynamic
+        type: Values
+      type: KeyValueSet
+  userData: {}

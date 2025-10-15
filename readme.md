@@ -14,7 +14,7 @@ MPLAB® Harmony 3 is an extension of the MPLAB® ecosystem for creating embedded
 This repository contains the MPLAB® Harmony 3 Aerospace Application examples for SAM RH71 Family.
 
 - [Release Notes](./release_notes.md)
-- [MPLAB® Harmony License](Microchip_SLA001.md)
+- [MPLAB® Harmony License](License.md)
 
 # Documentation
 
@@ -55,7 +55,7 @@ The following applications are provided to demonstrate the typical or interestin
 
 ____
 
-[![License](https://img.shields.io/badge/license-Harmony%20license-orange.svg)](https://github.com/Microchip-MPLAB-Harmony/aerospace_apps_sam_rh71/blob/master/Microchip_SLA001.md)
+[![License](https://img.shields.io/badge/license-Harmony%20license-orange.svg)](https://github.com/Microchip-MPLAB-Harmony/aerospace_apps_sam_rh71/blob/master/License.md)
 [![Commit activity](https://img.shields.io/github/commit-activity/y/Microchip-MPLAB-Harmony/aerospace_apps_sam_rh71.svg)](https://github.com/Microchip-MPLAB-Harmony/aerospace_apps_sam_rh71/graphs/commit-activity)
 [![Contributors](https://img.shields.io/github/contributors-anon/Microchip-MPLAB-Harmony/aerospace_apps_sam_rh71.svg)]()
 

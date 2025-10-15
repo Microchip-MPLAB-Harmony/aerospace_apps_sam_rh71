@@ -1,0 +1,352 @@
+configVersion: 1.0.0
+componentName: tc0
+coreVersion: 5.8.2
+device: ATSAMRH71F20C
+library: []
+dependency:
+- dependencyPackage: class com.microchip.mcc.harmony.HarmonyModule
+  name: tc0
+  type: module
+  version: ''
+- dependencyPackage: ''
+  name: csp
+  type: package
+  version: v3.23.0
+customDataClassName: com.microchip.utils_mh3.utils.persistence.CustomModuleData
+data:
+  attachments: {}
+  elementPosition:
+    attributes:
+      id: __ROOTVIEW
+    children:
+    - children:
+      - attributes:
+          id: tc0
+          x: '24'
+          y: '162'
+        type: ElementPosition
+      type: ElementPositions
+    type: ComponentGraph
+  symbols:
+    ENCODER_POS_GET_API:
+      attributes:
+        id: ENCODER_POS_GET_API
+      children:
+      - children:
+        - attributes:
+            id: tc0
+            value: TC0_QuadraturePositionGet
+          type: Dynamic
+        type: Values
+      type: String
+    ENCODER_POS_SET_API:
+      attributes:
+        id: ENCODER_POS_SET_API
+      children:
+      - children:
+        - attributes:
+            id: tc0
+            value: ''
+          type: Dynamic
+        type: Values
+      type: String
+    ENCODER_SPEED_GET_API:
+      attributes:
+        id: ENCODER_SPEED_GET_API
+      children:
+      - children:
+        - attributes:
+            id: tc0
+            value: ''
+          type: Dynamic
+        type: Values
+      type: String
+    ENCODER_SPEED_SET_API:
+      attributes:
+        id: ENCODER_SPEED_SET_API
+      children:
+      - children:
+        - attributes:
+            id: tc0
+            value: ''
+          type: Dynamic
+        type: Values
+      type: String
+    ENCODER_START_API:
+      attributes:
+        id: ENCODER_START_API
+      children:
+      - children:
+        - attributes:
+            id: tc0
+            value: TC0_QuadratureStart
+          type: Dynamic
+        type: Values
+      type: String
+    ENCODER_STOP_API:
+      attributes:
+        id: ENCODER_STOP_API
+      children:
+      - children:
+        - attributes:
+            id: tc0
+            value: TC0_QuadratureStop
+          type: Dynamic
+        type: Values
+      type: String
+    TC0_CLOCK_FREQ:
+      attributes:
+        id: TC0_CLOCK_FREQ
+      children:
+      - children:
+        - attributes:
+            id: tc0
+            value: '6250000'
+          type: Dynamic
+        type: Values
+      type: Integer
+    TC0_CMR_CPCSTOP:
+      attributes:
+        id: TC0_CMR_CPCSTOP
+      children:
+      - children:
+        - attributes:
+            value: 'true'
+          type: User
+        type: Values
+      type: Boolean
+    TC0_CMR_TCCLKS:
+      attributes:
+        id: TC0_CMR_TCCLKS
+      children:
+      - children:
+        - attributes:
+            value: '2'
+          type: User
+        type: Values
+      type: KeyValueSet
+    TC0_ENABLE:
+      attributes:
+        id: TC0_ENABLE
+      children:
+      - children:
+        - attributes:
+            value: 'true'
+          type: User
+        type: Values
+      type: Boolean
+    TC0_PCK7:
+      attributes:
+        id: TC0_PCK7
+      children:
+      - children:
+        - attributes:
+            id: tc0
+            value: 'false'
+          type: Dynamic
+        type: Values
+      type: Boolean
+    TC0_TIMER_PERIOD_COUNT:
+      attributes:
+        id: TC0_TIMER_PERIOD_COUNT
+      children:
+      - children:
+        - attributes:
+            id: tc0
+            value: '62500'
+          type: Dynamic
+        type: Values
+      type: Long
+    TC0_TIMER_PERIOD_MS:
+      attributes:
+        id: TC0_TIMER_PERIOD_MS
+      children:
+      - children:
+        - attributes:
+            id: max
+          children:
+          - type: Value
+            value: '687194.75'
+          type: Float
+        type: Attributes
+      - children:
+        - attributes:
+            value: '10.0'
+          type: User
+        type: Values
+      type: Float
+    TC1_CLOCK_FREQ:
+      attributes:
+        id: TC1_CLOCK_FREQ
+      children:
+      - children:
+        - attributes:
+            id: tc0
+            value: '6250000'
+          type: Dynamic
+        type: Values
+      type: Integer
+    TC1_CMR_TCCLKS:
+      attributes:
+        id: TC1_CMR_TCCLKS
+      children:
+      - children:
+        - attributes:
+            value: '2'
+          type: User
+        type: Values
+      type: KeyValueSet
+    TC1_ENABLE:
+      attributes:
+        id: TC1_ENABLE
+      children:
+      - children:
+        - attributes:
+            value: 'true'
+          type: User
+        type: Values
+      type: Boolean
+    TC1_PCK7:
+      attributes:
+        id: TC1_PCK7
+      children:
+      - children:
+        - attributes:
+            id: tc0
+            value: 'false'
+          type: Dynamic
+        type: Values
+      type: Boolean
+    TC1_TIMER_PERIOD_COUNT:
+      attributes:
+        id: TC1_TIMER_PERIOD_COUNT
+      children:
+      - children:
+        - attributes:
+            id: tc0
+            value: '4294967187'
+          type: Dynamic
+        type: Values
+      type: Long
+    TC1_TIMER_PERIOD_MS:
+      attributes:
+        id: TC1_TIMER_PERIOD_MS
+      children:
+      - children:
+        - attributes:
+            id: max
+          children:
+          - type: Value
+            value: '687194.75'
+          type: Float
+        type: Attributes
+      - children:
+        - attributes:
+            value: '687194.75'
+          type: User
+        type: Values
+      type: Float
+    TC2_CLOCK_FREQ:
+      attributes:
+        id: TC2_CLOCK_FREQ
+      children:
+      - children:
+        - attributes:
+            id: tc0
+            value: '6250000'
+          type: Dynamic
+        type: Values
+      type: Integer
+    TC2_CMR_CPCSTOP:
+      attributes:
+        id: TC2_CMR_CPCSTOP
+      children:
+      - children:
+        - attributes:
+            value: 'false'
+          type: User
+        type: Values
+      type: Boolean
+    TC2_CMR_TCCLKS:
+      attributes:
+        id: TC2_CMR_TCCLKS
+      children:
+      - children:
+        - attributes:
+            value: '2'
+          type: User
+        type: Values
+      type: KeyValueSet
+    TC2_ENABLE:
+      attributes:
+        id: TC2_ENABLE
+      children:
+      - children:
+        - attributes:
+            value: 'true'
+          type: User
+        type: Values
+      type: Boolean
+    TC2_PCK7:
+      attributes:
+        id: TC2_PCK7
+      children:
+      - children:
+        - attributes:
+            id: tc0
+            value: 'false'
+          type: Dynamic
+        type: Values
+      type: Boolean
+    TC2_TIMER_PERIOD_COUNT:
+      attributes:
+        id: TC2_TIMER_PERIOD_COUNT
+      children:
+      - children:
+        - attributes:
+            id: tc0
+            value: '4294967187'
+          type: Dynamic
+        type: Values
+      type: Long
+    TC2_TIMER_PERIOD_MS:
+      attributes:
+        id: TC2_TIMER_PERIOD_MS
+      children:
+      - children:
+        - attributes:
+            id: max
+          children:
+          - type: Value
+            value: '687194.75'
+          type: Float
+        type: Attributes
+      - children:
+        - attributes:
+            value: '687195.0'
+          type: User
+        type: Values
+      type: Float
+    TC3_CLOCK_FREQ:
+      attributes:
+        id: TC3_CLOCK_FREQ
+      children:
+      - children:
+        - attributes:
+            id: tc0
+            value: '50000000'
+          type: Dynamic
+        type: Values
+      type: Integer
+    TC3_PCK7:
+      attributes:
+        id: TC3_PCK7
+      children:
+      - children:
+        - attributes:
+            id: tc0
+            value: 'false'
+          type: Dynamic
+        type: Values
+      type: Boolean
+  userData: {}

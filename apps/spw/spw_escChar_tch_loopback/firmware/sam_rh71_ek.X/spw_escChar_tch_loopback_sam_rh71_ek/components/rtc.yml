@@ -1,0 +1,51 @@
+configVersion: 1.0.0
+componentName: rtc
+coreVersion: 5.8.2
+device: ATSAMRH71F20C
+library: []
+dependency:
+- dependencyPackage: class com.microchip.mcc.harmony.HarmonyModule
+  name: rtc
+  type: module
+  version: ''
+- dependencyPackage: ''
+  name: csp
+  type: package
+  version: v3.23.0
+customDataClassName: com.microchip.utils_mh3.utils.persistence.CustomModuleData
+data:
+  attachments: {}
+  elementPosition:
+    attributes:
+      id: __ROOTVIEW
+    children:
+    - children:
+      - attributes:
+          id: rtc
+          x: '25'
+          y: '158'
+        type: ElementPosition
+      type: ElementPositions
+    type: ComponentGraph
+  symbols:
+    RTC_MR_OUT0:
+      attributes:
+        id: RTC_MR_OUT0
+      children:
+      - children:
+        - attributes:
+            value: FREQ32HZ
+          type: User
+        type: Values
+      type: Combo
+    RTC_MR_OUT1:
+      attributes:
+        id: RTC_MR_OUT1
+      children:
+      - children:
+        - attributes:
+            value: PROG_PULSE
+          type: User
+        type: Values
+      type: Combo
+  userData: {}
